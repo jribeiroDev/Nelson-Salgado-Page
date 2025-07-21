@@ -92,50 +92,28 @@ const ProgramCatalogSection = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8 cursor-pointer">
           {filteredPrograms.map((program) => (
-            <Card key={program.id} className="group hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 overflow-hidden border-0 shadow-lg max-w-sm w-full mx-auto md:max-w-full">
-              <div className="relative">
-                <img 
-                  src={program.image} 
-                  alt={program.name}
-                  className="w-full h-32 md:h-48 object-cover group-hover:scale-110 transition-transform duration-300"
-                />
-                {program.popular && (
-                  <Badge className="absolute top-4 left-4 bg-gradient-to-r from-orange-500 to-red-500 text-white border-0">
-                    <Star className="w-3 h-3 mr-1" />
-                    Popular
-                  </Badge>
-                )}
-              </div>
-              <CardContent className="p-4 md:p-6">
-                <h3 className="text-lg md:text-xl font-bold mb-2 group-hover:text-purple-600 transition-colors">
+            <Card key={program.id} className="group relative overflow-hidden border-0 shadow-lg max-w-sm w-full mx-auto md:max-w-full p-0 h-80 flex flex-col justify-end">
+              {/* Imagem de fundo */}
+              <div 
+                className="absolute inset-0 bg-cover bg-center transition-transform duration-300 group-hover:scale-105"
+                style={{ backgroundImage: `url(${program.image})` }}
+              />
+              {/* Overlay escuro */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
+              {/* Conteúdo */}
+              <div className="relative z-10 p-6 flex flex-col justify-end h-full">
+                <h3 className="text-white text-xl font-bold mb-2 drop-shadow-lg">
                   {program.name}
                 </h3>
-                <div className="flex flex-wrap gap-2 mb-4">
-                  <Badge variant="secondary" className="text-xs">
-                    <Dumbbell className="w-3 h-3 mr-1" />
-                    {program.type}
-                  </Badge>
-                  <Badge variant="secondary" className="text-xs">
-                    <Clock className="w-3 h-3 mr-1" />
-                    {program.time}
-                  </Badge>
-                  <Badge variant="secondary" className="text-xs">
-                    <TrendingUp className="w-3 h-3 mr-1" />
-                    {program.level}
-                  </Badge>
-                </div>
-                <p className="text-muted-foreground mb-4 text-xs md:text-sm">
+                <p className="text-white/90 text-sm mb-4 line-clamp-2 drop-shadow-lg">
                   {program.description}
                 </p>
-                <div className="flex gap-2">
-                  <Button className="flex-1 text-base md:text-lg bg-blue hover:bg-gold text-white py-2 md:py-3">
-                    Escolhe nível
-                  </Button>
-                  <Button variant="outline" className="hover:bg-gold py-2 md:py-3">
-                    <ArrowRight className="w-4 h-4 hover:bg-gold" />
+                <div className="flex justify-left">
+                  <Button className="bg-blue text-gold font-bold px-6 py-2 rounded-full hover:bg-white/90 transition-colors">
+                    Ver programa
                   </Button>
                 </div>
-              </CardContent>
+              </div>
             </Card>
           ))}
         </div>
