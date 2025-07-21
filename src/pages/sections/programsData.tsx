@@ -21,7 +21,7 @@ export const programs = [
     gender: "Feminino",
     description: "Desenvolver força com treinos eficientes e focados.",
     image: "https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-    popular: false
+    popular: true
   },
   {
     id: 3,

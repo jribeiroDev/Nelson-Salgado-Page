@@ -12,8 +12,8 @@ import NewsletterSection from './sections/NewsletterSection';
 const Index = () => {
   return (
     <div className="min-h-screen bg-background">
-      {/* <HeroSection /> */}
-      <AboutTrainerSection />
+      <HeroSection />
+      {/* <AboutTrainerSection /> */}
       <FeaturedCarouselSection />
       <ProgramCatalogSection />
       <AppBenefitsSection />
