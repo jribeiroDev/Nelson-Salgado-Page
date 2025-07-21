@@ -31,22 +31,22 @@ const ProgramCatalogSection = () => {
   });
 
   return (
-    <section className="py-20 px-4 bg-gold">
+    <section className="py-10 px-2 md:py-20 md:px-4 bg-gold">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-blue-900">
+        <div className="text-center mb-8 md:mb-12">
+          <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold mb-2 md:mb-4 text-blue-900">
             Os Nossos Programas
           </h2>
-          <p className="text-xl text-blue-900 max-w-2xl mx-auto">
+          <p className="text-base md:text-xl text-blue-900 max-w-2xl mx-auto">
             Escolhe o programa ideal para os teus objetivos!
           </p>
         </div>
 
-        <div className="flex justify-center gap-4 mb-8">
-          <div className="flex flex-col items-start">
-            <span className="mb-2 ml-1 text-base font-medium text-blue-900">Género</span>
+        <div className="flex flex-col md:flex-row md:gap-4 gap-2 justify-center items-center text-center mb-6 md:mb-8">
+          <div className="flex flex-col items-start w-full md:w-auto">
+            <span className="mb-2 w-full text-center text-base font-medium text-blue-900">Género</span>
             <Select value={selectedGender} onValueChange={setSelectedGender}>
-              <SelectTrigger className="w-64 h-12 text-lg">
+              <SelectTrigger className="w-64 h-12 text-base md:text-lg mx-auto">
                 <SelectValue placeholder="Selecciona género" />
               </SelectTrigger>
               <SelectContent>
@@ -58,10 +58,10 @@ const ProgramCatalogSection = () => {
               </SelectContent>
             </Select>
           </div>
-          <div className="flex flex-col items-start">
-            <span className="mb-2 ml-1 text-base font-medium text-blue-900">Nível de treino</span>
+          <div className="flex flex-col items-start w-full md:w-auto">
+            <span className="mb-2 w-full text-center text-base font-medium text-blue-900">Nível de treino</span>
             <Select value={selectedLevel} onValueChange={setSelectedLevel}>
-              <SelectTrigger className="w-64 h-12 text-lg">
+              <SelectTrigger className="w-64 h-12 text-base md:text-lg mx-auto">
                 <SelectValue placeholder="Nível de treino" />
               </SelectTrigger>
               <SelectContent>
@@ -73,10 +73,10 @@ const ProgramCatalogSection = () => {
               </SelectContent>
             </Select>
           </div>
-          <div className="flex flex-col items-start">
-            <span className="mb-2 ml-1 text-base font-medium text-blue-900">Nível de treino semanal</span>
+          <div className="flex flex-col items-start w-full md:w-auto">
+            <span className="mb-2 w-full text-center text-base font-medium text-blue-900">Nível de treino semanal</span>
             <Select value={selectedWeeklyLevel} onValueChange={setSelectedWeeklyLevel}>
-              <SelectTrigger className="w-64 h-12 text-lg">
+              <SelectTrigger className="w-64 h-12 text-base md:text-lg mx-auto">
                 <SelectValue placeholder="Nível de treino Semanal" />
               </SelectTrigger>
               <SelectContent>
@@ -90,14 +90,14 @@ const ProgramCatalogSection = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 cursor-pointer">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8 cursor-pointer">
           {filteredPrograms.map((program) => (
-            <Card key={program.id} className="group hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 overflow-hidden border-0 shadow-lg">
+            <Card key={program.id} className="group hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 overflow-hidden border-0 shadow-lg max-w-sm w-full mx-auto md:max-w-full">
               <div className="relative">
                 <img 
                   src={program.image} 
                   alt={program.name}
-                  className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300"
+                  className="w-full h-32 md:h-48 object-cover group-hover:scale-110 transition-transform duration-300"
                 />
                 {program.popular && (
                   <Badge className="absolute top-4 left-4 bg-gradient-to-r from-orange-500 to-red-500 text-white border-0">
@@ -106,8 +106,8 @@ const ProgramCatalogSection = () => {
                   </Badge>
                 )}
               </div>
-              <CardContent className="p-6">
-                <h3 className="text-xl font-bold mb-2 group-hover:text-purple-600 transition-colors">
+              <CardContent className="p-4 md:p-6">
+                <h3 className="text-lg md:text-xl font-bold mb-2 group-hover:text-purple-600 transition-colors">
                   {program.name}
                 </h3>
                 <div className="flex flex-wrap gap-2 mb-4">
@@ -124,14 +124,14 @@ const ProgramCatalogSection = () => {
                     {program.level}
                   </Badge>
                 </div>
-                <p className="text-muted-foreground mb-4 text-sm">
+                <p className="text-muted-foreground mb-4 text-xs md:text-sm">
                   {program.description}
                 </p>
                 <div className="flex gap-2">
-                  <Button className="flex-1 bg-blue  hover:bg-gold text-white">
+                  <Button className="flex-1 text-base md:text-lg bg-blue hover:bg-gold text-white py-2 md:py-3">
                     Escolhe nível
                   </Button>
-                  <Button variant="outline" className="hover:bg-gold">
+                  <Button variant="outline" className="hover:bg-gold py-2 md:py-3">
                     <ArrowRight className="w-4 h-4 hover:bg-gold" />
                   </Button>
                 </div>
