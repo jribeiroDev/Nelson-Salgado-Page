@@ -2,49 +2,7 @@ import React from "react";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import ProgramCard from "@/components/programCard";
 import { Calendar, Dumbbell, User } from "lucide-react";
-
-const programs = [
-  {
-    id: 1,
-    name: "Programa Hibrido",
-    duration: "6 semanas",
-    type: "Full Body",
-    gender: "Feminino",
-    image: "https://images.unsplash.com/photo-1571019613540-996a1b30c5a8?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
-  },
-  {
-    id: 2,
-    name: "Programa de Definição",
-    duration: "6 semanas",
-    type: "Full Body",
-    gender: "Feminino",
-    image: "https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
-  },
-  {
-    id: 3,
-    name: "Programas de Tonificação",
-    duration: "6 semanas",
-    type: "Full Body",
-    gender: "Feminino",
-    image: "https://images.unsplash.com/photo-1538805060514-97d9cc17730c?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
-  },
-  {
-    id: 4,
-    name: "Programa de Força (express)",
-    duration: "6 semanas",
-    type: "Full Body",
-    gender: "Masculino",
-    image: "https://images.unsplash.com/photo-1506126613408-eca07ce68773?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
-  },
-  {
-    id: 5,
-    name: "Programa Glúteos Fortes",
-    duration: "8 semanas",
-    type: "Construir Músculo",
-    gender: "Masculino",
-    image: "https://images.unsplash.com/photo-1517963628607-235ccdd5476c?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
-  }
-];
+import { programs } from "./programsData";
 
 const FeaturedCarouselSection = () => (
   <section>

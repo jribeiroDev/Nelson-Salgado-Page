@@ -4,69 +4,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Star, Dumbbell, Clock, TrendingUp, ArrowRight } from "lucide-react";
-
-const programs = [
-  {
-    id: 1,
-    name: "Programa Hibrido",
-    duration: "6 semanas",
-    level: "Principiante a intermédio",
-    time: "30-60 min",
-    type: "Full Body",
-    gender: "Feminino",
-    description: "Perfeito para perda de peso e transformação rápida.",
-    image: "https://images.unsplash.com/photo-1571019613540-996a1b30c5a8?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-    popular: true
-  },
-  {
-    id: 2,
-    name: "Programa de Definição",
-    duration: "6 semanas",
-    level: "Intermédio",
-    time: "30-45 min",
-    type: "Full Body",
-    gender: "Feminino",
-    description: "Desenvolver força com treinos eficientes e focados.",
-    image: "https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-    popular: false
-  },
-  {
-    id: 3,
-    name: "Programas de Tonificação",
-    duration: "6 semanas",
-    level: "Todos os níveis",
-    time: "20-40 min",
-    type: "Full Body",
-    gender: "Feminino",
-    description: "Queimar calorias e melhorar resistência cardiovascular.",
-    image: "https://images.unsplash.com/photo-1538805060514-97d9cc17730c?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-    popular: true
-  },
-  {
-    id: 4,
-    name: "Programa de Força (express)",
-    duration: "6 semanas",
-    level: "Principiante",
-    time: "45-60 min",
-    type: "Full Body",
-    gender: "Masculino",
-    description: "Melhorar flexibilidade, equilíbrio e paz interior.",
-    image: "https://images.unsplash.com/photo-1506126613408-eca07ce68773?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-    popular: false
-  },
-  {
-    id: 5,
-    name: "Programa Glúteos Fortes",
-    duration: "8 semanas",
-    level: "Avançado",
-    time: "25-35 min",
-    type: "Construir Músculo",
-    gender: "Masculino",
-    description: "Treinos intensos para máximos resultados em pouco tempo.",
-    image: "https://images.unsplash.com/photo-1517963628607-235ccdd5476c?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-    popular: true
-  }
-];
+import { programs } from "./programsData";
 
 const uniqueGenders = Array.from(new Set(programs.map(p => p.gender)));
 const genderOptions = [
@@ -83,11 +21,13 @@ const LevelOptions = [
 const ProgramCatalogSection = () => {
   const [selectedGender, setSelectedGender] = useState("all");
   const [selectedLevel, setSelectedLevel] = useState("all");
+  const [selectedWeeklyLevel, setSelectedWeeklyLevel] = useState("all");
 
   const filteredPrograms = programs.filter((p) => {
     const genderMatch = selectedGender === "all" || p.gender === selectedGender;
     const levelMatch = selectedLevel === "all" || p.level === selectedLevel;
-    return genderMatch && levelMatch;
+    const levelWeekMatch = selectedWeeklyLevel === "all" || p.level === selectedWeeklyLevel;
+    return genderMatch && levelMatch && levelWeekMatch;
   });
 
   return (
@@ -97,39 +37,60 @@ const ProgramCatalogSection = () => {
           <h2 className="text-4xl md:text-5xl font-bold mb-4 text-blue-900">
             Os Nossos Programas
           </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Escolhe o programa ideal para os teus objetivos e nível de experiência
+          <p className="text-xl text-blue-900 max-w-2xl mx-auto">
+            Escolhe o programa ideal para os teus objetivos!
           </p>
         </div>
 
         <div className="flex justify-center gap-4 mb-8">
-          <Select value={selectedGender} onValueChange={setSelectedGender}>
-            <SelectTrigger className="w-64 h-12 text-lg">
-              <SelectValue placeholder="Selecciona género" />
-            </SelectTrigger>
-            <SelectContent>
-              {genderOptions.map(opt => (
-                <SelectItem key={opt.value} value={opt.value}>
-                  {opt.label}
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
-          <Select value={selectedLevel} onValueChange={setSelectedLevel}>
-            <SelectTrigger className="w-64 h-12 text-lg">
-              <SelectValue placeholder="Nível de treino" />
-            </SelectTrigger>
-            <SelectContent>
-              {LevelOptions.map(opt => (
-                <SelectItem key={opt.value} value={opt.value}>
-                  {opt.label}
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
+          <div className="flex flex-col items-start">
+            <span className="mb-2 ml-1 text-base font-medium text-blue-900">Género</span>
+            <Select value={selectedGender} onValueChange={setSelectedGender}>
+              <SelectTrigger className="w-64 h-12 text-lg">
+                <SelectValue placeholder="Selecciona género" />
+              </SelectTrigger>
+              <SelectContent>
+                {genderOptions.map(opt => (
+                  <SelectItem key={opt.value} value={opt.value}>
+                    {opt.label}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </div>
+          <div className="flex flex-col items-start">
+            <span className="mb-2 ml-1 text-base font-medium text-blue-900">Nível de treino</span>
+            <Select value={selectedLevel} onValueChange={setSelectedLevel}>
+              <SelectTrigger className="w-64 h-12 text-lg">
+                <SelectValue placeholder="Nível de treino" />
+              </SelectTrigger>
+              <SelectContent>
+                {LevelOptions.map(opt => (
+                  <SelectItem key={opt.value} value={opt.value}>
+                    {opt.label}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </div>
+          <div className="flex flex-col items-start">
+            <span className="mb-2 ml-1 text-base font-medium text-blue-900">Nível de treino semanal</span>
+            <Select value={selectedWeeklyLevel} onValueChange={setSelectedWeeklyLevel}>
+              <SelectTrigger className="w-64 h-12 text-lg">
+                <SelectValue placeholder="Nível de treino Semanal" />
+              </SelectTrigger>
+              <SelectContent>
+                {LevelOptions.map(opt => (
+                  <SelectItem key={opt.value} value={opt.value}>
+                    {opt.label}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 cursor-pointer">
           {filteredPrograms.map((program) => (
             <Card key={program.id} className="group hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 overflow-hidden border-0 shadow-lg">
               <div className="relative">
@@ -167,11 +128,11 @@ const ProgramCatalogSection = () => {
                   {program.description}
                 </p>
                 <div className="flex gap-2">
-                  <Button className="flex-1 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white">
+                  <Button className="flex-1 bg-blue  hover:bg-gold text-white">
                     Escolhe nível
                   </Button>
-                  <Button variant="outline" className="hover:bg-purple-50">
-                    <ArrowRight className="w-4 h-4" />
+                  <Button variant="outline" className="hover:bg-gold">
+                    <ArrowRight className="w-4 h-4 hover:bg-gold" />
                   </Button>
                 </div>
               </CardContent>

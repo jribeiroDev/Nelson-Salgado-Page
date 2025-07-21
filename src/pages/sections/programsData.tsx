@@ -1,0 +1,122 @@
+export const programs = [
+  {
+    id: 1,
+    name: "Programa Hibrido",
+    duration: "6 semanas",
+    level: "Principiante a intermédio",
+    time: "30-60 min",
+    type: "Full Body",
+    gender: "Feminino",
+    description: "Perfeito para perda de peso e transformação rápida.",
+    image: "https://images.unsplash.com/photo-1571019613540-996a1b30c5a8?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+    popular: true
+  },
+  {
+    id: 2,
+    name: "Programa de Definição",
+    duration: "6 semanas",
+    level: "Intermédio",
+    time: "30-45 min",
+    type: "Full Body",
+    gender: "Feminino",
+    description: "Desenvolver força com treinos eficientes e focados.",
+    image: "https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+    popular: false
+  },
+  {
+    id: 3,
+    name: "Programas de Tonificação",
+    duration: "6 semanas",
+    level: "Todos os níveis",
+    time: "20-40 min",
+    type: "Full Body",
+    gender: "Feminino",
+    description: "Queimar calorias e melhorar resistência cardiovascular.",
+    image: "https://images.unsplash.com/photo-1538805060514-97d9cc17730c?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+    popular: true
+  },
+  {
+    id: 4,
+    name: "Programa de Força (express)",
+    duration: "6 semanas",
+    level: "Principiante",
+    time: "45-60 min",
+    type: "Full Body",
+    gender: "Masculino",
+    description: "Melhorar flexibilidade, equilíbrio e paz interior.",
+    image: "https://images.unsplash.com/photo-1506126613408-eca07ce68773?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+    popular: false
+  },
+  {
+    id: 5,
+    name: "Programa Glúteos Fortes",
+    duration: "8 semanas",
+    level: "Avançado",
+    time: "25-35 min",
+    type: "Construir Músculo",
+    gender: "Masculino",
+    description: "Treinos intensos para máximos resultados em pouco tempo.",
+    image: "https://images.unsplash.com/photo-1517963628607-235ccdd5476c?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+    popular: true
+  },
+  {
+    id: 6,
+    name: "Programa de Pilates",
+    duration: "6 semanas",
+    level: "Todos os níveis",
+    time: "30-40 min",
+    type: "Fortalece e Define", 
+    gender: "Feminino",
+    description: "Melhorar mobilidade e estabilidade para o dia a dia.",
+    image: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+    popular: false
+  },
+  {
+    id: 7,
+    name: "Programa de Iniciação",
+    duration: "6 semanas",
+    level: "Todos os níveis",
+    time: "30-40 min",
+    type: "Perda de Peso",
+    gender: "Feminino",
+    description: "Melhorar mobilidade e estabilidade para o dia a dia.",
+    image: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+    popular: false
+  },
+  {
+    id: 8,
+    name: "Programa de Abdominal",
+    duration: "8 semanas",
+    level: "Todos os níveis",
+    time: "30-40 min",
+    type: "Força e Definição",
+    gender: "Feminino",
+    description: "Melhorar mobilidade e estabilidade para o dia a dia.",
+    image: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+    popular: false
+  },
+  {
+    id: 9,
+    name: "Programa Express",
+    duration: "6 semanas",
+    level: "Todos os níveis",
+    time: "30-40 min",
+    type: "Full Body",
+    gender: "Masculino",
+    description: "Melhorar mobilidade e estabilidade para o dia a dia.",
+    image: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+    popular: false
+  },
+  {
+    id: 10,
+    name: "Programa de Postura",
+    duration: "6 semanas",
+    level: "Todos os níveis",
+    time: "30-40 min",
+    type: "Full Body",
+    gender: "Feminino",
+    description: "Melhorar mobilidade e estabilidade para o dia a dia.",
+    image: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+    popular: false
+  }
+]; 
