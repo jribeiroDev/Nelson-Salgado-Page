@@ -31,7 +31,7 @@ const ProgramCatalogSection = () => {
   });
 
   return (
-    <section className="py-10 px-2 md:py-20 md:px-4 bg-gold">
+    <section id="program-catalog-section" className="py-10 px-2 md:py-20 md:px-4 bg-gold">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-8 md:mb-12">
           <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold mb-2 md:mb-4 text-blue-900">
