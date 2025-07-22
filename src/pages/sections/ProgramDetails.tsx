@@ -102,7 +102,7 @@ const ProgramDetails = () => {
           </Card>
 
           {/* Seção 3: Informações técnicas */}
-          <Card className="p-6">
+          {/* <Card className="p-6">
             <h2 className="text-2xl font-bold mb-4 text-gold">
               Informações Técnicas
             </h2>
@@ -125,7 +125,7 @@ const ProgramDetails = () => {
                 <span className="font-semibold">Género:</span> {program.gender}
               </div>
             </div>
-          </Card>
+          </Card> */}
 
           {/* Seção 3: Layout com ícones, imagem e seções expansíveis */}
           <div className="w-full bg-white">
