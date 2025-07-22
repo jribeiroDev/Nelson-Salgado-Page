@@ -3,8 +3,9 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Star, Dumbbell, Clock, TrendingUp, ArrowRight } from "lucide-react";
+import { Star, Dumbbell, Clock, TrendingUp, ArrowRight, Target } from "lucide-react";
 import { programs } from "./programsData";
+import { useNavigate } from "react-router-dom";
 
 const uniqueGenders = Array.from(new Set(programs.map(p => p.gender)));
 const genderOptions = [
@@ -22,6 +23,7 @@ const ProgramCatalogSection = () => {
   const [selectedGender, setSelectedGender] = useState("all");
   const [selectedLevel, setSelectedLevel] = useState("all");
   const [selectedWeeklyLevel, setSelectedWeeklyLevel] = useState("all");
+  const navigate = useNavigate();
 
   const filteredPrograms = programs.filter((p) => {
     const genderMatch = selectedGender === "all" || p.gender === selectedGender;
@@ -109,9 +111,14 @@ const ProgramCatalogSection = () => {
                   {program.description}
                 </p>
                 <div className="flex justify-left">
-                  <Button className="bg-blue text-gold font-bold px-6 py-2 rounded-full hover:bg-gold hover:text-blue transition-colors">
+                  <a
+                    href={`/programa/${program.id}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-blue text-gold font-bold px-6 py-2 rounded-full hover:bg-gold hover:text-blue transition-colors flex items-center justify-center"
+                  >
                     Ver programa
-                  </Button>
+                  </a>
                 </div>
               </div>
             </Card>
