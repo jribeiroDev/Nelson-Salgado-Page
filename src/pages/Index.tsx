@@ -8,11 +8,13 @@ import TestimonialsSection from './sections/TestimonialsSection';
 import PricingSection from './sections/PricingSection';
 import FaqSection from './sections/FaqSection';
 import NewsletterSection from './sections/NewsletterSection';
+import InitialSection from './sections/InitialSection';
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-background">
-      <HeroSection />
+      <InitialSection/>
+      {/* <HeroSection /> */}
       {/* <AboutTrainerSection /> */}
       <FeaturedCarouselSection />
       <ProgramCatalogSection />

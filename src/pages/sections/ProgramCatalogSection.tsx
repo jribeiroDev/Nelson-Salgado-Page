@@ -46,7 +46,7 @@ const ProgramCatalogSection = () => {
           <div className="flex flex-col items-start w-full md:w-auto">
             <span className="mb-2 w-full text-center text-base font-medium text-blue-900">Género</span>
             <Select value={selectedGender} onValueChange={setSelectedGender}>
-              <SelectTrigger className="w-64 h-12 text-base md:text-lg mx-auto">
+              <SelectTrigger className="w-64 h-12 bg-blue text-gold  text-base md:text-lg mx-auto">
                 <SelectValue placeholder="Selecciona género" />
               </SelectTrigger>
               <SelectContent>
@@ -61,7 +61,7 @@ const ProgramCatalogSection = () => {
           <div className="flex flex-col items-start w-full md:w-auto">
             <span className="mb-2 w-full text-center text-base font-medium text-blue-900">Nível de treino</span>
             <Select value={selectedLevel} onValueChange={setSelectedLevel}>
-              <SelectTrigger className="w-64 h-12 text-base md:text-lg mx-auto">
+              <SelectTrigger className="w-64 h-12 bg-blue text-gold  text-base md:text-lg mx-auto">
                 <SelectValue placeholder="Nível de treino" />
               </SelectTrigger>
               <SelectContent>
@@ -76,7 +76,7 @@ const ProgramCatalogSection = () => {
           <div className="flex flex-col items-start w-full md:w-auto">
             <span className="mb-2 w-full text-center text-base font-medium text-blue-900">Nível de treino semanal</span>
             <Select value={selectedWeeklyLevel} onValueChange={setSelectedWeeklyLevel}>
-              <SelectTrigger className="w-64 h-12 text-base md:text-lg mx-auto">
+              <SelectTrigger className="w-64 h-12 text-base bg-blue text-gold md:text-lg mx-auto">
                 <SelectValue placeholder="Nível de treino Semanal" />
               </SelectTrigger>
               <SelectContent>
@@ -109,7 +109,7 @@ const ProgramCatalogSection = () => {
                   {program.description}
                 </p>
                 <div className="flex justify-left">
-                  <Button className="bg-blue text-gold font-bold px-6 py-2 rounded-full hover:bg-white/90 transition-colors">
+                  <Button className="bg-blue text-gold font-bold px-6 py-2 rounded-full hover:bg-gold hover:text-blue transition-colors">
                     Ver programa
                   </Button>
                 </div>

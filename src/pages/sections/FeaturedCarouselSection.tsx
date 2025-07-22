@@ -9,15 +9,18 @@ const FeaturedCarouselSection = () => {
   const popularPrograms = programs.filter((program) => program.popular);
 
   return (
-    <section id="program-catalog-carousel" className="md:py-10 bg-gold">
-      <div className="text-center mb-12">
-        <h2 className="text-4xl md:text-5xl font-bold mb-4 mt-10 text-blue">
+    <section id="program-catalog-carousel" className="py-6 md:py-10 bg-gold">
+      <div className="text-center mb-8 md:mb-12">
+        <h2 className="text-3xl md:text-5xl font-bold mb-4 mt-6 md:mt-10 text-blue">
           Programas em Destaque
         </h2>
       </div>
-      <div className="flex flex-wrap justify-center gap-8 px-12 m-10">
+      <div className="flex flex-wrap justify-center gap-4 md:gap-8 px-2 md:px-12 mb-6 md:m-10">
         {popularPrograms.map((program) => (
-          <div key={program.id} className="max-w-xs w-full transform transition-transform duration-300 hover:scale-105">
+          <div
+            key={program.id}
+            className="w-full max-w-xs sm:w-[90%] md:max-w-xs transform transition-transform duration-300 hover:scale-105"
+          >
             <ProgramCard
               title={program.name}
               activities={[
