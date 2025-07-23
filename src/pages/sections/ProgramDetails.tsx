@@ -3,12 +3,12 @@ import { useParams } from "react-router-dom";
 import { programs } from "./programsData";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Calendar } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const ProgramDetails = () => {
   const { id } = useParams();
   const program = programs.find((p) => p.id === Number(id));
+            
 
   // Adicione este estado
   const [openSections, setOpenSections] = React.useState({
@@ -89,7 +89,7 @@ const ProgramDetails = () => {
       <div className="py-10 flex justify-center">
         <div className="w-full">
           {/* Seção 2: O que vais encontrar? */}
-          <Card className="mb-8 p-6">
+          {/* <Card className="mb-8 p-6">
             <h2 className="text-2xl font-bold mb-4 text-gold">
               O que vais encontrar?
             </h2>
@@ -99,7 +99,7 @@ const ProgramDetails = () => {
                   <li key={idx}>{feature}</li>
                 ))}
             </ul>
-          </Card>
+          </Card> */}
 
           {/* Seção 3: Informações técnicas */}
           {/* <Card className="p-6">
@@ -131,7 +131,22 @@ const ProgramDetails = () => {
           <div className="w-full bg-white">
             <div className="container mx-auto px-4 max-w-[1400px]">
               {/* Ícones do topo */}
-              <div className="flex justify-center items-center gap-20 py-12 mb-12">
+              <div className="flex-row flex justify-center gap-2 sm:gap-3 pb-2 pt-2 sm:pt-0">
+          {programs.slice(0, 3).map((activity, index) => (
+            <div
+              key={index}
+              className="flex flex-col items-center justify-center gap-1 bg-white/20 backdrop-blur-sm rounded-lg px-2 py-1 sm:px-3 py-5 sm:py-2 text-white min-w-0 w-full sm:flex-1"
+            >
+              <div className="text-white/90 flex-shrink-0">
+                {activity.description}
+              </div>
+              <span className="text-xs sm:text-sm font-medium text-center">
+                {activity.duration}
+              </span>
+            </div>
+          ))}
+        </div>
+              {/* <div className="flex justify-center items-center gap-20 py-12 mb-12">
                 <div className="flex flex-col items-center">
                   <Calendar className="w-12 h-12 mb-2" />
                   <span className="text-sm">8 Weeks</span>
@@ -184,7 +199,7 @@ const ProgramDetails = () => {
                   </svg>
                   <span className="text-sm">Sculpt</span>
                 </div>
-              </div>
+              </div> */}
 
               {/* Grid para imagem e seções expansíveis */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -252,27 +267,14 @@ const ProgramDetails = () => {
                           >
                             <div className="pl-9">
                               <p className="text-gray-600 mb-4">
-                                The Build & Sculpt Program is perfect for you if
-                                your goal is to:
+                                {program.details.achieve.description}
                               </p>
                               <ul className="space-y-2">
-                                <li className="flex items-center gap-2">
-                                  <span className="text-gray-600">
-                                    + Build lower body and lean upper body
-                                    muscle.
-                                  </span>
-                                </li>
-                                <li className="flex items-center gap-2">
-                                  <span className="text-gray-600">
-                                    + Improve deadlift strength.
-                                  </span>
-                                </li>
-                                <li className="flex items-center gap-2">
-                                  <span className="text-gray-600">
-                                    + Boost cardiovascular and muscular
-                                    endurance and performance.
-                                  </span>
-                                </li>
+                                {program.details.achieve.bullets.map((bullet, idx) => (
+                                  <li key={idx} className="flex items-center gap-2">
+                                    <span className="text-gray-600">+ {bullet}</span>
+                                  </li>
+                                ))}
                               </ul>
                             </div>
                           </motion.div>

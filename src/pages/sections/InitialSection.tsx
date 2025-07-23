@@ -1,13 +1,11 @@
-
-
 import { Button } from "@/components/ui/button";
 
 const InitialSection = () => {
   const images = [
-    { src: "https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", alt: "Fitness training" },
-    { src: "https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", alt: "Healthy nutrition" },
-    { src: "https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", alt: "Outdoor workout" },
-    { src: "https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", alt: "Yoga wellness" },
+    { src: "src\\assets\\img_10.jpeg", alt: "Fitness training" },
+    { src: "src\\assets\\img_8.jpeg", alt: "Healthy nutrition" },
+    { src: "src\\assets\\img_13.jpeg", alt: "Outdoor workout" },
+    { src: "src\\assets\\img_5.jpeg", alt: "Yoga wellness" },
   ];
 
   const handleScrollToPrograms = () => {
@@ -34,7 +32,7 @@ const InitialSection = () => {
       </div>
 
       {/* Overlay for better text readability */}
-      <div className="absolute inset-0 bg-gold opacity-20" />
+      <div className="absolute inset-0 bg-black opacity-30" />
 
       {/* Content */}
       <div className="relative z-10 flex h-full items-center justify-center w-full">
@@ -49,7 +47,7 @@ const InitialSection = () => {
           </h1>
           {/* CTA Button */}
           <Button
-          onClick={handleScrollToPrograms} 
+            onClick={handleScrollToPrograms}
             className="animate-bounce hover:animate-none text-gold font-bold text-lg px-8 py-4 mt-2"
           >
             PARTICIPE AGORA
@@ -73,11 +71,11 @@ const InitialSection = () => {
       </div>
 
       {/* Scroll Indicator */}
-      <div className="absolute bottom-8 w-full flex justify-center text-white/60 animate-bounce">
+      <div className="absolute bottom-8 w-full flex justify-center text-gold animate-bounce">
         <div className="flex flex-col items-center">
           <p className="text-xs uppercase tracking-wider mb-2">SCROLL</p>
-          <div className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center">
-            <div className="w-1 h-3 bg-white/50 rounded-full mt-2 animate-pulse" />
+          <div className="w-6 h-10 border-2 border-gold rounded-full flex justify-center">
+            <div className="w-1 h-3 bg-gold rounded-full mt-2 animate-pulse" />
           </div>
         </div>
       </div>
