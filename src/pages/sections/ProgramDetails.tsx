@@ -85,13 +85,20 @@ const ProgramDetails = () => {
       <section className="min-h-screen bg-gold flex items-center justify-center">
         <div className="container mx-auto px-4 max-w-[1400px] py-16">
           {/* Icons */}
-          <div className="flex justify-center items-center gap-20 py-12 mb-12">
-            {program.activities.map((activity, index) => (
-              <div key={index} className="flex flex-col items-center">
-                <div className="w-12 h-12 mb-2">{activity.icon}</div>
-                <span className="text-sm text-white">{activity.text}</span>
-              </div>
-            ))}
+          <div className="flex justify-center items-center max-w-md mx-auto">
+            <div className="grid grid-cols-3 gap-12 py-12">
+              {program.activities.map((activity, index) => (
+                <div
+                  key={index}
+                  className="flex flex-col justify-center items-center text-center"
+                >
+                  <div className=" mb-3">{activity.icon}</div>
+                  <span className="text-sm text-white font-medium">
+                    {activity.text}
+                  </span>
+                </div>
+              ))}
+            </div>
           </div>
 
           {/* Grid Layout */}
