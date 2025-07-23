@@ -1,13 +1,13 @@
 import { Button } from "@/components/ui/button";
 
-const InitialSection = () => {
-  const images = [
-    { src: "src\\assets\\img_10.jpeg", alt: "Fitness training" },
-    { src: "src\\assets\\img_8.jpeg", alt: "Healthy nutrition" },
-    { src: "src\\assets\\img_13.jpeg", alt: "Outdoor workout" },
-    { src: "src\\assets\\img_5.jpeg", alt: "Yoga wellness" },
-  ];
+const images = [
+  { src: "/assets/img_10.jpeg", alt: "Fitness training" },
+  { src: "/assets/img_8.jpeg", alt: "Healthy nutrition" },
+  { src: "/assets/img_13.jpeg", alt: "Outdoor workout" },
+  { src: "/assets/img_5.jpeg", alt: "Yoga wellness" },
+];
 
+const InitialSection = () => {
   const handleScrollToPrograms = () => {
     const section = document.getElementById("program-catalog-carousel");
     if (section) {
