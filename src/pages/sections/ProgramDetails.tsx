@@ -82,7 +82,7 @@ const ProgramDetails = () => {
       </section>
 
       {/* Section 2: Program Details */}
-      <section className="min-h-screen bg-gold">
+      <section className="min-h-screen bg-gold flex items-center justify-center">
         <div className="container mx-auto px-4 max-w-[1400px] py-16">
           {/* Icons */}
           <div className="flex justify-center items-center gap-20 py-12 mb-12">
@@ -95,22 +95,22 @@ const ProgramDetails = () => {
           </div>
 
           {/* Grid Layout */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 max-w-5xl mx-auto items-center">
             {/* Image Column */}
-            <div className="relative h-[600px] rounded-2xl overflow-hidden">
+            <div className="relative h-[600px] w-96 rounded-[50px] overflow-hidden mx-auto md:mx-12 md:justify-self-end">
               <img
                 src={program.image}
                 alt={program.name}
-                className="absolute inset-0 w-full h-full object-cover"
+                className="w-full h-full object-cover object-center"
               />
             </div>
 
             {/* Expandable Sections Column */}
-            <div className="py-8">
+            <div className="w-full max-w-xl">
               <div className="space-y-6 text-blue">
                 {/* Map through all sections */}
                 {Object.entries(program.details).map(([key, section]) => (
-                  <div key={key} className="border-b pb-6">
+                  <div key={key} className="border-b border-blue/20 pb-6">
                     <div
                       className="flex items-center justify-between cursor-pointer"
                       onClick={() =>
