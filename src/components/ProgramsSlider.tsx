@@ -2,7 +2,7 @@ import { useRef, useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { ChevronLeft, ChevronRight, Clock } from "lucide-react";
+import { ChevronLeft, ChevronRight} from "lucide-react";
 import { programs } from "@/pages/sections/programsData";
 
 const VISIBLE_ITEMS = 4;
@@ -63,14 +63,14 @@ const ProgramTabs = ({
   );
 
   return (
-    <div className="w-full max-w-5xl mx-auto px-4 pt-8 pb-4 relative ">
+    <div className="w-full max-w-6xl mx-auto px-4 pt-8 pb-12 relative flex items-center justify-center">
       {/* Seta Esquerda */}
       <motion.button
         onClick={() => scroll("left")}
         disabled={!canScrollLeft}
-        className={`absolute left-2 top-1/2 -translate-y-1/2 z-20 p-3 rounded-full shadow-lg transition-all duration-300 ${
+        className={`absolute left-2 p-3 rounded-full shadow-lg transition-all duration-300 ${
           canScrollLeft
-            ? "bg-white hover:bg-gray-50 text-gray-700 hover:text-gray-900 cursor-pointer hover:shadow-xl transform hover:scale-105"
+            ? "bg-white hover:bg-blue text-blue hover:text-gold cursor-pointer transform hover:scale-105"
             : "bg-gray-100 text-gray-300 cursor-not-allowed"
         }`}
         whileHover={canScrollLeft ? { scale: 1.05 } : {}}
@@ -79,23 +79,8 @@ const ProgramTabs = ({
         <ChevronLeft className="w-5 h-5" />
       </motion.button>
 
-      {/* Seta Direita */}
-      <motion.button
-        onClick={() => scroll("right")}
-        disabled={!canScrollRight}
-        className={`absolute right-2 top-1/2 -translate-y-1/2 z-20 p-3 rounded-full shadow-lg transition-all duration-300 ${
-          canScrollRight
-            ? "bg-white hover:bg-gray-50 text-gray-700 hover:text-gray-900 cursor-pointer hover:shadow-xl transform hover:scale-105"
-            : "bg-gray-100 text-gray-300 cursor-not-allowed"
-        }`}
-        whileHover={canScrollRight ? { scale: 1.05 } : {}}
-        whileTap={canScrollRight ? { scale: 0.95 } : {}}
-      >
-        <ChevronRight className="w-5 h-5" />
-      </motion.button>
-
       {/* Container dos Tabs */}
-      <div className="px-12">
+      <div className="flex justify-center mx-16">
         <div
           ref={containerRef}
           className="flex gap-3 overflow-hidden"
@@ -119,6 +104,21 @@ const ProgramTabs = ({
           ))}
         </div>
       </div>
+
+      {/* Seta Direita */}
+      <motion.button
+        onClick={() => scroll("right")}
+        disabled={!canScrollRight}
+        className={`absolute right-2 p-3 rounded-full shadow-lg transition-all duration-300 ${
+          canScrollRight
+            ? "bg-white hover:bg-blue text-gray-700 hover:text-gold cursor-pointer transform hover:scale-105"
+            : "bg-gray-100 text-gray-300 cursor-not-allowed"
+        }`}
+        whileHover={canScrollRight ? { scale: 1.05 } : {}}
+        whileTap={canScrollRight ? { scale: 0.95 } : {}}
+      >
+        <ChevronRight className="w-5 h-5" />
+      </motion.button>
     </div>
   );
 };
@@ -161,116 +161,13 @@ const ProgramsSlide = () => {
     setContentKey((prev) => prev + 1);
   };
 
-  // Variantes de animação para o conteúdo principal
-  const contentVariants = {
-    hidden: {
-      opacity: 0,
-      y: 30,
-      scale: 0.95,
-    },
-    visible: {
-      opacity: 1,
-      y: 0,
-      scale: 1,
-      transition: {
-        duration: 0.6,
-        ease: "easeOut",
-        staggerChildren: 0.1,
-      },
-    },
-    exit: {
-      opacity: 0,
-      y: -30,
-      scale: 0.95,
-      transition: {
-        duration: 0.3,
-        ease: "easeIn",
-      },
-    },
-  };
-
-  // Variantes para os itens filhos
-  const itemVariants = {
-    hidden: {
-      opacity: 0,
-      x: -20,
-    },
-    visible: {
-      opacity: 1,
-      x: 0,
-      transition: {
-        duration: 0.4,
-        ease: "easeOut",
-      },
-    },
-  };
-
-  // Variantes para as seções expansíveis
-  const sectionVariants = {
-    hidden: {
-      height: 0,
-      opacity: 0,
-    },
-    visible: {
-      height: "auto",
-      opacity: 1,
-      transition: {
-        height: {
-          duration: 0.4,
-          ease: "easeOut",
-        },
-        opacity: {
-          duration: 0.3,
-          delay: 0.1,
-          ease: "easeOut",
-        },
-      },
-    },
-    exit: {
-      height: 0,
-      opacity: 0,
-      transition: {
-        height: {
-          duration: 0.3,
-          ease: "easeIn",
-        },
-        opacity: {
-          duration: 0.2,
-          ease: "easeIn",
-        },
-      },
-    },
-  };
-
-  // Variantes para os bullets
-  const bulletVariants = {
-    hidden: {
-      opacity: 0,
-      x: -15,
-      y: 5,
-    },
-    visible: (i) => ({
-      opacity: 1,
-      x: 0,
-      y: 0,
-      transition: {
-        duration: 0.3,
-        delay: i * 0.08,
-        ease: "easeOut",
-      },
-    }),
-  };
-
   return (
     <div className="min-h-screen bg-gold py-24 px-12 flex flex-col items-center justify-center">
-      <motion.h2
-        className="text-2xl md:text-4xl lg:text-5xl font-bold mb-2 md:mb-12 text-blue-900"
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
+      <h2
+        className="text-2xl md:text-4xl lg:text-5xl font-bold  text-blue-900"
       >
         Os Nossos Programas
-      </motion.h2>
+      </h2>
 
       <ProgramTabs
         programs={programs}
