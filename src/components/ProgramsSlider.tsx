@@ -97,27 +97,24 @@ const ProgramTabs = ({
         <motion.button
           onClick={() => scroll("left")}
           disabled={!canScrollLeft || isTransitioning}
-          className={`mr-6 p-4 rounded-2xl shadow-xl transition-all duration-300 backdrop-blur-sm ${
+          className={`mr-6 p-4 rounded-full shadow-xl transition-all duration-300 backdrop-blur-sm ${
             canScrollLeft && !isTransitioning
               ? "bg-white/90 hover:bg-blue text-blue hover:text-gold cursor-pointer border border-blue/20 hover:border-blue/40"
               : "bg-gray-100/50 text-gray-300 cursor-not-allowed border border-gray-200"
           }`}
-          whileHover={
-            canScrollLeft && !isTransitioning ? { scale: 1.08, y: -2 } : {}
-          }
           whileTap={canScrollLeft && !isTransitioning ? { scale: 0.95 } : {}}
         >
           <ChevronLeft className="w-6 h-6" />
         </motion.button>
 
         {/* Container dos Tabs */}
-        <div className="relative overflow-hidden">
+        <div className="relative overflow-hidden ">
           {/* Background gradient decorativo */}
-          <div className="absolute inset-0 bg-gradient-to-r from-blue/5 via-transparent to-blue/5 rounded-3xl"></div>
+          {/* <div className="absolute inset-0 bg-gradient-to-r from-blue/5 via-transparent to-blue/5 rounded-3xl"></div> */}
 
           <motion.div
-            className="bg-white/80 backdrop-blur-md rounded-3xl p-3 shadow-2xl border border-white/50"
-            style={{ width: `${VISIBLE_ITEMS * ITEM_WIDTH + 40}px` }}
+            className="p-3"
+            style={{ width: `${VISIBLE_ITEMS * ITEM_WIDTH }px` }}
           >
             <motion.div
               className="flex gap-3"
@@ -143,7 +140,7 @@ const ProgramTabs = ({
                       setSelectedProgramId(prog.id);
                       resetSections();
                     }}
-                    className={`relative h-14 w-full px-6 py-4 rounded-2xl font-semibold transition-all duration-300 text-sm border-0 shadow-lg ${
+                    className={`relative h-14 w-full px-6 py-4 rounded-full font-semibold transition-all duration-300 text-sm border-0 shadow-lg ${
                       selectedProgramId === prog.id
                         ? "bg-gradient-to-r from-blue via-blue-600 to-blue-700 text-gold "
                         : "bg-white text-blue hover:text-gold hover:bg-blue hover:shadow-xl"
@@ -153,7 +150,7 @@ const ProgramTabs = ({
                     {selectedProgramId === prog.id && (
                       <motion.div
                         layoutId="activeTab"
-                        className="absolute inset-0 bg-gradient-to-r from-blue via-blue-600 to-blue-700 rounded-2xl"
+                        className="absolute inset-0 bg-gradient-to-r from-blue via-blue-600 to-blue-700 rounded-full"
                         initial={false}
                         transition={{
                           type: "spring",
@@ -173,14 +170,11 @@ const ProgramTabs = ({
         <motion.button
           onClick={() => scroll("right")}
           disabled={!canScrollRight || isTransitioning}
-          className={`ml-6 p-4 rounded-2xl shadow-xl transition-all duration-300 backdrop-blur-sm ${
+          className={`ml-6 p-4 rounded-full shadow-xl transition-all duration-300 backdrop-blur-sm ${
             canScrollRight && !isTransitioning
               ? "bg-white/90 hover:bg-blue text-blue hover:text-gold cursor-pointer border border-blue/20 hover:border-blue/40"
               : "bg-gray-100/50 text-gray-300 cursor-not-allowed border border-gray-200"
           }`}
-          whileHover={
-            canScrollRight && !isTransitioning ? { scale: 1.08, y: -2 } : {}
-          }
           whileTap={canScrollRight && !isTransitioning ? { scale: 0.95 } : {}}
         >
           <ChevronRight className="w-6 h-6" />
