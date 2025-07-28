@@ -10,10 +10,19 @@ import FaqSection from "./sections/FaqSection";
 import NewsletterSection from "./sections/NewsletterSection";
 import InitialSection from "./sections/InitialSection";
 import ProgramsSlide from "@/components/ProgramsSlider";
+import SiteAlert from "./sections/SiteAlert";
+import PromoPopup from "./sections/PromoPopUp";
+import FormSection from "@/components/FormSection";
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-background">
+      <SiteAlert
+        title="Novidades do Site"
+        message="Estamos com uma nova funcionalidade disponível! Confira as últimas atualizações em nosso painel."
+        type="info"
+      />
+      <PromoPopup />
       <InitialSection />
       {/* <HeroSection /> */}
       {/* <AboutTrainerSection /> */}
@@ -25,6 +34,7 @@ const Index = () => {
       {/* <PricingSection /> */}
       {/* <FaqSection /> */}
       {/* <NewsletterSection /> */}
+      <FormSection />
     </div>
   );
 };

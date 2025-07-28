@@ -32,7 +32,7 @@ const InitialSection = () => {
       </div>
 
       {/* Overlay for better text readability */}
-      <div className="absolute inset-0 bg-black opacity-30" />
+      <div className="absolute inset-0 bg-black opacity-20" />
 
       {/* Content */}
       <div className="relative z-10 flex h-full items-center justify-center w-full">
