@@ -5,6 +5,8 @@ import {
   useTransform,
   AnimatePresence,
   useSpring,
+  PanInfo,
+  useDragControls,
 } from "framer-motion";
 import { programs } from "@/pages/sections/programsData";
 
@@ -28,10 +30,12 @@ const Card = ({
   program,
   isSelected,
   onClick,
+  isDragging,
 }: {
   program: (typeof programs)[0];
   isSelected: boolean;
   onClick: () => void;
+  isDragging: boolean;
 }) => {
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
@@ -91,14 +95,16 @@ const Card = ({
         animate={{
           scale: isSelected ? 1.05 : 0.95,
           y: isSelected ? -10 : 0,
-          opacity: isSelected ? 1 : 0.8,
+          opacity: isSelected ? 1 : isDragging ? 0.9 : 0.8,
         }}
         transition={{
           scale: { duration: 0.4, ease: "easeInOut" },
           y: { duration: 0.4, ease: "easeInOut" },
           opacity: { duration: 0.3 },
         }}
-        className={`relative h-full rounded-2xl overflow-hidden transition-all duration-300 ease-out cursor-pointer select-none
+        className={`relative h-full rounded-2xl overflow-hidden transition-all duration-300 ease-out cursor-${
+          isDragging ? "grabbing" : "grab"
+        } select-none
                     ${
                       isSelected
                         ? "ring-2 ring-blue-500 shadow-xl shadow-blue-500/20"
@@ -135,6 +141,9 @@ const Card = ({
 const SlickCarousel = () => {
   const [selectedIndex, setSelectedIndex] = useState(4); // Índice da card selecionada (primeiro item por padrão)
   const [visibleItems, setVisibleItems] = useState(VISIBLE_ITEMS_DESKTOP);
+  const [isDragging, setIsDragging] = useState(false);
+  const dragStartX = useRef(0);
+  const dragThreshold = 50; // Limiar para considerar como um drag válido para navegação
 
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -198,6 +207,42 @@ const SlickCarousel = () => {
     });
   };
 
+  // Funções para o drag do carrossel
+  const handleDragStart = () => {
+    setIsDragging(true);
+    dragStartX.current = 0;
+  };
+
+  const handleDrag = (
+    _: MouseEvent | TouchEvent | PointerEvent,
+    info: PanInfo
+  ) => {
+    dragStartX.current = info.offset.x;
+  };
+
+  const handleDragEnd = (
+    _: MouseEvent | TouchEvent | PointerEvent,
+    info: PanInfo
+  ) => {
+    setIsDragging(false);
+
+    // Determina se o drag foi suficiente para mudar de card
+    const dragDistance = info.offset.x;
+    const dragVelocity = info.velocity.x;
+
+    // Se o drag foi significativo ou a velocidade foi alta o suficiente
+    if (
+      Math.abs(dragDistance) > dragThreshold ||
+      Math.abs(dragVelocity) > 500
+    ) {
+      if (dragDistance > 0 || dragVelocity > 500) {
+        navigateToCard("prev");
+      } else {
+        navigateToCard("next");
+      }
+    }
+  };
+
   const cardWidthPercentage = 100 / visibleItems;
   const currentOffset = getOffset();
 
@@ -229,6 +274,13 @@ const SlickCarousel = () => {
                 damping: 40,
                 mass: 1,
               }}
+              drag="x"
+              dragConstraints={{ left: 0, right: 0 }}
+              dragElastic={0.2}
+              dragTransition={{ bounceStiffness: 300, bounceDamping: 30 }}
+              onDragStart={handleDragStart}
+              onDrag={handleDrag}
+              onDragEnd={handleDragEnd}
             >
               {programs.map((program, index) => {
                 const isSelected = index === selectedIndex;
@@ -244,7 +296,8 @@ const SlickCarousel = () => {
                     <Card
                       program={program}
                       isSelected={isSelected}
-                      onClick={() => setSelectedIndex(index)}
+                      onClick={() => !isDragging && setSelectedIndex(index)}
+                      isDragging={isDragging}
                     />
                   </motion.div>
                 );
