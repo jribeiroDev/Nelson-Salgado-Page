@@ -10,9 +10,11 @@ import FaqSection from "./sections/FaqSection";
 import NewsletterSection from "./sections/NewsletterSection";
 import InitialSection from "./sections/InitialSection";
 import ProgramsSlide from "@/components/ProgramsSlider";
+import FeatureSlider from "@/components/FeatureSlider";
 import SiteAlert from "./sections/SiteAlert";
 import PromoPopup from "./sections/PromoPopUp";
 import FormSection from "@/components/FormSection";
+import SlickCarousel from "@/components/SlickCarousel";
 
 const Index = () => {
   return (
@@ -22,11 +24,13 @@ const Index = () => {
         message="Estamos com uma nova funcionalidade disponível! Confira as últimas atualizações em nosso painel."
         type="info"
       />
-      <PromoPopup />
+      {/* <PromoPopup /> */}
       <InitialSection />
       {/* <HeroSection /> */}
       {/* <AboutTrainerSection /> */}
       <ProgramsSlide />
+      <FeatureSlider />
+      <SlickCarousel  />
       {/* <FeaturedCarouselSection /> */}
       {/* <ProgramCatalogSection /> */}
       <AppBenefitsSection />
