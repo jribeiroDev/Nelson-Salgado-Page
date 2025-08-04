@@ -9,7 +9,7 @@ const FeaturedCarouselSection = () => {
   const popularPrograms = programs.filter((program) => program.popular);
 
   return (
-    <section id="program-catalog-carousel" className="py-6 md:py-10 bg-gold">
+    <section id="program-catalog-carousel" className="relative md:h-screen w-full py-6 md:py-10 bg-gold">
       <div className="text-center mb-8 md:mb-12">
         <h2 className="text-3xl md:text-5xl font-bold mb-4 mt-6 md:mt-10 text-blue">
           Programas em Destaque

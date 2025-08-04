@@ -26,15 +26,15 @@ const Index = () => {
       />
       {/* <PromoPopup /> */}
       <InitialSection />
+      <FeaturedCarouselSection />
       {/* <HeroSection /> */}
       {/* <AboutTrainerSection /> */}
-      <ProgramsSlide />
-      <FeatureSlider />
-      <SlickCarousel  />
-      {/* <FeaturedCarouselSection /> */}
+      {/* <ProgramsSlide /> */}
+      {/* <FeatureSlider /> */}
+      <SlickCarousel />
       {/* <ProgramCatalogSection /> */}
-      <AppBenefitsSection />
-      {/* <TestimonialsSection /> */}
+      {/* <AppBenefitsSection /> */}
+      <TestimonialsSection />
       {/* <PricingSection /> */}
       {/* <FaqSection /> */}
       {/* <NewsletterSection /> */}

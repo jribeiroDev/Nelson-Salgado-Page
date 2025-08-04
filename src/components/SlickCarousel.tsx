@@ -9,6 +9,7 @@ import {
   useDragControls,
 } from "framer-motion";
 import { programs } from "@/pages/sections/programsData";
+import { Button } from "./ui/button";
 
 const VISIBLE_ITEMS_DESKTOP = 3;
 const VISIBLE_ITEMS_TABLET = 2;
@@ -123,9 +124,9 @@ const Card = ({
           )} opacity-40`}
         />
         <div className="absolute inset-0 flex flex-col justify-end p-3 sm:p-4 md:p-6 text-white select-none">
-          <div className="inline-flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 bg-white/20 backdrop-blur-sm rounded-full mb-2 sm:mb-3">
+          {/* <div className="inline-flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 bg-white/20 backdrop-blur-sm rounded-full mb-2 sm:mb-3">
             {program.activities[0]?.icon}
-          </div>
+          </div> */}
           <h3 className="text-base sm:text-lg md:text-xl font-bold mb-1 leading-tight">
             {program.name}
           </h3>
@@ -143,7 +144,7 @@ const SlickCarousel = () => {
   const [visibleItems, setVisibleItems] = useState(VISIBLE_ITEMS_DESKTOP);
   const [isDragging, setIsDragging] = useState(false);
   const dragStartX = useRef(0);
-  const dragThreshold = 50; // Limiar para considerar como um drag válido para navegação
+  const dragThreshold = 250; // Limiar para considerar como um drag válido para navegação
 
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -247,14 +248,15 @@ const SlickCarousel = () => {
   const currentOffset = getOffset();
 
   return (
-    <div className="min-h-[500px] sm:min-h-[600px] md:min-h-[700px] overflow-hidden bg-gold flex flex-col justify-center items-center py-8 sm:py-12 md:py-16 px-3 sm:px-4">
+    <div className="relative  w-full overflow-hidden bg-blue flex flex-col justify-center items-center py-4 sm:py-6 md:py-8 px-3 sm:px-4">
       <div className="w-full max-w-6xl mx-auto">
-        <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-center mb-6 sm:mb-8 text-gray-900">
-          Descubra Nossos Programas
-        </h2>
-
+        <div className="text-center mb-8 md:mb-12">
+          <h2 className="text-3xl md:text-5xl font-bold mb-4  text-gold">
+            Descubra os Nossos Programas
+          </h2>
+        </div>
         <div
-          className="relative h-[280px] sm:h-[320px] md:h-[380px] lg:h-[450px]"
+          className="relative h-[180px] sm:h-[240px] md:h-[280px]  lg:w-[800px]"
           ref={containerRef}
         >
           <AnimatePresence initial={false}>
@@ -305,16 +307,16 @@ const SlickCarousel = () => {
             </motion.div>
           </AnimatePresence>
         </div>
-        <div className="flex justify-center items-center mt-4 sm:mt-6">
+        <div className="flex justify-center items-center mt-2 sm:mt-4">
           {/* Botão Anterior */}
           <button
             onClick={() => navigateToCard("prev")}
-            className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white shadow-md flex items-center justify-center text-gray-700 hover:bg-gray-50 mr-2 sm:mr-4"
+            className="w-7 h-7 sm:w-9 sm:h-9 rounded-full bg-white shadow-md flex items-center justify-center text-gray-700 hover:bg-gray-50 mr-1.5 sm:mr-3"
             aria-label="Anterior"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5"
+              className="h-4 w-4 sm:h-5 sm:w-5"
               viewBox="0 0 20 20"
               fill="currentColor"
             >
@@ -327,13 +329,13 @@ const SlickCarousel = () => {
           </button>
 
           {/* Indicadores */}
-          <div className="flex space-x-1.5 sm:space-x-2">
+          <div className="flex space-x-1 sm:space-x-1.5">
             {programs.map((_, index) => (
               <button
                 key={index}
                 onClick={() => setSelectedIndex(index)}
-                className={`w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full transition-all duration-300 ${
-                  index === selectedIndex ? "bg-white scale-125" : "bg-blue"
+                className={`w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full transition-all duration-300 ${
+                  index === selectedIndex ? "bg-gold scale-125" : "bg-white"
                 }`}
                 aria-label={`Ir para programa ${index + 1}`}
               />
@@ -343,12 +345,12 @@ const SlickCarousel = () => {
           {/* Botão Próximo */}
           <button
             onClick={() => navigateToCard("next")}
-            className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white shadow-md flex items-center justify-center text-gray-700 hover:bg-gray-50 ml-2 sm:ml-4"
+            className="w-7 h-7 sm:w-9 sm:h-9 rounded-full bg-white shadow-md flex items-center justify-center text-gray-700 hover:bg-gray-50 ml-1.5 sm:ml-3"
             aria-label="Próximo"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5"
+              className="h-4 w-4 sm:h-5 sm:w-5"
               viewBox="0 0 20 20"
               fill="currentColor"
             >
@@ -363,93 +365,277 @@ const SlickCarousel = () => {
 
         {/* Detalhes do programa selecionado - estilo responsivo */}
         {programs[selectedIndex] && (
-          <div className="mb-8 md:mb-12 mt-10 md:mt-14 max-w-5xl mx-auto px-4 sm:px-6">
-            <div className="flex flex-col md:flex-row items-start md:space-x-8 lg:space-x-12">
-              {/* Lado esquerdo - Imagem */}
-              <div className="w-full md:w-2/5 lg:w-1/3 mb-6 md:mb-0">
-                <div className="relative rounded-2xl overflow-hidden shadow-lg h-56 sm:h-72 md:h-[350px] mx-auto">
-                  <img
-                    src={programs[selectedIndex].image}
-                    alt={programs[selectedIndex].name}
-                    className="w-full h-full object-cover"
-                  />
-                  <div
-                    className={`absolute inset-0 bg-gradient-to-t ${getColorScheme(
-                      programs[selectedIndex].id
-                    )} opacity-60`}
-                  ></div>
-                  <div className="absolute top-4 left-4 bg-white/20 backdrop-blur-sm p-3 rounded-full">
-                    {programs[selectedIndex].activities[0]?.icon}
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={programs[selectedIndex].id}
+              className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-center mt-8 sm:mt-10 lg:mt-12"
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -30 }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
+            >
+              {/* Program Image */}
+              <motion.div
+                className="relative h-48 sm:h-56 lg:h-72 xl:h-80 rounded-3xl overflow-hidden shadow-2xl order-2 lg:order-1 group"
+                initial={{ opacity: 0, scale: 0.8, rotateY: -15 }}
+                animate={{ opacity: 1, scale: 1, rotateY: 0 }}
+                transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
+                whileHover={{ scale: 1.02, rotateY: 2 }}
+                style={{ perspective: "1000px" }}
+              >
+                <div className="absolute inset-0 bg-gradient-to-br from-black/10 to-transparent z-10 rounded-3xl"></div>
+                <img
+                  src={programs[selectedIndex].image}
+                  alt={programs[selectedIndex].name}
+                  className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110"
+                />
+                <div
+                  className={`absolute inset-0 bg-gradient-to-t ${getColorScheme(
+                    programs[selectedIndex].id
+                  )} opacity-25 group-hover:opacity-35 transition-all duration-500`}
+                />
+                <div className="absolute bottom-0 left-0 w-full h-2/3 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+
+                {/* Floating badge */}
+                <motion.div
+                  className="absolute top-4 right-4 bg-white/20 backdrop-blur-md rounded-full px-3 py-1.5 text-white text-xs font-semibold"
+                  initial={{ opacity: 0, scale: 0 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: 0.8, type: "spring", stiffness: 500 }}
+                >
+                  {programs[selectedIndex].level}
+                </motion.div>
+              </motion.div>
+
+              {/* Program Details */}
+              <motion.div
+                className="space-y-4 sm:space-y-5 lg:space-y-6 order-1 lg:order-2 px-2 sm:px-0"
+                initial={{ opacity: 0, x: -50 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
+              >
+                <div className="space-y-3 sm:space-y-4">
+                  {/* Icon and category */}
+                  <motion.div
+                    className="flex items-center gap-3"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.4 }}
+                  >
+                    <div className="relative">
+                      <motion.div
+                        className="flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 bg-gradient-to-br from-blue-100 via-purple-50 to-indigo-100 rounded-2xl shadow-lg"
+                        whileHover={{ scale: 1.1, rotate: 5 }}
+                        transition={{
+                          type: "spring",
+                          stiffness: 400,
+                          damping: 10,
+                        }}
+                      >
+                        <div className="text-blue-600 w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8">
+                          {programs[selectedIndex].activities[0]?.icon}
+                        </div>
+                      </motion.div>
+                      <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full"></div>
+                    </div>
+
+                    <div className="flex-1">
+                      <motion.div
+                        className="inline-flex items-center bg-gradient-to-r from-blue-50 to-purple-50 backdrop-blur-sm rounded-full py-2 px-4 border border-blue-100/50"
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ delay: 0.5 }}
+                      >
+                        <div className="h-2 w-2 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 mr-2 animate-pulse"></div>
+                        <p className="text-blue-700 font-semibold text-sm sm:text-base">
+                          {programs[selectedIndex].duration}
+                        </p>
+                      </motion.div>
+                    </div>
+                  </motion.div>
+
+                  {/* Title */}
+                  <motion.h3
+                    className="text-2xl sm:text-3xl lg:text-4xl font-bold leading-tight"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.5 }}
+                  >
+                    <span className="bg-clip-text text-transparent bg-gradient-to-r from-gray-900 via-blue-800 to-purple-800">
+                      {programs[selectedIndex].name}
+                    </span>
+                  </motion.h3>
+
+                  {/* Description */}
+                  <motion.p
+                    className="text-base sm:text-lg text-gray-600 leading-relaxed"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.6 }}
+                  >
+                    {programs[selectedIndex].description}
+                  </motion.p>
+                </div>
+
+                {/* Program Features */}
+                <motion.div
+                  className="space-y-3 sm:space-y-4"
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.7 }}
+                >
+                  <div className="flex items-center gap-3">
+                    <motion.div
+                      className="h-1 bg-gradient-to-r from-blue-500 via-purple-500 to-indigo-500 rounded-full flex-1 max-w-12"
+                      initial={{ width: 0 }}
+                      animate={{ width: "3rem" }}
+                      transition={{ delay: 0.8, duration: 0.8 }}
+                    ></motion.div>
+                    <h4 className="text-lg sm:text-xl font-bold text-gray-900">
+                      Principais Características
+                    </h4>
+                    <motion.div
+                      className="h-1 bg-gradient-to-r from-indigo-500 via-purple-500 to-blue-500 rounded-full flex-1 max-w-12"
+                      initial={{ width: 0 }}
+                      animate={{ width: "3rem" }}
+                      transition={{ delay: 0.8, duration: 0.8 }}
+                    ></motion.div>
                   </div>
-                </div>
-              </div>
 
-              {/* Lado direito - Conteúdo */}
-              <div className="w-full md:w-3/5 lg:w-2/3">
-                <div className="flex flex-wrap items-center gap-2 sm:gap-3 mb-4">
-                  <span className="inline-flex items-center text-xs sm:text-sm bg-blue-50 text-blue-700 px-2 sm:px-3 py-1 rounded-full">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="h-3 w-3 sm:h-4 sm:w-4 mr-1"
-                      viewBox="0 0 20 20"
-                      fill="currentColor"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"
-                        clipRule="evenodd"
-                      />
-                    </svg>
-                    {programs[selectedIndex].duration}
-                  </span>
-                  <span className="inline-flex items-center text-xs sm:text-sm bg-green-50 text-green-700 px-2 sm:px-3 py-1 rounded-full">
-                    {programs[selectedIndex].level}
-                  </span>
-                </div>
-
-                <h3 className="text-xl sm:text-2xl md:text-3xl font-bold mb-3 sm:mb-4 text-gray-900">
-                  {programs[selectedIndex].name}
-                </h3>
-                <p className="text-sm sm:text-base md:text-lg text-gray-600 mb-6 sm:mb-8 leading-relaxed">
-                  {programs[selectedIndex].description}
-                </p>
-
-                <div className="bg-gray-50 rounded-xl p-4 sm:p-5 mb-6">
-                  <h4 className="font-semibold text-gray-800 mb-3 sm:mb-4 flex items-center text-sm sm:text-base">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="h-4 w-4 sm:h-5 sm:w-5 mr-2 text-blue-500"
-                      viewBox="0 0 20 20"
-                      fill="currentColor"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                        clipRule="evenodd"
-                      />
-                    </svg>
-                    Principais Características
-                  </h4>
-                  <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3 text-sm">
-                    {(programs[selectedIndex].features || [])
+                  <motion.div
+                    className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4"
+                    initial="hidden"
+                    animate="visible"
+                    variants={{
+                      visible: {
+                        transition: {
+                          staggerChildren: 0.1,
+                          delayChildren: 0.9,
+                        },
+                      },
+                    }}
+                  >
+                    {programs[selectedIndex].features
                       .slice(0, 4)
-                      .map((feature, idx) => (
-                        <li key={idx} className="flex items-start">
-                          <span className="text-blue mr-2 mt-0.5">✓</span>
-                          <span className="text-blue">{feature}</span>
-                        </li>
-                      ))}
-                  </ul>
-                </div>
+                      .map((feature, index) => (
+                        <motion.div
+                          key={index}
+                          className="group relative bg-gradient-to-br from-white via-blue-50/30 to-purple-50/30 backdrop-blur-sm rounded-2xl p-4 border border-gray-100/50 hover:border-blue-200/50 transition-all duration-300 hover:shadow-lg"
+                          variants={{
+                            hidden: { opacity: 0, y: 20, scale: 0.9 },
+                            visible: { opacity: 1, y: 0, scale: 1 },
+                          }}
+                          whileHover={{
+                            scale: 1.02,
+                            y: -2,
+                            transition: {
+                              type: "spring",
+                              stiffness: 400,
+                              damping: 10,
+                            },
+                          }}
+                        >
+                          <div className="flex items-start gap-3">
+                            <motion.div
+                              className="w-8 h-8 rounded-xl bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white text-sm font-bold shadow-lg flex-shrink-0"
+                              whileHover={{ rotate: 5, scale: 1.1 }}
+                              transition={{ type: "spring", stiffness: 400 }}
+                            >
+                              ✓
+                            </motion.div>
+                            <div className="flex-1">
+                              <span className="text-sm sm:text-base text-gray-700 font-medium leading-relaxed group-hover:text-gray-900 transition-colors">
+                                {feature}
+                              </span>
+                            </div>
+                          </div>
 
-                <div className="mt-4 sm:mt-6">
-                  <button className="w-full sm:w-auto bg-emerald-500 hover:bg-emerald-600 text-white font-medium py-2.5 sm:py-3 px-6 sm:px-8 rounded-lg transition-all duration-200 shadow-md hover:shadow-lg transform hover:-translate-y-0.5 text-sm sm:text-base">
-                    Começar Agora
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
+                          {/* Subtle glow effect */}
+                          <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-blue-400/0 to-purple-400/0 group-hover:from-blue-400/5 group-hover:to-purple-400/5 transition-all duration-300"></div>
+                        </motion.div>
+                      ))}
+                  </motion.div>
+                </motion.div>
+
+                {/* CTA Button */}
+                <motion.div
+                  className="pt-4 sm:pt-6"
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 1.2 }}
+                >
+                  <motion.div
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    className="relative group"
+                  >
+                    <Button
+                      className={`
+                        relative h-12 sm:h-14 lg:h-16 px-8 sm:px-10 lg:px-12 text-base sm:text-lg lg:text-xl font-bold rounded-2xl
+                        bg-gradient-to-r ${getColorScheme(
+                          programs[selectedIndex].id
+                        )}
+                        text-white shadow-xl hover:shadow-2xl
+                        transition-all duration-500 w-full sm:w-auto
+                        overflow-hidden border-2 border-white/20
+                        group-hover:border-white/40
+                      `}
+                    >
+                      {/* Background animation */}
+                      <motion.div
+                        className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0"
+                        initial={{ x: "-100%", opacity: 0 }}
+                        whileHover={{
+                          x: "100%",
+                          opacity: [0, 1, 0],
+                          transition: { duration: 1, ease: "easeInOut" },
+                        }}
+                      />
+
+                      {/* Content */}
+                      <span className="relative z-10 flex items-center justify-center gap-3">
+                        <span>Começar Agora</span>
+                        <motion.div
+                          className="flex items-center"
+                          animate={{ x: [0, 3, 0] }}
+                          transition={{
+                            repeat: Infinity,
+                            duration: 2,
+                            ease: "easeInOut",
+                          }}
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="h-5 w-5 sm:h-6 sm:w-6"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2.5}
+                              d="M13 7l5 5m0 0l-5 5m5-5H6"
+                            />
+                          </svg>
+                        </motion.div>
+                      </span>
+
+                      {/* Glow effect */}
+                      <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    </Button>
+
+                    {/* External glow */}
+                    <div
+                      className={`absolute inset-0 rounded-2xl bg-gradient-to-r ${getColorScheme(
+                        programs[selectedIndex].id
+                      )} opacity-20 blur-xl scale-105 group-hover:opacity-30 transition-opacity duration-500`}
+                    ></div>
+                  </motion.div>
+                </motion.div>
+              </motion.div>
+            </motion.div>
+          </AnimatePresence>
         )}
       </div>
     </div>
