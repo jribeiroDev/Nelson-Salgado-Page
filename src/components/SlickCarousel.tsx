@@ -108,7 +108,7 @@ const Card = ({
         } select-none
                     ${
                       isSelected
-                        ? "ring-2 ring-blue-500 shadow-xl shadow-blue-500/20"
+                        ? "ring-2 ring-gold shadow-md shadow-gold"
                         : "shadow-md opacity-80"
                     }`}
       >
@@ -121,12 +121,9 @@ const Card = ({
         <div
           className={`absolute inset-0 bg-gradient-to-t ${getColorScheme(
             program.id
-          )} opacity-40`}
+          )} opacity-30`}
         />
         <div className="absolute inset-0 flex flex-col justify-end p-3 sm:p-4 md:p-6 text-white select-none">
-          {/* <div className="inline-flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 bg-white/20 backdrop-blur-sm rounded-full mb-2 sm:mb-3">
-            {program.activities[0]?.icon}
-          </div> */}
           <h3 className="text-base sm:text-lg md:text-xl font-bold mb-1 leading-tight">
             {program.name}
           </h3>
