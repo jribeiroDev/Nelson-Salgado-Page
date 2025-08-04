@@ -248,7 +248,7 @@ const SlickCarousel = () => {
   const currentOffset = getOffset();
 
   return (
-    <div className="relative  w-full overflow-hidden bg-blue flex flex-col justify-center items-center py-4 sm:py-6 md:py-8 px-3 sm:px-4">
+    <div className="relative  w-full  overflow-hidden bg-blue flex flex-col justify-center items-center py-4 sm:py-6 md:py-24 px-3 sm:px-4">
       <div className="w-full max-w-6xl mx-auto">
         <div className="text-center mb-8 md:mb-12">
           <h2 className="text-3xl md:text-5xl font-bold mb-4  text-gold">
@@ -290,7 +290,7 @@ const SlickCarousel = () => {
                 return (
                   <motion.div
                     key={program.id}
-                    className="px-1 sm:px-2 select-none"
+                    className="px-1 sm:px-2 select-none "
                     style={{ width: `${cardWidthPercentage}%` }}
                     layout
                     layoutId={`card-${program.id}`}
@@ -422,19 +422,6 @@ const SlickCarousel = () => {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.4 }}
                   >
-                    {/* <div className="relative">
-                      <motion.div 
-                        className="flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 bg-gradient-to-br from-blue-100 via-purple-50 to-indigo-100 rounded-2xl shadow-lg"
-                        whileHover={{ scale: 1.1, rotate: 5 }}
-                        transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                      >
-                        <div className="text-blue-600 w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8">
-                          {programs[selectedIndex].activities[0]?.icon}
-                        </div>
-                      </motion.div>
-                      <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full"></div>
-                    </div> */}
-                    
                     <div className="flex-1">
                       <motion.div
                         className="inline-flex items-center bg-gradient-to-r from-blue-50 to-purple-50 backdrop-blur-sm rounded-full py-2 px-4 border border-blue-100/50"
@@ -480,24 +467,6 @@ const SlickCarousel = () => {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.7 }}
                 >
-                  {/* <div className="flex items-center gap-3">
-                    <motion.div 
-                      className="h-1 bg-gradient-to-r from-blue-500 via-purple-500 to-indigo-500 rounded-full flex-1 max-w-12"
-                      initial={{ width: 0 }}
-                      animate={{ width: "3rem" }}
-                      transition={{ delay: 0.8, duration: 0.8 }}
-                    ></motion.div>
-                    <h4 className="text-lg sm:text-xl font-bold text-gray-900">
-                      Principais Características
-                    </h4>
-                    <motion.div 
-                      className="h-1 bg-gradient-to-r from-indigo-500 via-purple-500 to-blue-500 rounded-full flex-1 max-w-12"
-                      initial={{ width: 0 }}
-                      animate={{ width: "3rem" }}
-                      transition={{ delay: 0.8, duration: 0.8 }}
-                    ></motion.div>
-                  </div> */}
-                  
                   <motion.div
                     className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4"
                     initial="hidden"
@@ -551,7 +520,7 @@ const SlickCarousel = () => {
 
                 {/* CTA Button */}
                 <motion.div
-                  className="pt-4 sm:pt-6"
+                  className="pt-4 sm:pt-6 "
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 1.2 }}
@@ -563,7 +532,7 @@ const SlickCarousel = () => {
                   >
                     <Button
                       className={`
-                        relative h-12 sm:h-14 lg:h-16 px-8 sm:px-10 lg:px-12 text-base sm:text-lg lg:text-xl font-bold rounded-2xl
+                        relative h-12 sm:h-14 lg:h-16 px-8 sm:px-10 lg:px-12  text-base sm:text-lg lg:text-xl font-bold rounded-2xl
                         bg-gradient-to-r ${getColorScheme(programs[selectedIndex].id)}
                         text-white shadow-xl hover:shadow-2xl
                         transition-all duration-500 w-full sm:w-auto
