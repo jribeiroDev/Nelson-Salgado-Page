@@ -256,7 +256,7 @@ const SlickCarousel = () => {
           </h2>
         </div>
         <div
-          className="relative h-[180px] sm:h-[240px] md:h-[280px]  lg:w-[800px]"
+          className="relative h-[180px] sm:h-[240px] md:h-[280px]  "
           ref={containerRef}
         >
           <AnimatePresence initial={false}>
@@ -381,7 +381,7 @@ const SlickCarousel = () => {
                 animate={{ opacity: 1, scale: 1, rotateY: 0 }}
                 transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
                 whileHover={{ scale: 1.02, rotateY: 2 }}
-                style={{ perspective: "1000px" }}
+                style={{ perspective: "800px" }}
               >
                 <div className="absolute inset-0 bg-gradient-to-br from-black/10 to-transparent z-10 rounded-3xl"></div>
                 <img
@@ -395,9 +395,9 @@ const SlickCarousel = () => {
                   )} opacity-25 group-hover:opacity-35 transition-all duration-500`}
                 />
                 <div className="absolute bottom-0 left-0 w-full h-2/3 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
-
+                
                 {/* Floating badge */}
-                <motion.div
+                <motion.div 
                   className="absolute top-4 right-4 bg-white/20 backdrop-blur-md rounded-full px-3 py-1.5 text-white text-xs font-semibold"
                   initial={{ opacity: 0, scale: 0 }}
                   animate={{ opacity: 1, scale: 1 }}
@@ -416,29 +416,25 @@ const SlickCarousel = () => {
               >
                 <div className="space-y-3 sm:space-y-4">
                   {/* Icon and category */}
-                  <motion.div
+                  <motion.div 
                     className="flex items-center gap-3"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.4 }}
                   >
-                    <div className="relative">
-                      <motion.div
+                    {/* <div className="relative">
+                      <motion.div 
                         className="flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 bg-gradient-to-br from-blue-100 via-purple-50 to-indigo-100 rounded-2xl shadow-lg"
                         whileHover={{ scale: 1.1, rotate: 5 }}
-                        transition={{
-                          type: "spring",
-                          stiffness: 400,
-                          damping: 10,
-                        }}
+                        transition={{ type: "spring", stiffness: 400, damping: 10 }}
                       >
                         <div className="text-blue-600 w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8">
                           {programs[selectedIndex].activities[0]?.icon}
                         </div>
                       </motion.div>
                       <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full"></div>
-                    </div>
-
+                    </div> */}
+                    
                     <div className="flex-1">
                       <motion.div
                         className="inline-flex items-center bg-gradient-to-r from-blue-50 to-purple-50 backdrop-blur-sm rounded-full py-2 px-4 border border-blue-100/50"
@@ -446,29 +442,29 @@ const SlickCarousel = () => {
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ delay: 0.5 }}
                       >
-                        <div className="h-2 w-2 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 mr-2 animate-pulse"></div>
-                        <p className="text-blue-700 font-semibold text-sm sm:text-base">
+                        <div className="h-2 w-2 rounded-full bg-green-500 mr-2 animate-pulse"></div>
+                        <p className="text-white font-semibold text-sm sm:text-base">
                           {programs[selectedIndex].duration}
                         </p>
                       </motion.div>
                     </div>
                   </motion.div>
-
+                  
                   {/* Title */}
-                  <motion.h3
+                  <motion.h3 
                     className="text-2xl sm:text-3xl lg:text-4xl font-bold leading-tight"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.5 }}
                   >
-                    <span className="bg-clip-text text-transparent bg-gradient-to-r from-gray-900 via-blue-800 to-purple-800">
+                    <span className="bg-clip-text text-transparent bg-gold">
                       {programs[selectedIndex].name}
                     </span>
                   </motion.h3>
-
+                  
                   {/* Description */}
-                  <motion.p
-                    className="text-base sm:text-lg text-gray-600 leading-relaxed"
+                  <motion.p 
+                    className="text-base sm:text-lg text-white leading-relaxed"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.6 }}
@@ -478,14 +474,14 @@ const SlickCarousel = () => {
                 </div>
 
                 {/* Program Features */}
-                <motion.div
+                <motion.div 
                   className="space-y-3 sm:space-y-4"
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.7 }}
                 >
-                  <div className="flex items-center gap-3">
-                    <motion.div
+                  {/* <div className="flex items-center gap-3">
+                    <motion.div 
                       className="h-1 bg-gradient-to-r from-blue-500 via-purple-500 to-indigo-500 rounded-full flex-1 max-w-12"
                       initial={{ width: 0 }}
                       animate={{ width: "3rem" }}
@@ -494,24 +490,24 @@ const SlickCarousel = () => {
                     <h4 className="text-lg sm:text-xl font-bold text-gray-900">
                       Principais Características
                     </h4>
-                    <motion.div
+                    <motion.div 
                       className="h-1 bg-gradient-to-r from-indigo-500 via-purple-500 to-blue-500 rounded-full flex-1 max-w-12"
                       initial={{ width: 0 }}
                       animate={{ width: "3rem" }}
                       transition={{ delay: 0.8, duration: 0.8 }}
                     ></motion.div>
-                  </div>
-
+                  </div> */}
+                  
                   <motion.div
                     className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4"
                     initial="hidden"
                     animate="visible"
                     variants={{
-                      visible: {
-                        transition: {
+                      visible: { 
+                        transition: { 
                           staggerChildren: 0.1,
-                          delayChildren: 0.9,
-                        },
+                          delayChildren: 0.9 
+                        } 
                       },
                     }}
                   >
@@ -520,24 +516,20 @@ const SlickCarousel = () => {
                       .map((feature, index) => (
                         <motion.div
                           key={index}
-                          className="group relative bg-gradient-to-br from-white via-blue-50/30 to-purple-50/30 backdrop-blur-sm rounded-2xl p-4 border border-gray-100/50 hover:border-blue-200/50 transition-all duration-300 hover:shadow-lg"
+                          className="group relative bg-gold rounded-2xl p-4 border border-gray-100/50 text-blue"
                           variants={{
                             hidden: { opacity: 0, y: 20, scale: 0.9 },
                             visible: { opacity: 1, y: 0, scale: 1 },
                           }}
-                          whileHover={{
-                            scale: 1.02,
-                            y: -2,
-                            transition: {
-                              type: "spring",
-                              stiffness: 400,
-                              damping: 10,
-                            },
-                          }}
+                          // whileHover={{ 
+                          //   scale: 1.02, 
+                          //   y: -2,
+                          //   transition: { type: "spring", stiffness: 10, damping: 10 }
+                          // }}
                         >
                           <div className="flex items-start gap-3">
-                            <motion.div
-                              className="w-8 h-8 rounded-xl bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white text-sm font-bold shadow-lg flex-shrink-0"
+                            <motion.div 
+                              className="w-8 h-8 rounded-xl bg-blue flex items-center justify-center text-white text-sm font-bold shadow-lg flex-shrink-0"
                               whileHover={{ rotate: 5, scale: 1.1 }}
                               transition={{ type: "spring", stiffness: 400 }}
                             >
@@ -549,7 +541,7 @@ const SlickCarousel = () => {
                               </span>
                             </div>
                           </div>
-
+                          
                           {/* Subtle glow effect */}
                           <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-blue-400/0 to-purple-400/0 group-hover:from-blue-400/5 group-hover:to-purple-400/5 transition-all duration-300"></div>
                         </motion.div>
@@ -572,9 +564,7 @@ const SlickCarousel = () => {
                     <Button
                       className={`
                         relative h-12 sm:h-14 lg:h-16 px-8 sm:px-10 lg:px-12 text-base sm:text-lg lg:text-xl font-bold rounded-2xl
-                        bg-gradient-to-r ${getColorScheme(
-                          programs[selectedIndex].id
-                        )}
+                        bg-gradient-to-r ${getColorScheme(programs[selectedIndex].id)}
                         text-white shadow-xl hover:shadow-2xl
                         transition-all duration-500 w-full sm:w-auto
                         overflow-hidden border-2 border-white/20
@@ -582,55 +572,40 @@ const SlickCarousel = () => {
                       `}
                     >
                       {/* Background animation */}
-                      <motion.div
+                      <motion.div 
                         className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0"
                         initial={{ x: "-100%", opacity: 0 }}
-                        whileHover={{
-                          x: "100%",
+                        whileHover={{ 
+                          x: "100%", 
                           opacity: [0, 1, 0],
-                          transition: { duration: 1, ease: "easeInOut" },
+                          transition: { duration: 1, ease: "easeInOut" }
                         }}
                       />
-
+                      
                       {/* Content */}
                       <span className="relative z-10 flex items-center justify-center gap-3">
                         <span>Começar Agora</span>
                         <motion.div
                           className="flex items-center"
                           animate={{ x: [0, 3, 0] }}
-                          transition={{
-                            repeat: Infinity,
-                            duration: 2,
-                            ease: "easeInOut",
+                          transition={{ 
+                            repeat: Infinity, 
+                            duration: 2, 
+                            ease: "easeInOut" 
                           }}
                         >
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            className="h-5 w-5 sm:h-6 sm:w-6"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth={2.5}
-                              d="M13 7l5 5m0 0l-5 5m5-5H6"
-                            />
+                          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 sm:h-6 sm:w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                           </svg>
                         </motion.div>
                       </span>
-
+                      
                       {/* Glow effect */}
                       <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                     </Button>
-
+                    
                     {/* External glow */}
-                    <div
-                      className={`absolute inset-0 rounded-2xl bg-gradient-to-r ${getColorScheme(
-                        programs[selectedIndex].id
-                      )} opacity-20 blur-xl scale-105 group-hover:opacity-30 transition-opacity duration-500`}
-                    ></div>
+                    <div className={`absolute inset-0 w-64 rounded-2xl bg-gradient-to-r ${getColorScheme(programs[selectedIndex].id)} opacity-20 blur-xl scale-105 group-hover:opacity-30 transition-opacity duration-500`}></div>
                   </motion.div>
                 </motion.div>
               </motion.div>
