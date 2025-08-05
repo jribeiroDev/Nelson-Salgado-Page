@@ -15,6 +15,7 @@ import SiteAlert from "./sections/SiteAlert";
 import PromoPopup from "./sections/PromoPopUp";
 import FormSection from "@/components/FormSection";
 import SlickCarousel from "@/components/SlickCarousel";
+import Footer from "./sections/Footer";
 
 const Index = () => {
   return (
@@ -26,7 +27,8 @@ const Index = () => {
       />
       {/* <PromoPopup /> */}
       <InitialSection />
-      <FeaturedCarouselSection />
+      <PricingSection />
+      {/* <FeaturedCarouselSection /> */}
       {/* <HeroSection /> */}
       {/* <AboutTrainerSection /> */}
       {/* <ProgramsSlide /> */}
@@ -35,10 +37,10 @@ const Index = () => {
       {/* <ProgramCatalogSection /> */}
       {/* <AppBenefitsSection /> */}
       <TestimonialsSection />
-      {/* <PricingSection /> */}
-      {/* <FaqSection /> */}
+      <FaqSection />
       {/* <NewsletterSection /> */}
-      <FormSection />
+      {/* <FormSection /> */}
+      <Footer />
     </div>
   );
 };

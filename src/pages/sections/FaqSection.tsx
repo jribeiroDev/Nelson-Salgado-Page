@@ -21,20 +21,20 @@ const faqs = [
 ];
 
 const FaqSection = () => (
-  <section className="py-20 px-4 bg-gradient-to-b from-white to-purple-50">
+  <section className="py-20 px-4 bg-blue">
     <div className="max-w-4xl mx-auto">
       <div className="text-center mb-16">
-        <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
+        <h2 className="text-4xl md:text-5xl font-bold mb-4 text-beige">
           Perguntas Frequentes
         </h2>
-        <p className="text-xl text-muted-foreground">
+        <p className="text-xl  text-beige ">
           Esclarecemos as tuas principais dúvidas
         </p>
       </div>
       <Accordion type="single" collapsible className="space-y-4">
         {faqs.map((faq, index) => (
-          <AccordionItem key={index} value={`item-${index}`} className="bg-white rounded-lg shadow-lg border-0">
-            <AccordionTrigger className="px-6 py-4 text-left font-semibold text-purple-900 hover:text-purple-600 hover:no-underline">
+          <AccordionItem key={index} value={`item-${index}`} className="bg-beige rounded-lg shadow-lg border-0">
+            <AccordionTrigger className="px-6 py-4 text-left font-semibold text-blue hover:text-blue hover:no-underline">
               {faq.question}
             </AccordionTrigger>
             <AccordionContent className="px-6 pb-4 text-muted-foreground">

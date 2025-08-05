@@ -10,6 +10,7 @@ import {
 } from "framer-motion";
 import { programs } from "@/pages/sections/programsData";
 import { Button } from "./ui/button";
+import { Star } from "lucide-react";
 
 const VISIBLE_ITEMS_DESKTOP = 3;
 const VISIBLE_ITEMS_TABLET = 2;
@@ -108,7 +109,7 @@ const Card = ({
         } select-none
                     ${
                       isSelected
-                        ? "ring-2 ring-gold shadow-md shadow-gold"
+                        ? "ring-2 ring-beige shadow-md shadow-beige"
                         : "shadow-md opacity-80"
                     }`}
       >
@@ -118,6 +119,15 @@ const Card = ({
           className="absolute inset-0 w-full h-full object-cover"
           draggable="false"
         />
+
+        {/* Star badge no canto superior direito - apenas se popular for true */}
+        {program.popular && (
+          <div className="absolute top-2 right-2 z-10 bg-gold backdrop-blur-sm rounded-full px-2 py-1 flex items-center gap-1">
+            <Star size={14} color="white" fill="white" />
+            <span className="text-white text-xs font-semibold">Popular</span>
+          </div>
+        )}
+
         <div
           className={`absolute inset-0 bg-gradient-to-t ${getColorScheme(
             program.id
@@ -128,7 +138,7 @@ const Card = ({
             {program.name}
           </h3>
           <p className="text-xs sm:text-sm opacity-90">
-            {program.duration} • {program.level}
+            {program.gender} • {program.level} • {program.duration}
           </p>
         </div>
       </motion.div>
@@ -245,10 +255,10 @@ const SlickCarousel = () => {
   const currentOffset = getOffset();
 
   return (
-    <div className="relative  w-full  overflow-hidden bg-blue flex flex-col justify-center items-center py-4 sm:py-6 md:py-24 px-3 sm:px-4">
+    <div className="relative w-full overflow-hidden bg-gradient-to-r from-darkblue to-blue flex flex-col justify-center items-center py-4 sm:py-6 md:py-12 px-3 sm:px-4">
       <div className="w-full max-w-6xl mx-auto">
-        <div className="text-center mb-8 md:mb-12">
-          <h2 className="text-3xl md:text-5xl font-bold mb-4  text-gold">
+        <div className="text-center mb-8 md:mb-24">
+          <h2 className="text-3xl md:text-5xl font-bold mb-4  text-beige">
             Descubra os Nossos Programas
           </h2>
         </div>
@@ -332,7 +342,7 @@ const SlickCarousel = () => {
                 key={index}
                 onClick={() => setSelectedIndex(index)}
                 className={`w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full transition-all duration-300 ${
-                  index === selectedIndex ? "bg-gold scale-125" : "bg-white"
+                  index === selectedIndex ? "bg-beige scale-150" : "bg-darkblue"
                 }`}
                 aria-label={`Ir para programa ${index + 1}`}
               />
@@ -392,15 +402,22 @@ const SlickCarousel = () => {
                   )} opacity-25 group-hover:opacity-35 transition-all duration-500`}
                 />
                 <div className="absolute bottom-0 left-0 w-full h-2/3 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
-                
+
                 {/* Floating badge */}
-                <motion.div 
-                  className="absolute top-4 right-4 bg-white/20 backdrop-blur-md rounded-full px-3 py-1.5 text-white text-xs font-semibold"
+                <motion.div
+                  className="absolute top-4 right-4 text-xs font-semibold"
                   initial={{ opacity: 0, scale: 0 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ delay: 0.8, type: "spring", stiffness: 500 }}
                 >
-                  {programs[selectedIndex].level}
+                  {programs[selectedIndex].popular && (
+                    <div className="absolute top-2 right-2 z-10 bg-gold backdrop-blur-sm rounded-full px-2 py-1 flex items-center gap-1">
+                      <Star size={14} color="white" fill="white" />
+                      <span className="text-white text-xs font-semibold">
+                        Popular
+                      </span>
+                    </div>
+                  )}
                 </motion.div>
               </motion.div>
 
@@ -413,7 +430,7 @@ const SlickCarousel = () => {
               >
                 <div className="space-y-3 sm:space-y-4">
                   {/* Icon and category */}
-                  <motion.div 
+                  <motion.div
                     className="flex items-center gap-3"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -421,33 +438,34 @@ const SlickCarousel = () => {
                   >
                     <div className="flex-1">
                       <motion.div
-                        className="inline-flex items-center bg-gradient-to-r from-blue-50 to-purple-50 backdrop-blur-sm rounded-full py-2 px-4 border border-blue-100/50"
+                        className="inline-flex items-center bg-beige backdrop-blur-sm rounded-full py-2 px-4 border border-blue-100/50"
                         initial={{ opacity: 0, scale: 0.8 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ delay: 0.5 }}
                       >
-                        <div className="h-2 w-2 rounded-full bg-green-500 mr-2 animate-pulse"></div>
-                        <p className="text-white font-semibold text-sm sm:text-base">
+                        <p className="text-darkblue font-semibold text-sm sm:text-base">
+                          {programs[selectedIndex].gender} •{" "}
+                          {programs[selectedIndex].level} •{" "}
                           {programs[selectedIndex].duration}
                         </p>
                       </motion.div>
                     </div>
                   </motion.div>
-                  
+
                   {/* Title */}
-                  <motion.h3 
+                  <motion.h3
                     className="text-2xl sm:text-3xl lg:text-4xl font-bold leading-tight"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.5 }}
                   >
-                    <span className="bg-clip-text text-transparent bg-gold">
+                    <span className="bg-clip-text text-transparent bg-beige">
                       {programs[selectedIndex].name}
                     </span>
                   </motion.h3>
-                  
+
                   {/* Description */}
-                  <motion.p 
+                  <motion.p
                     className="text-base sm:text-lg text-white leading-relaxed"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -458,7 +476,7 @@ const SlickCarousel = () => {
                 </div>
 
                 {/* Program Features */}
-                <motion.div 
+                <motion.div
                   className="space-y-3 sm:space-y-4"
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -469,11 +487,11 @@ const SlickCarousel = () => {
                     initial="hidden"
                     animate="visible"
                     variants={{
-                      visible: { 
-                        transition: { 
+                      visible: {
+                        transition: {
                           staggerChildren: 0.1,
-                          delayChildren: 0.9 
-                        } 
+                          delayChildren: 0.9,
+                        },
                       },
                     }}
                   >
@@ -482,34 +500,38 @@ const SlickCarousel = () => {
                       .map((feature, index) => (
                         <motion.div
                           key={index}
-                          className="group relative bg-gold rounded-2xl p-4 border border-gray-100/50 text-blue"
+                          className="group relative bg-white/10 backdrop-blur-sm rounded-xl p-3 sm:p-4 border border-white/20 hover:border-beige/40 transition-all duration-300 hover:bg-white/15"
                           variants={{
                             hidden: { opacity: 0, y: 20, scale: 0.9 },
                             visible: { opacity: 1, y: 0, scale: 1 },
                           }}
-                          // whileHover={{ 
-                          //   scale: 1.02, 
-                          //   y: -2,
-                          //   transition: { type: "spring", stiffness: 10, damping: 10 }
-                          // }}
+                          whileHover={{
+                            scale: 1.02,
+                            y: -2,
+                            transition: {
+                              type: "spring",
+                              stiffness: 400,
+                              damping: 10,
+                            },
+                          }}
                         >
                           <div className="flex items-start gap-3">
-                            <motion.div 
-                              className="w-8 h-8 rounded-xl bg-blue flex items-center justify-center text-white text-sm font-bold shadow-lg flex-shrink-0"
+                            <motion.div
+                              className="w-6 h-6 sm:w-7 sm:h-7 rounded-lg bg-beige flex items-center justify-center text-darkblue text-xs sm:text-sm font-bold shadow-sm flex-shrink-0 mt-0.5"
                               whileHover={{ rotate: 5, scale: 1.1 }}
                               transition={{ type: "spring", stiffness: 400 }}
                             >
                               ✓
                             </motion.div>
                             <div className="flex-1">
-                              <span className="text-sm sm:text-base text-gray-700 font-medium leading-relaxed group-hover:text-gray-900 transition-colors">
+                              <span className="text-sm sm:text-base text-white font-medium leading-relaxed group-hover:text-beige transition-colors">
                                 {feature}
                               </span>
                             </div>
                           </div>
-                          
+
                           {/* Subtle glow effect */}
-                          <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-blue-400/0 to-purple-400/0 group-hover:from-blue-400/5 group-hover:to-purple-400/5 transition-all duration-300"></div>
+                          <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-beige/0 via-beige/5 to-gold/0 opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
                         </motion.div>
                       ))}
                   </motion.div>
@@ -530,7 +552,9 @@ const SlickCarousel = () => {
                     <Button
                       className={`
                         relative h-12 sm:h-14 lg:h-16 px-8 sm:px-10 lg:px-12  text-base sm:text-lg lg:text-xl font-bold rounded-2xl
-                        bg-gradient-to-r ${getColorScheme(programs[selectedIndex].id)}
+                        bg-gradient-to-r ${getColorScheme(
+                          programs[selectedIndex].id
+                        )}
                         text-white shadow-xl hover:shadow-2xl
                         transition-all duration-500 w-full sm:w-auto
                         overflow-hidden border-2 border-white/20
@@ -538,40 +562,55 @@ const SlickCarousel = () => {
                       `}
                     >
                       {/* Background animation */}
-                      <motion.div 
+                      <motion.div
                         className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0"
                         initial={{ x: "-100%", opacity: 0 }}
-                        whileHover={{ 
-                          x: "100%", 
+                        whileHover={{
+                          x: "100%",
                           opacity: [0, 1, 0],
-                          transition: { duration: 1, ease: "easeInOut" }
+                          transition: { duration: 1, ease: "easeInOut" },
                         }}
                       />
-                      
+
                       {/* Content */}
                       <span className="relative z-10 flex items-center justify-center gap-3">
                         <span>Começar Agora</span>
                         <motion.div
                           className="flex items-center"
                           animate={{ x: [0, 3, 0] }}
-                          transition={{ 
-                            repeat: Infinity, 
-                            duration: 2, 
-                            ease: "easeInOut" 
+                          transition={{
+                            repeat: Infinity,
+                            duration: 2,
+                            ease: "easeInOut",
                           }}
                         >
-                          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 sm:h-6 sm:w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="h-5 w-5 sm:h-6 sm:w-6"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2.5}
+                              d="M13 7l5 5m0 0l-5 5m5-5H6"
+                            />
                           </svg>
                         </motion.div>
                       </span>
-                      
+
                       {/* Glow effect */}
                       <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                     </Button>
-                    
+
                     {/* External glow */}
-                    <div className={`absolute inset-0 w-64 rounded-2xl bg-gradient-to-r ${getColorScheme(programs[selectedIndex].id)} opacity-20 blur-xl scale-105 group-hover:opacity-30 transition-opacity duration-500`}></div>
+                    <div
+                      className={`absolute inset-0 w-64 rounded-2xl bg-gradient-to-r ${getColorScheme(
+                        programs[selectedIndex].id
+                      )} opacity-20 blur-xl scale-105 group-hover:opacity-30 transition-opacity duration-500`}
+                    ></div>
                   </motion.div>
                 </motion.div>
               </motion.div>

@@ -135,7 +135,7 @@ const TestimonialCard = ({
         } select-none
                     ${
                       isSelected
-                        ? "ring-2 ring-gold shadow-xl shadow-gold/20"
+                        ? "ring-2 ring-blue shadow-xl shadow-blue/50"
                         : "shadow-md opacity-80"
                     }`}
       >
@@ -144,7 +144,7 @@ const TestimonialCard = ({
             <motion.img
               src={testimonial.image}
               alt={testimonial.name}
-              className="w-16 h-16 rounded-full mx-auto object-cover border-4 border-gold/20"
+              className="w-16 h-16 rounded-full mx-auto object-cover border-4 border-blue"
               whileHover={{ scale: 1.1 }}
               transition={{ type: "spring", stiffness: 400, damping: 10 }}
             />
@@ -180,7 +180,7 @@ const TestimonialCard = ({
 };
 
 const TestimonialsSection = () => {
-  const [selectedIndex, setSelectedIndex] = useState(0);
+  const [selectedIndex, setSelectedIndex] = useState(2);
   const [visibleItems, setVisibleItems] = useState(VISIBLE_ITEMS_DESKTOP);
   const [isDragging, setIsDragging] = useState(false);
   const dragStartX = useRef(0);
@@ -280,12 +280,12 @@ const TestimonialsSection = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <span className="bg-clip-text text-transparent bg-gold">
+            <span className="text-4xl md:text-5xl font-bold mb-4 bg-clip-text text-transparent bg-blue">
               O que dizem os nossos membros
             </span>
           </motion.h2>
           <motion.p
-            className="text-lg sm:text-xl text-gray-600"
+            className="text-lg sm:text-xl text-blue"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
@@ -374,7 +374,7 @@ const TestimonialsSection = () => {
                 key={index}
                 onClick={() => setSelectedIndex(index)}
                 className={`w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full transition-all duration-300 ${
-                  index === selectedIndex ? "bg-gold scale-125" : "bg-gray-300"
+                  index === selectedIndex ? "bg-blue scale-125" : "bg-gray-300"
                 }`}
                 aria-label={`Ir para testemunho ${index + 1}`}
               />
