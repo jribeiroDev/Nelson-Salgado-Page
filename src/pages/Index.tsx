@@ -16,6 +16,7 @@ import PromoPopup from "./sections/PromoPopUp";
 import FormSection from "@/components/FormSection";
 import SlickCarousel from "@/components/SlickCarousel";
 import Footer from "./sections/Footer";
+import SocialFloatingBubble from "@/components/SocialFloatingBubble";
 
 const Index = () => {
   return (
@@ -41,6 +42,7 @@ const Index = () => {
       {/* <NewsletterSection /> */}
       {/* <FormSection /> */}
       <Footer />
+      <SocialFloatingBubble />
     </div>
   );
 };
