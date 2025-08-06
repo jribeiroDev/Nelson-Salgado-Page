@@ -29,6 +29,7 @@ export default {
         white: "#F5F5F5",
         orange: "#9f5935",
         blue: "#4a6b82",
+        blue2: "#f2f6ff",
         darkblue: "#1f2f3f",
         orange2: "#b16f35",
         background: "hsl(var(--background))",

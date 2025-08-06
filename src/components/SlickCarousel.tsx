@@ -255,7 +255,7 @@ const SlickCarousel = () => {
   const currentOffset = getOffset();
 
   return (
-    <div className="relative w-full overflow-hidden bg-blue/20 flex flex-col justify-center items-center py-4 sm:py-6 md:py-12 px-3 sm:px-4">
+    <div className="relative w-full overflow-hidden bg-blue2/10 flex flex-col justify-center items-center py-4 sm:py-6 md:py-12 px-3 sm:px-4">
       <div className="w-full max-w-6xl mx-auto">
         <div className="text-center mb-8 md:mb-24">
           <h2 className="text-3xl md:text-5xl font-bold mb-4  text-blue">

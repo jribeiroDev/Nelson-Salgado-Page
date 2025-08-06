@@ -21,7 +21,7 @@ const PricingSection = () => (
       </div>
       <div className="flex grid-cols-1 md:grid-cols-3 gap-8">
         {/* Card 12 MESES - Mais Popular */}
-        <Card className="p-8 bg-gradient-to-br from-blue to-darkblue text-beige border-0 relative overflow-hidden shadow-2xl transform scale-105 hover:scale-110 transition-all duration-300">
+        <Card className="p-8 bg-gradient-to-br cursor-pointer from-blue to-darkblue text-beige border-0 relative overflow-hidden shadow-2xl transform scale-105 hover:scale-110 transition-all duration-300">
           <div className="absolute top-4 right-4">
             <Badge className="bg-white text-gold font-medium border-0 shadow-lg">
               <Zap className="w-3 h-3 mr-1" />
