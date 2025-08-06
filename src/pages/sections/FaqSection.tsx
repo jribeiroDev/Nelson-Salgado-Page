@@ -21,13 +21,13 @@ const faqs = [
 ];
 
 const FaqSection = () => (
-  <section className="py-20 px-4 bg-blue">
+  <section className="py-20 px-4 bg-blue/20">
     <div className="max-w-4xl mx-auto">
       <div className="text-center mb-16">
-        <h2 className="text-4xl md:text-5xl font-bold mb-4 text-beige">
+        <h2 className="text-4xl md:text-5xl font-bold mb-4 text-blue">
           Perguntas Frequentes
         </h2>
-        <p className="text-xl  text-beige ">
+        <p className="text-xl  text-blue ">
           Esclarecemos as tuas principais dúvidas
         </p>
       </div>

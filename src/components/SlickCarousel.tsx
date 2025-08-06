@@ -255,10 +255,10 @@ const SlickCarousel = () => {
   const currentOffset = getOffset();
 
   return (
-    <div className="relative w-full overflow-hidden bg-gradient-to-r from-darkblue to-blue flex flex-col justify-center items-center py-4 sm:py-6 md:py-12 px-3 sm:px-4">
+    <div className="relative w-full overflow-hidden bg-blue/20 flex flex-col justify-center items-center py-4 sm:py-6 md:py-12 px-3 sm:px-4">
       <div className="w-full max-w-6xl mx-auto">
         <div className="text-center mb-8 md:mb-24">
-          <h2 className="text-3xl md:text-5xl font-bold mb-4  text-beige">
+          <h2 className="text-3xl md:text-5xl font-bold mb-4  text-blue">
             Descubra os Nossos Programas
           </h2>
         </div>
@@ -443,7 +443,7 @@ const SlickCarousel = () => {
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ delay: 0.5 }}
                       >
-                        <p className="text-darkblue font-semibold text-sm sm:text-base">
+                        <p className="text-blue font-semibold text-sm sm:text-base">
                           {programs[selectedIndex].gender} •{" "}
                           {programs[selectedIndex].level} •{" "}
                           {programs[selectedIndex].duration}
@@ -459,14 +459,14 @@ const SlickCarousel = () => {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.5 }}
                   >
-                    <span className="bg-clip-text text-transparent bg-beige">
+                    <span className="bg-clip-text text-transparent bg-blue">
                       {programs[selectedIndex].name}
                     </span>
                   </motion.h3>
 
                   {/* Description */}
                   <motion.p
-                    className="text-base sm:text-lg text-white leading-relaxed"
+                    className="text-base sm:text-lg text-blue leading-relaxed"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.6 }}
@@ -500,7 +500,7 @@ const SlickCarousel = () => {
                       .map((feature, index) => (
                         <motion.div
                           key={index}
-                          className="group relative bg-white/10 backdrop-blur-sm rounded-xl p-3 sm:p-4 border border-white/20 hover:border-beige/40 transition-all duration-300 hover:bg-white/15"
+                          className="group relative bg-white backdrop-blur-sm rounded-xl p-3 sm:p-4 border border-white/20 hover:border-beige/40 transition-all duration-300 hover:bg-white/15"
                           variants={{
                             hidden: { opacity: 0, y: 20, scale: 0.9 },
                             visible: { opacity: 1, y: 0, scale: 1 },
@@ -517,14 +517,14 @@ const SlickCarousel = () => {
                         >
                           <div className="flex items-start gap-3">
                             <motion.div
-                              className="w-6 h-6 sm:w-7 sm:h-7 rounded-lg bg-beige flex items-center justify-center text-darkblue text-xs sm:text-sm font-bold shadow-sm flex-shrink-0 mt-0.5"
+                              className=" flex items-center justify-center text-blue text-xs sm:text-sm font-bold flex-shrink-0 mt-0.5"
                               whileHover={{ rotate: 5, scale: 1.1 }}
                               transition={{ type: "spring", stiffness: 400 }}
                             >
                               ✓
                             </motion.div>
                             <div className="flex-1">
-                              <span className="text-sm sm:text-base text-white font-medium leading-relaxed group-hover:text-beige transition-colors">
+                              <span className="text-sm sm:text-base text-blue font-medium leading-relaxed transition-colors">
                                 {feature}
                               </span>
                             </div>

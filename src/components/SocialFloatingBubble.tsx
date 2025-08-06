@@ -93,7 +93,7 @@ const SocialFloatingBubble = () => {
                 </div>
                 <button
                   onClick={openFacebook}
-                  className="w-12 h-12 md:w-14 md:h-14 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full shadow-lg flex items-center justify-center text-white hover:shadow-xl transition-all duration-300 hover:scale-110 group"
+                  className="w-12 h-12 md:w-14 md:h-14 bg-blue rounded-full shadow-lg flex items-center justify-center text-beige hover:shadow-xl transition-all duration-300 hover:scale-110 group"
                 >
                   <Facebook className="w-5 h-5 md:w-6 md:h-6 group-hover:scale-110 transition-transform" />
                 </button>

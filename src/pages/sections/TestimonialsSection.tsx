@@ -271,7 +271,7 @@ const TestimonialsSection = () => {
   const currentOffset = getOffset();
 
   return (
-    <section className="h-screen max-h-screen overflow-hidden bg-gradient-to-br from-blue/5 to-gold/5 flex flex-col justify-center items-center py-8 px-4">
+    <section className="h-screen max-h-screen overflow-hidden bg-beige flex flex-col justify-center items-center py-8 px-4">
       <div className="w-full max-w-6xl mx-auto">
         <div className="text-center mb-8 sm:mb-10">
           <motion.h2
