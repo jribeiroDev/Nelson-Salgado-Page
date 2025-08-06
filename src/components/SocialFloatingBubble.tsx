@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import { MessageCircle, X, Facebook } from "lucide-react";
+import { MessageCircle, X, Facebook, Instagram } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const SocialFloatingBubble = () => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const whatsappNumber = "+351912345678"; // Substitua pelo número real
-  const facebookPageUrl = "https://facebook.com/suapagina"; // Substitua pela URL real
+  const whatsappNumber = "+351910436302"; // Substitua pelo número real
+  const instagramPageUrl = "https://www.instagram.com/elite_salgado"; // Substitua pela URL real
 
   const openWhatsApp = () => {
     const message = encodeURIComponent(
@@ -15,8 +15,8 @@ const SocialFloatingBubble = () => {
     window.open(`https://wa.me/${whatsappNumber}?text=${message}`, "_blank");
   };
 
-  const openFacebook = () => {
-    window.open(facebookPageUrl, "_blank");
+  const openInstagram = () => {
+    window.open(instagramPageUrl, "_blank");
   };
 
   return (
@@ -88,14 +88,14 @@ const SocialFloatingBubble = () => {
               >
                 <div className="bg-white rounded-lg px-3 py-2 shadow-lg border hidden md:block">
                   <p className="text-sm font-medium text-gray-800 whitespace-nowrap">
-                    Segue-nos no Facebook
+                    Segue-nos no Instagram
                   </p>
                 </div>
                 <button
-                  onClick={openFacebook}
+                  onClick={openInstagram}
                   className="w-12 h-12 md:w-14 md:h-14 bg-blue rounded-full shadow-lg flex items-center justify-center text-beige hover:shadow-xl transition-all duration-300 hover:scale-110 group"
                 >
-                  <Facebook className="w-5 h-5 md:w-6 md:h-6 group-hover:scale-110 transition-transform" />
+                  <Instagram className="w-5 h-5 md:w-6 md:h-6 group-hover:scale-110 transition-transform" />
                 </button>
               </motion.div>
 

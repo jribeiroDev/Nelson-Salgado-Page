@@ -123,25 +123,25 @@ const PricingSection = () => (
           </div>
           <ul className="space-y-3 mb-8">
             <li className="flex items-center">
-              <CheckCircle className="w-5 h-5 mr-3 text-blue" />
+              <CheckCircle className="w-5 h-5 mr-3 text-green-400" />
               <span className="text-blue font-medium">
                 Acesso a todos os 30+ programas
               </span>
             </li>
             <li className="flex items-center">
-              <CheckCircle className="w-5 h-5 mr-3 text-gray-400" />
+              <CheckCircle className="w-5 h-5 mr-3 text-green-400" />
               <span className="text-blue font-medium">Meal guides personalizados</span>
             </li>
             <li className="flex items-center">
-              <CheckCircle className="w-5 h-5 mr-3 text-gray-400" />
+              <CheckCircle className="w-5 h-5 mr-3 text-green-400" />
               <span className="text-blue font-medium">1.500+ receitas saudáveis</span>
             </li>
             <li className="flex items-center">
-              <CheckCircle className="w-5 h-5 mr-3 text-gray-400" />
+              <CheckCircle className="w-5 h-5 mr-3 text-green-400" />
               <span className="text-blue font-medium">Progress tracking completo</span>
             </li>
             <li className="flex items-center">
-              <CheckCircle className="w-5 h-5 mr-3 text-gray-400" />
+              <CheckCircle className="w-5 h-5 mr-3 text-green-400" />
               <span className="text-blue font-medium">Suporte da comunidade</span>
             </li>
           </ul>

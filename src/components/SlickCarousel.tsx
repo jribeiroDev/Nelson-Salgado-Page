@@ -342,7 +342,7 @@ const SlickCarousel = () => {
                 key={index}
                 onClick={() => setSelectedIndex(index)}
                 className={`w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full transition-all duration-300 ${
-                  index === selectedIndex ? "bg-beige scale-150" : "bg-darkblue"
+                  index === selectedIndex ? "bg-blue scale-150" : "bg-gray-300"
                 }`}
                 aria-label={`Ir para programa ${index + 1}`}
               />
@@ -500,7 +500,7 @@ const SlickCarousel = () => {
                       .map((feature, index) => (
                         <motion.div
                           key={index}
-                          className="group relative bg-white backdrop-blur-sm rounded-xl p-3 sm:p-4 border border-white/20 hover:border-beige/40 transition-all duration-300 hover:bg-white/15"
+                          className="group relative bg-beige backdrop-blur-sm rounded-xl p-3 sm:p-4 border border-white/20 hover:border-beige/40 transition-all duration-300 hover:bg-white/15"
                           variants={{
                             hidden: { opacity: 0, y: 20, scale: 0.9 },
                             visible: { opacity: 1, y: 0, scale: 1 },
