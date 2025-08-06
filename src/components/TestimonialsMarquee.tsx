@@ -228,7 +228,7 @@ const TestimonialCard = ({
 
 const TestimonialsMarquee = () => {
   return (
-    <section className="py-20 bg-gradient-to-b from-beige to-white overflow-hidden">
+    <section className="py-20 bg-beige overflow-hidden">
       <div className="max-w-7xl mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4 text-blue">
@@ -269,8 +269,7 @@ const TestimonialsMarquee = () => {
             </motion.div>
           </div>
 
-          {/* Segunda fileira - movimento para a direita */}
-          <div className="relative">
+          {/* <div className="relative">
             <motion.div
               className="flex gap-6"
               animate={{
@@ -285,7 +284,6 @@ const TestimonialsMarquee = () => {
                 },
               }}
             >
-              {/* Duplicamos os testimonials para efeito infinito */}
               {[...secondRowTestimonials, ...secondRowTestimonials].map(
                 (testimonial, index) => (
                   <TestimonialCard
@@ -296,7 +294,7 @@ const TestimonialsMarquee = () => {
                 )
               )}
             </motion.div>
-          </div>
+          </div> */}
         </div>
 
         {/* Call to action */}

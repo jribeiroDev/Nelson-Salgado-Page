@@ -39,7 +39,7 @@ const Index = () => {
       {/* <ProgramCatalogSection /> */}
       {/* <AppBenefitsSection /> */}
       <TestimonialsMarquee />
-      <TestimonialsSection />
+      {/* <TestimonialsSection /> */}
       <FaqSection />
       {/* <NewsletterSection /> */}
       {/* <FormSection /> */}
