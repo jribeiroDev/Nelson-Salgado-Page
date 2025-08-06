@@ -5,6 +5,7 @@ import FeaturedCarouselSection from "./sections/FeaturedCarouselSection";
 import ProgramCatalogSection from "./sections/ProgramCatalogSection";
 import AppBenefitsSection from "./sections/AppBenefitsSection";
 import TestimonialsSection from "./sections/TestimonialsSection";
+import TestimonialsMarquee from "@/components/TestimonialsMarquee";
 import PricingSection from "./sections/PricingSection";
 import FaqSection from "./sections/FaqSection";
 import NewsletterSection from "./sections/NewsletterSection";
@@ -37,6 +38,7 @@ const Index = () => {
       <SlickCarousel />
       {/* <ProgramCatalogSection /> */}
       {/* <AppBenefitsSection /> */}
+      <TestimonialsMarquee />
       <TestimonialsSection />
       <FaqSection />
       {/* <NewsletterSection /> */}
