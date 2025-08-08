@@ -39,14 +39,18 @@ const SiteAlert = ({
       ${typeStyles[type]}
     `}
     >
-      <div className="container mx-auto px-4 py-3">
-        <div className="flex items-center justify-between gap-4">
-          <div className="flex items-center gap-3 flex-1">
-            <Info className="h-5 w-5 flex-shrink-0" />
+      <div className="container mx-auto px-3 sm:px-4 lg:px-6 py-2 sm:py-3">
+        <div className="flex items-center justify-between gap-3 sm:gap-4">
+          <div className="flex items-center gap-2 sm:gap-3 flex-1 min-w-0">
+            <Info className="h-4 w-4 sm:h-5 sm:w-5 flex-shrink-0" />
             <div className="flex-1 min-w-0">
               <div className="flex flex-col sm:flex-row sm:items-center sm:gap-2">
-                <h3 className="font-semibold text-sm">{title}</h3>
-                <p className="text-sm opacity-90">{message}</p>
+                <h3 className="font-semibold text-xs sm:text-sm lg:text-base">
+                  {title}
+                </h3>
+                <p className="text-xs sm:text-sm opacity-90 truncate sm:truncate-none">
+                  {message}
+                </p>
               </div>
             </div>
           </div>
@@ -56,9 +60,9 @@ const SiteAlert = ({
               variant="ghost"
               size="sm"
               onClick={handleDismiss}
-              className="h-8 w-8 p-0 hover:bg-background/20"
+              className="h-7 w-7 sm:h-8 sm:w-8 p-0 hover:bg-background/20 flex-shrink-0"
             >
-              <X className="h-4 w-4" />
+              <X className="h-3 w-3 sm:h-4 sm:w-4" />
               <span className="sr-only">Fechar aviso</span>
             </Button>
           )}

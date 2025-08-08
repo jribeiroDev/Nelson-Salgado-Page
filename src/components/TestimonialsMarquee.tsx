@@ -199,28 +199,33 @@ const TestimonialCard = ({
   testimonial: any;
   index: number;
 }) => (
-  <Card className="min-w-[320px] h-[200px] p-6 bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/20 transition-all duration-300 flex flex-col justify-between">
-    <div className="flex items-start gap-4">
-      <Avatar className="w-12 h-12 border-2 border-white/30">
+  <Card className="min-w-[280px] sm:min-w-[320px] h-[180px] sm:h-[200px] p-4 sm:p-6 bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/20 transition-all duration-300 flex flex-col justify-between">
+    <div className="flex items-start gap-3 sm:gap-4">
+      <Avatar className="w-10 h-10 sm:w-12 sm:h-12 border-2 border-white/30 flex-shrink-0">
         <AvatarImage src={testimonial.avatar} alt={testimonial.name} />
-        <AvatarFallback className="bg-blue/20 text-blue font-semibold">
+        <AvatarFallback className="bg-blue/20 text-blue font-semibold text-xs sm:text-sm">
           {testimonial.name
             .split(" ")
             .map((n: string) => n[0])
             .join("")}
         </AvatarFallback>
       </Avatar>
-      <div className="flex-1">
-        <h4 className="font-semibold text-blue text-sm">{testimonial.name}</h4>
-        <p className="text-blue/70 text-xs">{testimonial.company}</p>
-        <div className="flex items-center gap-1 mt-1">
+      <div className="flex-1 min-w-0">
+        <h4 className="font-semibold text-blue text-xs sm:text-sm truncate">
+          {testimonial.name}
+        </h4>
+        <p className="text-blue/70 text-xs truncate">{testimonial.company}</p>
+        <div className="flex items-center gap-0.5 sm:gap-1 mt-1">
           {[...Array(testimonial.rating)].map((_, i) => (
-            <Star key={i} className="w-3 h-3 fill-gold text-gold" />
+            <Star
+              key={i}
+              className="w-2.5 h-2.5 sm:w-3 sm:h-3 fill-gold text-gold"
+            />
           ))}
         </div>
       </div>
     </div>
-    <p className="text-blue/80 text-sm leading-relaxed line-clamp-3 mt-3">
+    <p className="text-blue/80 text-xs sm:text-sm leading-relaxed line-clamp-3 mt-2 sm:mt-3">
       "{testimonial.quote}"
     </p>
   </Card>
@@ -228,22 +233,22 @@ const TestimonialCard = ({
 
 const TestimonialsMarquee = () => {
   return (
-    <section className="py-20 bg-beige overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-blue">
+    <section className="py-12 sm:py-16 lg:py-20 bg-beige overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-8 sm:mb-12 lg:mb-16">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold mb-4 sm:mb-6 text-blue leading-tight">
             O que dizem os nossos clientes
           </h2>
-          <p className="text-xl text-blue/80 max-w-2xl mx-auto">
+          <p className="text-lg sm:text-xl lg:text-2xl text-blue/80 max-w-3xl mx-auto">
             Mais de 1000+ pessoas já transformaram as suas vidas connosco
           </p>
         </div>
 
-        <div className="space-y-8">
+        <div className="space-y-6 sm:space-y-8">
           {/* Primeira fileira - movimento para a esquerda */}
           <div className="relative">
             <motion.div
-              className="flex gap-6"
+              className="flex gap-4 sm:gap-6"
               animate={{
                 x: [0, -1920], // Move a largura total dos cards
               }}
@@ -298,18 +303,18 @@ const TestimonialsMarquee = () => {
         </div>
 
         {/* Call to action */}
-        <div className="text-center mt-16">
+        <div className="text-center mt-12 sm:mt-16">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="inline-flex items-center gap-2 bg-blue/10 px-6 py-3 rounded-full border border-blue/20"
+            className="inline-flex items-center gap-2 sm:gap-3 bg-blue/10 px-4 sm:px-6 py-2.5 sm:py-3 rounded-full border border-blue/20"
           >
-            <Star className="w-5 h-5 fill-gold text-gold" />
-            <span className="text-blue font-medium">
+            <Star className="w-4 h-4 sm:w-5 sm:h-5 fill-gold text-gold flex-shrink-0" />
+            <span className="text-blue font-medium text-sm sm:text-base">
               4.9/5 estrelas • Mais de 1000+ reviews
             </span>
-            <Star className="w-5 h-5 fill-gold text-gold" />
+            <Star className="w-4 h-4 sm:w-5 sm:h-5 fill-gold text-gold flex-shrink-0" />
           </motion.div>
         </div>
       </div>

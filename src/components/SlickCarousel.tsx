@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useMemo } from "react";
 import {
   motion,
   useMotionValue,
@@ -10,7 +10,14 @@ import {
 } from "framer-motion";
 import { programs } from "@/pages/sections/programsData";
 import { Button } from "./ui/button";
-import { Star } from "lucide-react";
+import { Star, Filter, ChevronDown } from "lucide-react";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "./ui/select";
 
 const VISIBLE_ITEMS_DESKTOP = 3;
 const VISIBLE_ITEMS_TABLET = 2;
@@ -150,10 +157,70 @@ const SlickCarousel = () => {
   const [selectedIndex, setSelectedIndex] = useState(4); // Índice da card selecionada (primeiro item por padrão)
   const [visibleItems, setVisibleItems] = useState(VISIBLE_ITEMS_DESKTOP);
   const [isDragging, setIsDragging] = useState(false);
+  const [filters, setFilters] = useState({
+    gender: "Todos",
+    level: "Todos",
+    duration: "Todos",
+  });
   const dragStartX = useRef(0);
   const dragThreshold = 250; // Limiar para considerar como um drag válido para navegação
 
   const containerRef = useRef<HTMLDivElement>(null);
+
+  // Extrair valores únicos dinamicamente dos programas
+  const uniqueGenders = useMemo(() => {
+    const genders = new Set<string>();
+    programs.forEach((program) => {
+      // Separar "Homem/Mulher" em valores individuais
+      if (program.gender.includes("/")) {
+        program.gender.split("/").forEach((g) => genders.add(g.trim()));
+      } else {
+        genders.add(program.gender);
+      }
+    });
+    return ["Todos", ...Array.from(genders).sort()];
+  }, []);
+
+  const uniqueLevels = useMemo(() => {
+    const levels = new Set(programs.map((p) => p.level));
+    return ["Todos", ...Array.from(levels).sort()];
+  }, []);
+
+  const uniqueDurations = useMemo(() => {
+    const durations = new Set(programs.map((p) => p.duration));
+    return [
+      "Todos",
+      ...Array.from(durations).sort((a, b) => {
+        // Ordenar por número de semanas
+        const numA = parseInt(a.match(/\d+/)?.[0] || "0");
+        const numB = parseInt(b.match(/\d+/)?.[0] || "0");
+        return numA - numB;
+      }),
+    ];
+  }, []);
+
+  // Filtrar programas baseado nos filtros ativos
+  const filteredPrograms = useMemo(() => {
+    return programs.filter((program) => {
+      const genderMatch =
+        filters.gender === "Todos" ||
+        program.gender.includes(filters.gender) ||
+        (filters.gender === "Ambos" && program.gender === "Homem/Mulher");
+
+      const levelMatch =
+        filters.level === "Todos" || program.level === filters.level;
+
+      const durationMatch =
+        filters.duration === "Todos" || program.duration === filters.duration;
+
+      return genderMatch && levelMatch && durationMatch;
+    });
+  }, [filters]);
+
+  // Resetar o índice selecionado quando os filtros mudarem
+  useEffect(() => {
+    setSelectedIndex(0);
+  }, [filters]);
 
   useEffect(() => {
     const handleResize = () => {
@@ -201,16 +268,21 @@ const SlickCarousel = () => {
     const centerPosition = Math.floor(visibleItems / 2);
     // Certificamos que o offset é sempre um número positivo ou zero para o primeiro item
     const offset = selectedIndex - centerPosition;
-    return Math.max(0, Math.min(offset, programs.length - visibleItems));
+    return Math.max(
+      0,
+      Math.min(offset, filteredPrograms.length - visibleItems)
+    );
   };
 
   // Função para navegar para a próxima/anterior card
   const navigateToCard = (direction: "next" | "prev") => {
     setSelectedIndex((prevIndex) => {
       if (direction === "next") {
-        return (prevIndex + 1) % programs.length;
+        return (prevIndex + 1) % filteredPrograms.length;
       } else {
-        return (prevIndex - 1 + programs.length) % programs.length;
+        return (
+          (prevIndex - 1 + filteredPrograms.length) % filteredPrograms.length
+        );
       }
     });
   };
@@ -257,10 +329,160 @@ const SlickCarousel = () => {
   return (
     <div className="relative w-full overflow-hidden bg-blue2/10 flex flex-col justify-center items-center py-4 sm:py-6 md:py-12 px-3 sm:px-4">
       <div className="w-full max-w-6xl mx-auto">
-        <div className="text-center mb-8 md:mb-24">
-          <h2 className="text-3xl md:text-5xl font-bold mb-4  text-blue">
+        <div className="text-center mb-8 md:mb-12">
+          <h2 className="text-3xl md:text-5xl font-bold mb-12 text-blue">
             Descubra os Nossos Programas
           </h2>
+
+          {/* Filtros */}
+          <div className="flex flex-col sm:flex-row flex-wrap justify-center items-center gap-4 sm:gap-6 mb-8 px-4">
+            {/* Filtro Gender */}
+            <motion.div
+              className="flex flex-col items-center gap-3"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1 }}
+            >
+              <label className="text-sm font-semibold text-blue bg-blue/10 px-3 py-1 rounded-full border border-blue/20">
+                Género
+              </label>
+              <Select
+                value={filters.gender}
+                onValueChange={(value) =>
+                  setFilters((prev) => ({ ...prev, gender: value }))
+                }
+              >
+                <SelectTrigger className="w-[150px] h-11 bg-gradient-to-r from-white to-blue/5 backdrop-blur-sm border-2 border-blue/20 hover:border-blue/50 focus:border-blue focus:ring-2 focus:ring-blue/20 text-sm font-medium rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 group">
+                  <SelectValue
+                    placeholder="Selecionar"
+                    className="text-blue/80"
+                  />
+                  {/* <ChevronDown className="h-4 w-4 ml-2 text-blue/60 group-hover:text-blue transition-colors duration-200" /> */}
+                </SelectTrigger>
+                <SelectContent className="rounded-xl border-2 border-blue/10 shadow-2xl bg-white/95 backdrop-blur-md">
+                  {uniqueGenders.map((gender) => (
+                    <SelectItem
+                      key={gender}
+                      value={gender}
+                      className="rounded-lg hover:bg-blue/10 focus:bg-blue/15 transition-all duration-200 font-medium text-blue/90 hover:text-blue"
+                    >
+                      {gender === "Homem/Mulher" ? "Ambos" : gender}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </motion.div>
+
+            {/* Filtro Level */}
+            <motion.div
+              className="flex flex-col items-center gap-3"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 }}
+            >
+              <label className="text-sm font-semibold text-emerald-600 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200">
+                Nível
+              </label>
+              <Select
+                value={filters.level}
+                onValueChange={(value) =>
+                  setFilters((prev) => ({ ...prev, level: value }))
+                }
+              >
+                <SelectTrigger className="w-[170px] h-11 bg-gradient-to-r from-white to-emerald-50 backdrop-blur-sm border-2 border-emerald-200 hover:border-emerald-400 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 text-sm font-medium rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 group">
+                  <SelectValue
+                    placeholder="Selecionar"
+                    className="text-emerald-700"
+                  />
+                  {/* <ChevronDown className="h-4 w-4 ml-2 text-emerald-500 group-hover:text-emerald-600 transition-colors duration-200" /> */}
+                </SelectTrigger>
+                <SelectContent className="rounded-xl border-2 border-emerald-100 shadow-2xl bg-white/95 backdrop-blur-md">
+                  {uniqueLevels.map((level) => (
+                    <SelectItem
+                      key={level}
+                      value={level}
+                      className="rounded-lg hover:bg-emerald-50 focus:bg-emerald-100 transition-all duration-200 font-medium text-emerald-700 hover:text-emerald-800"
+                    >
+                      {level === "Todos os níveis" ? "Geral" : level}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </motion.div>
+
+            {/* Filtro Duration */}
+            <motion.div
+              className="flex flex-col items-center gap-3"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3 }}
+            >
+              <label className="text-sm font-semibold text-amber-600 bg-amber-50 px-3 py-1 rounded-full border border-amber-200">
+                Duração
+              </label>
+              <Select
+                value={filters.duration}
+                onValueChange={(value) =>
+                  setFilters((prev) => ({ ...prev, duration: value }))
+                }
+              >
+                <SelectTrigger className="w-[150px] h-11 bg-gradient-to-r from-white to-amber-50 backdrop-blur-sm border-2 border-amber-200 hover:border-amber-400 focus:border-amber-500 focus:ring-2 focus:ring-amber-200 text-sm font-medium rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 group">
+                  <SelectValue
+                    placeholder="Selecionar"
+                    className="text-amber-700"
+                  />
+                  {/* <ChevronDown className="h-4 w-4 ml-2 text-amber-500 group-hover:text-amber-600 transition-colors duration-200" /> */}
+                </SelectTrigger>
+                <SelectContent className="rounded-xl border-2 border-amber-100 shadow-2xl bg-white/95 backdrop-blur-md">
+                  {uniqueDurations.map((duration) => (
+                    <SelectItem
+                      key={duration}
+                      value={duration}
+                      className="rounded-lg hover:bg-amber-50 focus:bg-amber-100 transition-all duration-200 font-medium text-amber-700 hover:text-amber-800"
+                    >
+                      {duration}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </motion.div>
+
+            {/* Botão Reset */}
+            <motion.button
+              onClick={() =>
+                setFilters({
+                  gender: "Todos",
+                  level: "Todos",
+                  duration: "Todos",
+                })
+              }
+              className="flex items-center gap-3 px-6 py-3 text-sm font-semibold text-gray-700 hover:text-white bg-gradient-to-r from-gray-100 to-gray-50 hover:from-blue hover:to-blue/90 rounded-xl transition-all duration-400 border-2 border-gray-200 hover:border-blue shadow-lg hover:shadow-xl mt-2 sm:mt-10 backdrop-blur-sm group"
+              whileHover={{ scale: 1.05, y: -2 }}
+              whileTap={{ scale: 0.96 }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4 }}
+            >
+              <Filter
+                size={18}
+                className="transition-transform duration-300 group-hover:rotate-12"
+              />
+              <span>Limpar Filtros</span>
+            </motion.button>
+          </div>
+
+          {/* Contador de resultados */}
+          <motion.p
+            className="text-blue text-sm"
+            key={filteredPrograms.length}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.3 }}
+          >
+            {filteredPrograms.length} programa
+            {filteredPrograms.length !== 1 ? "s" : ""} encontrado
+            {filteredPrograms.length !== 1 ? "s" : ""}
+          </motion.p>
         </div>
         <div
           className="relative h-[180px] sm:h-[240px] md:h-[280px]  "
@@ -271,7 +493,7 @@ const SlickCarousel = () => {
               key="carousel-container"
               className="absolute flex h-full"
               style={{
-                width: `${programs.length * (100 / visibleItems)}%`,
+                width: `${filteredPrograms.length * (100 / visibleItems)}%`,
                 left: `-${currentOffset * cardWidthPercentage}%`,
               }}
               animate={{
@@ -291,7 +513,7 @@ const SlickCarousel = () => {
               onDrag={handleDrag}
               onDragEnd={handleDragEnd}
             >
-              {programs.map((program, index) => {
+              {filteredPrograms.map((program, index) => {
                 const isSelected = index === selectedIndex;
 
                 return (
@@ -337,7 +559,7 @@ const SlickCarousel = () => {
 
           {/* Indicadores */}
           <div className="flex space-x-1 sm:space-x-1.5">
-            {programs.map((_, index) => (
+            {filteredPrograms.map((_, index) => (
               <button
                 key={index}
                 onClick={() => setSelectedIndex(index)}
@@ -371,10 +593,10 @@ const SlickCarousel = () => {
         </div>
 
         {/* Detalhes do programa selecionado - estilo responsivo */}
-        {programs[selectedIndex] && (
+        {filteredPrograms[selectedIndex] && (
           <AnimatePresence mode="wait">
             <motion.div
-              key={programs[selectedIndex].id}
+              key={filteredPrograms[selectedIndex].id}
               className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-center mt-8 sm:mt-10 lg:mt-12"
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
@@ -392,13 +614,13 @@ const SlickCarousel = () => {
               >
                 <div className="absolute inset-0 bg-gradient-to-br from-black/10 to-transparent z-10 rounded-3xl"></div>
                 <img
-                  src={programs[selectedIndex].image}
-                  alt={programs[selectedIndex].name}
+                  src={filteredPrograms[selectedIndex].image}
+                  alt={filteredPrograms[selectedIndex].name}
                   className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110"
                 />
                 <div
                   className={`absolute inset-0 bg-gradient-to-t ${getColorScheme(
-                    programs[selectedIndex].id
+                    filteredPrograms[selectedIndex].id
                   )} opacity-25 group-hover:opacity-35 transition-all duration-500`}
                 />
                 <div className="absolute bottom-0 left-0 w-full h-2/3 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
@@ -410,7 +632,7 @@ const SlickCarousel = () => {
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ delay: 0.8, type: "spring", stiffness: 500 }}
                 >
-                  {programs[selectedIndex].popular && (
+                  {filteredPrograms[selectedIndex].popular && (
                     <div className="absolute top-2 right-2 z-10 bg-gold backdrop-blur-sm rounded-full px-2 py-1 flex items-center gap-1">
                       <Star size={14} color="white" fill="white" />
                       <span className="text-white text-xs font-semibold">
@@ -444,9 +666,9 @@ const SlickCarousel = () => {
                         transition={{ delay: 0.5 }}
                       >
                         <p className="text-blue font-semibold text-sm sm:text-base">
-                          {programs[selectedIndex].gender} •{" "}
-                          {programs[selectedIndex].level} •{" "}
-                          {programs[selectedIndex].duration}
+                          {filteredPrograms[selectedIndex].gender} •{" "}
+                          {filteredPrograms[selectedIndex].level} •{" "}
+                          {filteredPrograms[selectedIndex].duration}
                         </p>
                       </motion.div>
                     </div>
@@ -460,7 +682,7 @@ const SlickCarousel = () => {
                     transition={{ delay: 0.5 }}
                   >
                     <span className="bg-clip-text text-transparent bg-blue">
-                      {programs[selectedIndex].name}
+                      {filteredPrograms[selectedIndex].name}
                     </span>
                   </motion.h3>
 
@@ -471,7 +693,7 @@ const SlickCarousel = () => {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.6 }}
                   >
-                    {programs[selectedIndex].description}
+                    {filteredPrograms[selectedIndex].description}
                   </motion.p>
                 </div>
 
@@ -495,7 +717,7 @@ const SlickCarousel = () => {
                       },
                     }}
                   >
-                    {programs[selectedIndex].features
+                    {filteredPrograms[selectedIndex].features
                       .slice(0, 4)
                       .map((feature, index) => (
                         <motion.div
@@ -553,7 +775,7 @@ const SlickCarousel = () => {
                       className={`
                         relative h-12 sm:h-14 lg:h-16 px-8 sm:px-10 lg:px-12  text-base sm:text-lg lg:text-xl font-bold rounded-2xl
                         bg-gradient-to-r ${getColorScheme(
-                          programs[selectedIndex].id
+                          filteredPrograms[selectedIndex].id
                         )}
                         text-white shadow-xl hover:shadow-2xl
                         transition-all duration-500 w-full sm:w-auto
@@ -608,7 +830,7 @@ const SlickCarousel = () => {
                     {/* External glow */}
                     <div
                       className={`absolute inset-0 w-64 rounded-2xl bg-gradient-to-r ${getColorScheme(
-                        programs[selectedIndex].id
+                        filteredPrograms[selectedIndex].id
                       )} opacity-20 blur-xl scale-105 group-hover:opacity-30 transition-opacity duration-500`}
                     ></div>
                   </motion.div>
