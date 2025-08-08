@@ -18,9 +18,6 @@ const Footer = () => {
             </span>
           </p>
         </div>
-
-        {/* Linha divisória opcional */}
-        <div className="w-16 sm:w-24 lg:w-32 h-0.5 bg-gold mx-auto rounded-full opacity-60"></div>
       </div>
     </footer>
   );
