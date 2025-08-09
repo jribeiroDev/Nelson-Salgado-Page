@@ -216,8 +216,7 @@ const SlickCarousel = () => {
       return genderMatch && levelMatch && durationMatch;
     });
   }, [filters]);
-
-  // Resetar o índice selecionado quando os filtros mudarem
+  // Resetar o índice selecionado quando os filtros mudam
   useEffect(() => {
     setSelectedIndex(0);
   }, [filters]);
@@ -330,7 +329,7 @@ const SlickCarousel = () => {
     <div className="relative w-full overflow-hidden bg-blue2/10 flex flex-col justify-center items-center py-4 sm:py-6 md:py-12 px-3 sm:px-4">
       <div className="w-full max-w-6xl mx-auto">
         <div className="text-center mb-8 md:mb-12">
-          <h2 className="text-3xl md:text-5xl font-bold mb-12 text-blue">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold mb-8 sm:mb-12 text-blue leading-tight">
             Descubra os Nossos Programas
           </h2>
 
@@ -473,7 +472,7 @@ const SlickCarousel = () => {
 
           {/* Contador de resultados */}
           <motion.p
-            className="text-blue text-sm"
+            className="text-blue text-sm mb-12"
             key={filteredPrograms.length}
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
@@ -603,9 +602,9 @@ const SlickCarousel = () => {
               exit={{ opacity: 0, y: -30 }}
               transition={{ duration: 0.6, ease: "easeOut" }}
             >
-              {/* Program Image */}
+              {/* Program Image - Hidden on mobile */}
               <motion.div
-                className="relative h-48 sm:h-56 lg:h-72 xl:h-80 rounded-3xl overflow-hidden shadow-2xl order-2 lg:order-1 group"
+                className="relative h-48 sm:h-56 lg:h-72 xl:h-80 rounded-3xl overflow-hidden shadow-2xl order-2 lg:order-1 group hidden sm:block"
                 initial={{ opacity: 0, scale: 0.8, rotateY: -15 }}
                 animate={{ opacity: 1, scale: 1, rotateY: 0 }}
                 transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
@@ -645,7 +644,7 @@ const SlickCarousel = () => {
 
               {/* Program Details */}
               <motion.div
-                className="space-y-4 sm:space-y-5 lg:space-y-6 order-1 lg:order-2 px-2 sm:px-0"
+                className="space-y-4 sm:space-y-5 lg:space-y-6 order-1 lg:order-2 px-2 sm:px-0 w-full"
                 initial={{ opacity: 0, x: -50 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
@@ -773,7 +772,7 @@ const SlickCarousel = () => {
                   >
                     <Button
                       className={`
-                        relative h-12 sm:h-14 lg:h-16 px-8 sm:px-10 lg:px-12  text-base sm:text-lg lg:text-xl font-bold rounded-2xl
+                        relative h-12 sm:h-14 lg:h-16 px-8 sm:px-10 lg:px-12 mb-12 text-base sm:text-lg lg:text-xl font-bold rounded-2xl
                         bg-gradient-to-r ${getColorScheme(
                           filteredPrograms[selectedIndex].id
                         )}

@@ -45,7 +45,7 @@ const InitialSection = () => {
           {/* CTA Button */}
           <Button
             onClick={handleScrollToPrograms}
-            className="animate-bounce hover:animate-none text-gold font-bold text-sm sm:text-lg px-6 sm:px-8 py-3 sm:py-4 mt-2 rounded-full shadow-2xl hover:shadow-gold/20 transition-all duration-300 hover:scale-105"
+            className="animate-bounce hover:animate-none text-gold font-bold text-sm sm:text-lg px-6 sm:px-8 py-3 sm:py-4 mt-2 rounded-full shadow-2xl hover:shadow-gold/20 transition-all hover:scale-105"
           >
             PARTICIPE AGORA
           </Button>

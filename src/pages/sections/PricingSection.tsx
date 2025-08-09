@@ -31,12 +31,16 @@ const PricingSection = () => (
               €79.99
               <span className="text-base sm:text-lg font-normal">/mês</span>
             </div>
+
+            <h3 className=" text-blue text-[12px] mt-4">
+              Ideal para testar o método e sentir os primeiros resultados.
+            </h3>
           </div>
           <ul className="space-y-3 sm:space-y-4 mb-6 sm:mb-8">
             <li className="flex items-start">
               <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 mr-3 text-green-400 flex-shrink-0 mt-0.5" />
               <span className="text-blue font-medium text-sm sm:text-base">
-                Acesso a todos os 30+ programas
+                Acesso imediato a +30 programas
               </span>
             </li>
             <li className="flex items-start">
@@ -48,7 +52,7 @@ const PricingSection = () => (
             <li className="flex items-start">
               <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 mr-3 text-green-400 flex-shrink-0 mt-0.5" />
               <span className="text-blue font-medium text-sm sm:text-base">
-                1.500+ receitas saudáveis
+                +1.500 receitas saudáveis
               </span>
             </li>
             <li className="flex items-start">
@@ -83,37 +87,40 @@ const PricingSection = () => (
             </h3>
             <div className="text-4xl sm:text-5xl lg:text-5xl font-bold mb-2 text-beige">
               €25<span className="text-lg sm:text-xl font-normal">/mês</span>
+              <h3 className=" text-beige font-normal text-[12px] mt-4">
+                Para quem está pronto para mudar de vida de forma definitiva
+              </h3>
             </div>
           </div>
           <ul className="space-y-3 sm:space-y-4 mb-6 sm:mb-8 relative z-10">
             <li className="flex items-start">
               <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 mr-3 text-green-400 flex-shrink-0 mt-0.5" />
               <span className="text-beige font-medium text-sm sm:text-base">
-                Acesso a todos os 30+ programas
+                Tudo incluído no plano mensal
               </span>
             </li>
             <li className="flex items-start">
               <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 mr-3 text-green-400 flex-shrink-0 mt-0.5" />
               <span className="text-beige font-medium text-sm sm:text-base">
-                Meal guides personalizados
+                Acesso vitalício a cada programa finalizado
               </span>
             </li>
             <li className="flex items-start">
               <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 mr-3 text-green-400 flex-shrink-0 mt-0.5" />
               <span className="text-beige font-medium text-sm sm:text-base">
-                1.500+ receitas saudáveis
+                Check-ins trimestrais de evolução
               </span>
             </li>
             <li className="flex items-start">
               <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 mr-3 text-green-400 flex-shrink-0 mt-0.5" />
               <span className="text-beige font-medium text-sm sm:text-base">
-                Progress tracking completo
+                Oferta exclusiva para membros anuais
               </span>
             </li>
             <li className="flex items-start">
               <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 mr-3 text-green-400 flex-shrink-0 mt-0.5" />
               <span className="text-beige font-medium text-sm sm:text-base">
-                Suporte da comunidade
+                Bónus: Ebook "Corpo de Alta Performance" gratuito
               </span>
             </li>
           </ul>
@@ -131,28 +138,31 @@ const PricingSection = () => (
             </h3>
             <div className="text-3xl sm:text-4xl lg:text-4xl font-bold mb-2 text-blue">
               €33<span className="text-base sm:text-lg font-normal">/mês</span>
+              <h3 className=" text-blue font-normal text-[12px] mt-4">
+                Compromisso sério com resultados visíveis e consistentes.
+              </h3>
             </div>
           </div>
           <ul className="space-y-3 sm:space-y-4 mb-6 sm:mb-8 relative z-10">
             <li className="flex items-start">
               <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 mr-3 text-green-400 flex-shrink-0 mt-0.5" />
               <span className="text-blue font-medium text-sm sm:text-base">
-                Acesso a todos os 30+ programas
+                Tudo incluído no plano mensal
               </span>
             </li>
             <li className="flex items-start">
               <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 mr-3 text-green-400 flex-shrink-0 mt-0.5" />
               <span className="text-blue font-medium text-sm sm:text-base">
-                Meal guides personalizados
+                Reajustes contínuos ao plano conforme progresso 
               </span>
             </li>
             <li className="flex items-start">
               <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 mr-3 text-green-400 flex-shrink-0 mt-0.5" />
               <span className="text-blue font-medium text-sm sm:text-base">
-                1.500+ receitas saudáveis
+                Acesso a desafios exclusivos da comunidade
               </span>
             </li>
-            <li className="flex items-start">
+            {/* <li className="flex items-start">
               <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 mr-3 text-green-400 flex-shrink-0 mt-0.5" />
               <span className="text-blue font-medium text-sm sm:text-base">
                 Progress tracking completo
@@ -163,7 +173,7 @@ const PricingSection = () => (
               <span className="text-blue font-medium text-sm sm:text-base">
                 Suporte da comunidade
               </span>
-            </li>
+            </li> */}
           </ul>
           <Button className="mt-4 sm:mt-6 lg:mt-8 w-full bg-blue text-beige hover:bg-blue hover:text-white text-sm sm:text-lg font-bold py-3 sm:py-4 transform transition-all duration-300 hover:scale-105">
             Junta-te agora
