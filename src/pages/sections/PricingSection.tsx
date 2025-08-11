@@ -15,7 +15,7 @@ const PricingSection = () => (
           Acompanhamentos Premium
         </h2>
         <p className="text-lg sm:text-xl lg:text-2xl text-blue max-w-3xl mx-auto">
-          Planos de Transformação — Escolhe o teu compromisso!
+          Escolhe o teu compromisso!
         </p>
       </div>
 
