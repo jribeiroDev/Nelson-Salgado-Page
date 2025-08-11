@@ -144,7 +144,7 @@ const Card = ({
           <h3 className="text-base sm:text-lg md:text-xl font-bold mb-1 leading-tight">
             {program.name}
           </h3>
-          <p className="text-xs sm:text-sm opacity-90">
+          <p className="text-xs sm:text-sm ">
             {program.gender} • {program.level} • {program.duration}
           </p>
         </div>
@@ -337,26 +337,27 @@ const SlickCarousel = () => {
           <div className="flex flex-col sm:flex-row flex-wrap justify-center items-center gap-4 sm:gap-6 mb-8 px-4">
             {/* Filtro Gender */}
             <motion.div
-              className="flex flex-col items-center gap-3"
+              className="flex flex-col items-center"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
             >
-              <label className="text-sm font-semibold text-blue bg-blue/10 px-3 py-1 rounded-full border border-blue/20">
-                Género
-              </label>
               <Select
                 value={filters.gender}
                 onValueChange={(value) =>
                   setFilters((prev) => ({ ...prev, gender: value }))
                 }
               >
-                <SelectTrigger className="w-[150px] h-11 bg-gradient-to-r from-white to-blue/5 backdrop-blur-sm border-2 border-blue/20 hover:border-blue/50 focus:border-blue focus:ring-2 focus:ring-blue/20 text-sm font-medium rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 group">
-                  <SelectValue
-                    placeholder="Selecionar"
-                    className="text-blue/80"
-                  />
-                  {/* <ChevronDown className="h-4 w-4 ml-2 text-blue/60 group-hover:text-blue transition-colors duration-200" /> */}
+                <SelectTrigger className="w-[170px] h-18 bg-gradient-to-r from-white to-blue/5 backdrop-blur-sm border-2 border-blue/90 hover:border-blue/50 focus:border-blue focus:ring-2 focus:ring-blue/20 text-sm font-medium rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 group">
+                  <div className="flex flex-col items-start w-full">
+                    <span className="text-xs text-blue font-medium mb-0.5">
+                      Género
+                    </span>
+                    <SelectValue
+                      placeholder="Selecionar"
+                      className="text-sm text-blue/80"
+                    />
+                  </div>
                 </SelectTrigger>
                 <SelectContent className="rounded-xl border-2 border-blue/10 shadow-2xl bg-white/95 backdrop-blur-md">
                   {uniqueGenders.map((gender) => (
@@ -374,26 +375,27 @@ const SlickCarousel = () => {
 
             {/* Filtro Level */}
             <motion.div
-              className="flex flex-col items-center gap-3"
+              className="flex flex-col items-center"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
             >
-              <label className="text-sm font-semibold text-emerald-600 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200">
-                Nível
-              </label>
               <Select
                 value={filters.level}
                 onValueChange={(value) =>
                   setFilters((prev) => ({ ...prev, level: value }))
                 }
               >
-                <SelectTrigger className="w-[170px] h-11 bg-gradient-to-r from-white to-emerald-50 backdrop-blur-sm border-2 border-emerald-200 hover:border-emerald-400 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 text-sm font-medium rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 group">
-                  <SelectValue
-                    placeholder="Selecionar"
-                    className="text-emerald-700"
-                  />
-                  {/* <ChevronDown className="h-4 w-4 ml-2 text-emerald-500 group-hover:text-emerald-600 transition-colors duration-200" /> */}
+                <SelectTrigger className="w-[170px] h-18 bg-gradient-to-r from-white to-emerald-50 backdrop-blur-sm border-2 border-emerald-200 hover:border-emerald-400 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 text-sm font-medium rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 group">
+                  <div className="flex flex-col items-start w-full">
+                    <span className="text-xs text-emerald-600/70 font-medium mb-0.5">
+                      Nível
+                    </span>
+                    <SelectValue
+                      placeholder="Selecionar"
+                      className="text-sm text-emerald-700"
+                    />
+                  </div>
                 </SelectTrigger>
                 <SelectContent className="rounded-xl border-2 border-emerald-100 shadow-2xl bg-white/95 backdrop-blur-md">
                   {uniqueLevels.map((level) => (
@@ -411,26 +413,27 @@ const SlickCarousel = () => {
 
             {/* Filtro Duration */}
             <motion.div
-              className="flex flex-col items-center gap-3"
+              className="flex flex-col items-center"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
             >
-              <label className="text-sm font-semibold text-amber-600 bg-amber-50 px-3 py-1 rounded-full border border-amber-200">
-                Duração
-              </label>
               <Select
                 value={filters.duration}
                 onValueChange={(value) =>
                   setFilters((prev) => ({ ...prev, duration: value }))
                 }
               >
-                <SelectTrigger className="w-[150px] h-11 bg-gradient-to-r from-white to-amber-50 backdrop-blur-sm border-2 border-amber-200 hover:border-amber-400 focus:border-amber-500 focus:ring-2 focus:ring-amber-200 text-sm font-medium rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 group">
-                  <SelectValue
-                    placeholder="Selecionar"
-                    className="text-amber-700"
-                  />
-                  {/* <ChevronDown className="h-4 w-4 ml-2 text-amber-500 group-hover:text-amber-600 transition-colors duration-200" /> */}
+                <SelectTrigger className="w-[170px] h-18 bg-gradient-to-r from-white to-amber-50 backdrop-blur-sm border-2 border-amber-200 hover:border-amber-400 focus:border-amber-500 focus:ring-2 focus:ring-amber-200 text-sm font-medium rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 group">
+                  <div className="flex flex-col items-start w-full">
+                    <span className="text-xs text-amber-600/70 font-medium mb-0.5">
+                      Duração
+                    </span>
+                    <SelectValue
+                      placeholder="Selecionar"
+                      className="text-sm text-amber-700"
+                    />
+                  </div>
                 </SelectTrigger>
                 <SelectContent className="rounded-xl border-2 border-amber-100 shadow-2xl bg-white/95 backdrop-blur-md">
                   {uniqueDurations.map((duration) => (
@@ -455,7 +458,7 @@ const SlickCarousel = () => {
                   duration: "Todos",
                 })
               }
-              className="flex items-center gap-3 px-6 py-3 text-sm font-semibold text-gray-700 hover:text-white bg-gradient-to-r from-gray-100 to-gray-50 hover:from-blue hover:to-blue/90 rounded-xl transition-all duration-400 border-2 border-gray-200 hover:border-blue shadow-lg hover:shadow-xl mt-2 sm:mt-10 backdrop-blur-sm group"
+              className="flex items-center gap-3 px-6 py-3 text-sm font-semibold text-gray-700 hover:text-white bg-gradient-to-r from-gray-100 to-gray-50 hover:from-blue hover:to-blue/90 rounded-xl transition-all duration-400 border-2 border-gray-200 hover:border-blue shadow-lg hover:shadow-xl mt-2 sm:mt-0 backdrop-blur-sm group"
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.96 }}
               initial={{ opacity: 0, y: 20 }}
@@ -647,17 +650,17 @@ const SlickCarousel = () => {
                 className="space-y-4 sm:space-y-5 lg:space-y-6 order-1 lg:order-2 px-2 sm:px-0 w-full"
                 initial={{ opacity: 0, x: -50 }}
                 animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
+                transition={{ duration: 0.4, delay: 0.1, ease: "easeOut" }}
               >
                 <div className="space-y-3 sm:space-y-4">
                   {/* Icon and category */}
-                  <motion.div
+                  {/* <motion.div
                     className="flex items-center gap-3"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.4 }}
                   >
-                    <div className="flex-1">
+                    {/* <div className="flex-1">
                       <motion.div
                         className="inline-flex items-center bg-beige backdrop-blur-sm rounded-full py-2 px-4 border border-blue-100/50"
                         initial={{ opacity: 0, scale: 0.8 }}
@@ -670,8 +673,8 @@ const SlickCarousel = () => {
                           {filteredPrograms[selectedIndex].duration}
                         </p>
                       </motion.div>
-                    </div>
-                  </motion.div>
+                    </div> }
+                  </motion.div> */}
 
                   {/* Title */}
                   <motion.h3
@@ -721,7 +724,7 @@ const SlickCarousel = () => {
                       .map((feature, index) => (
                         <motion.div
                           key={index}
-                          className="group relative bg-beige backdrop-blur-sm rounded-xl p-3 sm:p-4 border border-white/20 hover:border-beige/40 transition-all duration-300 hover:bg-white/15"
+                          className="group relative bg-beige backdrop-blur-sm rounded-xl p-3 sm:p-4 border border-white/20 transition-all duration-300 "
                           variants={{
                             hidden: { opacity: 0, y: 20, scale: 0.9 },
                             visible: { opacity: 1, y: 0, scale: 1 },
