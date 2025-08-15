@@ -18,6 +18,7 @@ import FormSection from "@/components/FormSection";
 import SlickCarousel from "@/components/SlickCarousel";
 import Footer from "./sections/Footer";
 import SocialFloatingBubble from "@/components/SocialFloatingBubble";
+import SocialProofPopup from "@/components/SocialProofPopup";
 
 const Index = () => {
   return (
@@ -27,7 +28,7 @@ const Index = () => {
         message="Estamos com uma nova funcionalidade disponível! Confira as últimas atualizações em nosso painel."
         type="info"
       />
-      {/* <PromoPopup /> */}
+      {/* <SocialProofPopup /> */}
       <InitialSection />
       <PricingSection />
       {/* <FeaturedCarouselSection /> */}
