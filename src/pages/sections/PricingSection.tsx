@@ -3,7 +3,7 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Zap, CheckCircle } from "lucide-react";
-import { RewardPopup } from "./RewardPopUp";
+import { RewardPopup } from "./RewardPopup";
 
 const PricingSection = () => {
   const [showRewardPopup, setShowRewardPopup] = useState(false);
@@ -153,7 +153,9 @@ const PricingSection = () => {
           {/* Card 6 MESES - Pro */}
           <Card className="p-6 bg-white text-gray-900 border border-gray-200 relative overflow-hidden shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 order-2 lg:order-3 min-h-[500px] flex flex-col rounded-xl">
             <div className="mb-6">
-              <h3 className="text-2xl font-bold mb-4 text-gray-900">Semestral</h3>
+              <h3 className="text-2xl font-bold mb-4 text-gray-900">
+                Semestral
+              </h3>
               <div className="flex items-baseline mb-2">
                 <span className="text-4xl font-bold text-gray-900">€33</span>
                 <span className="text-lg text-gray-600 ml-2">EUR / mês</span>
