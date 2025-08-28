@@ -47,12 +47,13 @@ export const programs: Program[] = [
     type: "Corrida e Musculação",
     gender: "Homem/Mulher",
     description:
-      "Equilibra corrida e força, melhora resistência cardiovascular, força funcional e composição corporal. Para quem quer evoluir sem estagnar.",
+      "Treino inteligente que combina corrida + musculação para transformar a tua performance e composição corporal .",
     features: [
-      "Treinos combinados de corrida e musculação (sem conflitos de estímulo)",
-      "Foco em resistência cardiovascular, força funcional e composição corporal",
-      "Estrutura semanal equilibrada — para evoluir sem estagnar",
-      "Acesso a estratégias de recuperação e alimentação para potenciar resultados",
+      "Método inteligente: Corrida + musculação sem conflitos, para resultados consistentes.",
+      "Mais rápido e mais forte: Melhora a resistência cardiovascular sem perder força e massa muscular.",
+      "Plano semanal: estrutura semanal pensada para não desanimares nem estagnares.",
+      "Suporte completo: Estratégias de recuperação e alimentação para acelerar a tua evolução.",
+      "🔓+50 alunos já experimentaram este método com resultados reais"
     ],
     image:
       "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
@@ -110,12 +111,13 @@ export const programs: Program[] = [
     type: "Full Body",
     gender: "Homem/Mulher",
     description:
-      "Treinos full body variados, foco em core, postura e força. Para quem quer consistência e resultado real.",
+      "Treinos Full Body que definem o corpo, melhoram a postura, respiração e aumentar a tua força e resistência.",
     features: [
-      "Treinos Full Body com estímulos variados (força, resistência, estabilidade)",
-      "Estrutura semanal que respeita a recuperação e maximiza resultado",
-      "Foco no core, membros inferiores e superiores de forma equilibrada",
-      "Melhoria da postura, respiração e capacidade física em geral",
+      "Resultados visíveis: Estímulos variados para definição muscular sem perder performance.",
+      "Plano inteligente: Estrutura semanal que respeita a recuperação e maximiza resultados",
+      "Equilíbrio Total: Core, membros inferires e superiores trabalhados de forma estratégica.",
+      "Mais que estética : Melhora a postura, respiração e condicionamento fisico.",
+      "🔓+30 alunos já atingiram resultados reais com este método."
     ],
     image:
       "https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
@@ -174,12 +176,13 @@ export const programs: Program[] = [
     type: "Full Body",
     gender: "Mulher",
     description:
-      "Ênfase em membros inferiores e glúteos, força e resistência, definição sem dietas exageradas.",
+      "Treinos focados em glúteos, pernas e abdominal, para tonificar, ganhar firmeza e melhorar a postura, sem dietas extremas.",
     features: [
-      "Treinos Full Body com ênfase em membros inferiores + Glúteos",
-      "Estímulos progressivos de força + resistência",
-      "Corrida ou caminhada (opcional) para acelerar definição",
-      "Rotinas equilibradas que trabalham postura, core e firmeza muscular",
+      "Glúteos e pernas em destaque: Full Body com ênfase em metros inferiores para transformar a tua silhueta.",
+      "Força e resistência: Estímulos progressivos que tonificam e aceleram o metabolismo.",
+      "Aceleração opcional : Caminhada ou corrida para potencializar a definição.",
+      "Resultados reais: Rotinas equilibradas que trabalham a firmeza muscular, postura e confiança.",
+      "🔓Método testado com dezenas de alunas que já conquistaram firmeza e auto-estima"
     ],
     image:
       "https://images.unsplash.com/photo-1538805060514-97d9cc17730c?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
@@ -238,12 +241,14 @@ export const programs: Program[] = [
     type: "Full Body",
     gender: "Homem/Mulher",
     description:
-      "Foco total em força real, sessões curtas e intensas, progressão semanal e controle de movimento.",
+      "Foco e intensidade  total em cada sessão com progressão semanal para evitar o estiramento.",
     features: [
-      "Treinos Full Body com foco total em força real",
-      "Sessões entre 30 e 45 minutos — direto ao ponto",
-      "Progressão semanal para aumentar carga e estabilidade",
-      "Ênfase no controlo, no core e nos padrões de movimento",
+      "Resultados consistentes: Treino focado em força máxima, progressão de carga e hipertrofia limpa para quem quer transformar o corpo de forma consistente.",
+      "Força pura acima de tudo- Estrutura de treino baseada em sobrecarga progressiva para construir músculos sólidos.",
+      "Resultados medidos em números: Aumento real de carga e volume a cada semana.",
+      "Divisão estratégica: Rotina pensada para recuperação ideal e crescimento continuo.",
+      "Suporte completo: Estrategias de alimentação e recuperação para maximizar hipertrofia.",
+      "🔓Programa usado por alunos que sairam do plano e conquistaram resultados visíveis em poucas semanas."
     ],
     image:
       "https://images.unsplash.com/photo-1506126613408-eca07ce68773?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
@@ -295,134 +300,6 @@ export const programs: Program[] = [
   },
   {
     id: 5,
-    name: "Programa Glúteos Fortes",
-    duration: "8 semanas",
-    level: "Intermédio",
-    time: "25-35 min",
-    type: "Glúteos e Core",
-    gender: "Mulher",
-    description:
-      "Treinos focados em glúteos, mobilidade de anca e lombar, força e estabilidade.",
-    features: [
-      "Treinos focados em glúteos — ativação, força e controlo",
-      "Estímulos progressivos (sem “queimar só por queimar”)",
-      "Melhoria real da mobilidade de anca e lombar",
-      "Sessões complementares para core e membros inferiores",
-    ],
-    image:
-      "https://images.unsplash.com/photo-1517963628607-235ccdd5476c?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-    popular: true,
-    activities: [
-      { icon: <Calendar className="w-6 h-6" />, text: "8 Weeks" },
-      { icon: <Dumbbell className="w-6 h-6" />, text: "Lower Body" },
-      { icon: <User className="w-6 h-6" />, text: "Women" },
-    ],
-    details: {
-      achieve: {
-        title: "WHAT YOU WILL ACHIEVE",
-        description:
-          "The Strong Glutes Program is perfect for you if your goal is to:",
-        bullets: [
-          "Build strong, shapely glutes",
-          "Improve hip mobility and stability",
-          "Strengthen lower back and core",
-          "Enhance overall lower body aesthetics",
-        ],
-      },
-      duration: {
-        title: "WORKOUT DURATION",
-        bullets: [
-          "25-35 minute workouts",
-          "4 sessions per week",
-          "8 weeks program duration",
-        ],
-      },
-      training: {
-        title: "TRAINING STYLES & EXPERIENCE",
-        bullets: [
-          "Glute-focused exercises",
-          "Hip mobility work",
-          "Progressive resistance training",
-          "Core stability training",
-        ],
-      },
-      nutrition: {
-        title: "NUTRITION",
-        bullets: [
-          "Muscle building nutrition",
-          "Recovery optimization",
-          "Protein intake guidance",
-          "Anti-inflammatory foods focus",
-        ],
-      },
-    },
-  },
-  {
-    id: 6,
-    name: "Programa de Pilates",
-    duration: "6 semanas",
-    level: "Intermédio",
-    time: "30-40 min",
-    type: "Pilates",
-    gender: "Mulher",
-    description:
-      "Sessões progressivas de pilates para força, alongamento, postura e definição muscular.",
-    features: [
-      "Sessões de Pilates para força, alongamento e definição muscular",
-      "Aulas progressivas — do básico ao desafiador",
-      "Melhoria visível na postura, respiração e consciência corporal",
-      "Treinos com o peso do corpo e acessórios simples (tapete, banda, bola)",
-    ],
-    image:
-      "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-    popular: false,
-    activities: [
-      { icon: <Calendar className="w-6 h-6" />, text: "6 Weeks" },
-      { icon: <Dumbbell className="w-6 h-6" />, text: "Pilates" },
-      { icon: <User className="w-6 h-6" />, text: "All Levels" },
-    ],
-    details: {
-      achieve: {
-        title: "WHAT YOU WILL ACHIEVE",
-        description:
-          "The Pilates Program is perfect for you if your goal is to:",
-        bullets: [
-          "Improve core strength and stability",
-          "Enhance flexibility and mobility",
-          "Better posture and alignment",
-          "Build lean, toned muscles",
-        ],
-      },
-      duration: {
-        title: "WORKOUT DURATION",
-        bullets: [
-          "30-40 minute workouts",
-          "3-5 sessions per week",
-          "6 weeks program duration",
-        ],
-      },
-      training: {
-        title: "TRAINING STYLES & EXPERIENCE",
-        bullets: [
-          "Mat Pilates exercises",
-          "Equipment-based workouts",
-          "Progressive difficulty levels",
-          "Mind-body connection focus",
-        ],
-      },
-      nutrition: {
-        title: "NUTRITION",
-        bullets: [
-          "Clean eating guidelines",
-          "Anti-inflammatory diet tips",
-          "Hydration protocols",
-          "Energy-supporting nutrition",
-        ],
-      },
-    },
-  },
-  {
-    id: 7,
     name: "Programa de Iniciação",
     duration: "6 semanas",
     level: "Iniciante",
@@ -430,12 +307,13 @@ export const programs: Program[] = [
     type: "Iniciação",
     gender: "Homem/Mulher",
     description:
-      "Treinos simples e progressivos, orientação clara, vídeos explicativos e apoio nutricional.",
+      "Treinos simples, orientações claras e suporte completo para ganhar confiança, melhorar saude e ganhar uma boa rotina de treinos.",
     features: [
-      "Treinos simples e progressivos — em casa ou no ginásio",
-      "Orientação clara: força, cardio, mobilidade e descanso",
-      "Opções para emagrecimento ou hipertrofia (dependendo do objetivo)",
-      "Vídeos explicativos, apoio nutricional e foco em criar consistência",
+      "Começa do zero em segurança: Exercícios simples e progressivos para fazer em casa ou no ginásio.",
+      "Plano 100% adaptado ao teu objetivo: Seja emagrecer ou ganhar massa muscular.",
+      "Passo a passo sem confusão: Videos explicativos e orientações clara para treinar sem medo de errar.",
+      "Suporte Total: Dicas de mobilidade, alimentação e descanso para resultados surpreendentes.",
+      "🔓Programa perfeito para quem nunca treinou ou quer recomeçar sem pressão."
     ],
     image:
       "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
@@ -486,20 +364,21 @@ export const programs: Program[] = [
     },
   },
   {
-    id: 8,
-    name: "Programa de Abdominal",
-    duration: "8 semanas",
+    id: 6,
+    name: "Programa Express",
+    duration: "6 semanas",
     level: "Experiente",
     time: "20-30 min",
-    type: "Abdominais e Core",
+    type: "Express",
     gender: "Homem/Mulher",
     description:
-      "Rotinas direcionadas para zona abdominal, força funcional, estratégias para queimar gordura.",
+      "Treinos estratégicos de 25 a 45 minutos para quem quer resultados sem perder tempo.",
     features: [
-      "Rotinas direcionadas para zona abdominal (superior, inferior, oblíquos e transverso)",
-      "Treinos de força funcional + estabilidade dinâmica",
-      "Estratégias para queimar gordura e melhorar composição corporal",
-      "Sessões curtas e intensas — sem perder tempo com abdominais inúteis",
+      "Perfeito para os dias corridos: Treinos rápidos e eficazes, que cabem perfeitamente na tua rotina.",
+      "Planeamento eficaz: Cada treino, cada minuto é planeado para resultados para os resultados reais e duradouros.",
+      "Versátil e flexível: Opções para definição, queima de gordura ou força.",
+      "Em casa ou no Ginasio: Com ou sem equipamentos, 0 desculpas.",
+      "🔓 Programa criado para quem não tem muito tempo, mas não abre mão da saude."
     ],
     image:
       "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
@@ -549,20 +428,21 @@ export const programs: Program[] = [
     },
   },
   {
-    id: 9,
-    name: "Programa Express",
+    id: 7,
+    name: "Programa Abdominal",
     duration: "6 semanas",
     level: "Experiente",
     time: "20-35 min",
     type: "Full Body",
     gender: "Homem/Mulher",
     description:
-      "Sessões curtas e eficazes para encaixar em qualquer rotina, sem perder eficácia.",
+      "Plano avançado para fortalecer e esculpir o abdominal, melhorar a postura e acelerar resultados .",
     features: [
-      "Sessões entre 20 e 35 minutos — para encaixar em qualquer rotina",
-      "Opções de treino para diferentes objetivos (definição, queima ou força)",
-      "Zero treinos aleatórios: cada minuto é pensado para gerar resultado",
-      "Pode ser feito em casa ou no ginásio, com ou senza equipamentos",
+      "Core estético e funcional: Para além da estética, protege a lombar e melhora a estabilidade.",
+      "Método eficiente: Sessões curtas, intensas e sem exercícios “inúteis”.",
+      "Definição com inteligente: Estratégias para definir o abdominal e queimar gordura em simultâneo.",
+      "Suporte para a alimentação: Ajustes estratégicos para reduzir a gordura e realçar os abdominais.",
+      "🔓Ideal para quem quer construir um abdominal bonito, saudável e em tempo recorde."
     ],
     image:
       "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
@@ -608,70 +488,6 @@ export const programs: Program[] = [
           "On-the-go nutrition",
           "Simple meal prep",
           "Energy optimization",
-        ],
-      },
-    },
-  },
-  {
-    id: 10,
-    name: "Programa de Postura",
-    duration: "6 semanas",
-    level: "Experiente",
-    time: "20-30 min",
-    type: "Mobilidade e Postura",
-    gender: "Homem/Mulher",
-    description:
-      "Exercícios para mobilidade, alongamento, reforço de core e hábitos para melhorar postura.",
-    features: [
-      "Exercícios para mobilidade, alongamento e consciência postural",
-      "Reforço de core, glúteos e musculatura estabilizadora",
-      "Aulas que combinam movimento controlado e respiração",
-      "Foco em hábitos diários que afetam diretamente a tua postura",
-    ],
-    image:
-      "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-    popular: false,
-    activities: [
-      { icon: <Calendar className="w-6 h-6" />, text: "6 Weeks" },
-      { icon: <Dumbbell className="w-6 h-6" />, text: "Posture" },
-      { icon: <User className="w-6 h-6" />, text: "All Levels" },
-    ],
-    details: {
-      achieve: {
-        title: "WHAT YOU WILL ACHIEVE",
-        description:
-          "The Posture Program is perfect for you if your goal is to:",
-        bullets: [
-          "Improve overall posture",
-          "Reduce back and neck pain",
-          "Enhance mobility and flexibility",
-          "Build postural strength",
-        ],
-      },
-      duration: {
-        title: "WORKOUT DURATION",
-        bullets: [
-          "20-30 minute workouts",
-          "4-5 sessions per week",
-          "6 weeks program duration",
-        ],
-      },
-      training: {
-        title: "TRAINING STYLES & EXPERIENCE",
-        bullets: [
-          "Mobility exercises",
-          "Postural strengthening",
-          "Flexibility work",
-          "Core stabilization",
-        ],
-      },
-      nutrition: {
-        title: "NUTRITION",
-        bullets: [
-          "Anti-inflammatory foods",
-          "Joint health support",
-          "Hydration guidance",
-          "Recovery nutrition",
         ],
       },
     },

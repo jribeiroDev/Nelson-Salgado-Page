@@ -330,13 +330,13 @@ const SlickCarousel = () => {
       <div className="w-full max-w-6xl mx-auto">
         <div className="text-center mb-8 md:mb-12">
           <div className="text-center mb-8 sm:mb-12 lg:mb-16">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold mb-4 sm:mb-6 text-blue leading-tight">
-            Os Nossos Programas
-          </h2>
-          <p className="text-lg sm:text-xl lg:text-2xl text-blue max-w-3xl mx-auto">
-            (Resultados em apenas 90 dias)
-          </p>
-        </div>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold mb-4 sm:mb-6 text-blue leading-tight">
+              Os Nossos Programas
+            </h2>
+            <p className="text-lg sm:text-xl lg:text-2xl text-blue max-w-3xl mx-auto">
+              (Resultados em apenas 90 dias)
+            </p>
+          </div>
 
           {/* Filtros */}
           <div className="flex flex-col sm:flex-row flex-wrap justify-center items-center gap-4 sm:gap-6 mb-8 px-4">
@@ -725,44 +725,54 @@ const SlickCarousel = () => {
                     }}
                   >
                     {filteredPrograms[selectedIndex].features
-                      .slice(0, 4)
-                      .map((feature, index) => (
-                        <motion.div
-                          key={index}
-                          className="group relative bg-beige backdrop-blur-sm rounded-xl p-3 sm:p-4 border border-white/20 transition-all duration-300 "
-                          variants={{
-                            hidden: { opacity: 0, y: 20, scale: 0.9 },
-                            visible: { opacity: 1, y: 0, scale: 1 },
-                          }}
-                          whileHover={{
-                            scale: 1.02,
-                            y: -2,
-                            transition: {
-                              type: "spring",
-                              stiffness: 400,
-                              damping: 10,
-                            },
-                          }}
-                        >
-                          <div className="flex items-start gap-3">
-                            <motion.div
-                              className=" flex items-center justify-center text-blue text-xs sm:text-sm font-bold flex-shrink-0 mt-0.5"
-                              whileHover={{ rotate: 5, scale: 1.1 }}
-                              transition={{ type: "spring", stiffness: 400 }}
-                            >
-                              ✓
-                            </motion.div>
-                            <div className="flex-1">
-                              <span className="text-sm sm:text-base text-blue font-medium leading-relaxed transition-colors">
-                                {feature}
-                              </span>
-                            </div>
-                          </div>
+                      .slice(0, 6)
+                      .map((feature, index) => {
+                        const totalFeatures = filteredPrograms[
+                          selectedIndex
+                        ].features.slice(0, 6).length;
+                        const isLastFeatureOfFive =
+                          totalFeatures === 5 && index === 4;
 
-                          {/* Subtle glow effect */}
-                          <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-beige/0 via-beige/5 to-gold/0 opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
-                        </motion.div>
-                      ))}
+                        return (
+                          <motion.div
+                            key={index}
+                            className={`group relative bg-beige backdrop-blur-sm rounded-xl p-3 sm:p-4 border border-white/20 transition-all duration-300 ${
+                              isLastFeatureOfFive ? "sm:col-span-2" : ""
+                            }`}
+                            variants={{
+                              hidden: { opacity: 0, y: 20, scale: 0.9 },
+                              visible: { opacity: 1, y: 0, scale: 1 },
+                            }}
+                            whileHover={{
+                              scale: 1.02,
+                              y: -2,
+                              transition: {
+                                type: "spring",
+                                stiffness: 400,
+                                damping: 10,
+                              },
+                            }}
+                          >
+                            <div className="flex items-start gap-3">
+                              <motion.div
+                                className=" flex items-center justify-center text-blue text-xs sm:text-sm font-bold flex-shrink-0 mt-0.5"
+                                whileHover={{ rotate: 5, scale: 1.1 }}
+                                transition={{ type: "spring", stiffness: 400 }}
+                              >
+                                ✓
+                              </motion.div>
+                              <div className="flex-1">
+                                <span className="text-sm sm:text-base text-blue font-medium leading-relaxed transition-colors">
+                                  {feature}
+                                </span>
+                              </div>
+                            </div>
+
+                            {/* Subtle glow effect */}
+                            <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-beige/0 via-beige/5 to-gold/0 opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
+                          </motion.div>
+                        );
+                      })}
                   </motion.div>
                 </motion.div>
 
