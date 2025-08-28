@@ -329,9 +329,14 @@ const SlickCarousel = () => {
     <div className="relative w-full overflow-hidden bg-blue2/10 flex flex-col justify-center items-center py-4 sm:py-6 md:py-12 px-3 sm:px-4">
       <div className="w-full max-w-6xl mx-auto">
         <div className="text-center mb-8 md:mb-12">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold mb-8 sm:mb-12 text-blue leading-tight">
-            Descubra os Nossos Programas
+          <div className="text-center mb-8 sm:mb-12 lg:mb-16">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold mb-4 sm:mb-6 text-blue leading-tight">
+            Os Nossos Programas
           </h2>
+          <p className="text-lg sm:text-xl lg:text-2xl text-blue max-w-3xl mx-auto">
+            (Resultados em apenas 90 dias)
+          </p>
+        </div>
 
           {/* Filtros */}
           <div className="flex flex-col sm:flex-row flex-wrap justify-center items-center gap-4 sm:gap-6 mb-8 px-4">

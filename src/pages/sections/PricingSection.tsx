@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Zap, CheckCircle } from "lucide-react";
+import { Zap, CheckCircle, CircleCheck  } from "lucide-react";
 import { RewardPopup } from "./RewardPopup";
 
 const PricingSection = () => {
@@ -39,7 +39,7 @@ const PricingSection = () => {
             <div className="mb-6">
               <h3 className="text-2xl font-bold mb-4 text-gray-900">Mensal</h3>
               <div className="flex items-baseline mb-2">
-                <span className="text-4xl font-bold text-gray-900">€55</span>
+                <span className="text-4xl font-bold text-gray-900">55</span>
                 <span className="text-lg text-gray-900 ml-2">/mês</span>
               </div>
               <p className="text-sm text-gray-900">
@@ -101,7 +101,7 @@ const PricingSection = () => {
             <div className="mb-6 pt-2">
               <h3 className="text-2xl font-bold mb-4 text-white">Anual</h3>
               <div className="flex items-baseline ">
-                <span className="text-4xl font-bold text-white">€25</span>
+                <span className="text-4xl font-bold text-white">25</span>
                 <span className="text-lg text-white ml-2">/mês</span>
               </div>
               <p className="text-xs text-gold">
@@ -114,9 +114,9 @@ const PricingSection = () => {
 
             <ul className="space-y-3 mb-6 flex-grow">
               <li className="flex items-start">
-                <CheckCircle className="w-5 h-5 mr-3 text-green-400 flex-shrink-0 mt-0.5" />
-                <span className="text-white text-sm">
-                  Tudo incluído no plano mensal
+                {/* <CheckCircle className="w-5 h-5 mr-3 text-green-400 flex-shrink-0 mt-0.5" /> */}
+                <span className="text-white font-medium text-sm">
+                  Tudo no plano mensal, mais:
                 </span>
               </li>
               <li className="flex items-start">
@@ -157,8 +157,8 @@ const PricingSection = () => {
                 Semestral
               </h3>
               <div className="flex items-baseline mb-2">
-                <span className="text-4xl font-bold text-gray-900">€33</span>
-                <span className="text-lg text-gray-600 ml-2">EUR / mês</span>
+                <span className="text-4xl font-bold text-gray-900">33</span>
+                <span className="text-lg text-gray-600 ml-2">/mês</span>
               </div>
               {/* <p className="text-xs text-gray-500">
                 Preço semestral incluindo 42,82 € de IVA
@@ -170,9 +170,9 @@ const PricingSection = () => {
 
             <ul className="space-y-3 mb-6 flex-grow">
               <li className="flex items-start">
-                <CheckCircle className="w-5 h-5 mr-3 text-green-400 flex-shrink-0 mt-0.5" />
-                <span className="text-gray-900 text-sm">
-                  Tudo incluído no plano mensal
+                {/* <CheckCircle className="w-5 h-5 mr-3 text-green-400 flex-shrink-0 mt-0.5" /> */}
+                <span className="text-gray-900 font-medium text-sm">
+                  Tudo no plano mensal, mais:
                 </span>
               </li>
               <li className="flex items-start">
