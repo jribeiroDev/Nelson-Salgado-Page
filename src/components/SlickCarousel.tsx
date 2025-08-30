@@ -730,8 +730,115 @@ const SlickCarousel = () => {
                         const totalFeatures = filteredPrograms[
                           selectedIndex
                         ].features.slice(0, 6).length;
+                        const isLastFeature = index === totalFeatures - 1;
                         const isLastFeatureOfFive =
                           totalFeatures === 5 && index === 4;
+
+                        // Design especial para o último feature
+                        if (isLastFeature) {
+                          return (
+                            <motion.div
+                              key={index}
+                              className={`group relative overflow-hidden bg-blue rounded-2xl p-4 sm:p-6 transition-all ${
+                                isLastFeatureOfFive ? "sm:col-span-2" : ""
+                              }`}
+                              style={{
+                                background: `linear-gradient(135deg, ${getColorScheme(
+                                  filteredPrograms[selectedIndex].id
+                                )
+                                  .replace("from-", "")
+                                  .replace(" to-", ", ")})`,
+                              }}
+                              variants={{
+                                hidden: { opacity: 0, y: 20, scale: 0.9 },
+                                visible: { opacity: 1, y: 0, scale: 1 },
+                              }}
+                              whileHover={{
+                                scale: 1.05,
+                                y: -5,
+                                transition: {
+                                  type: "spring",
+                                  stiffness: 400,
+                                  damping: 10,
+                                },
+                              }}
+                            >
+                              {/* Animated background pattern */}
+                              {/* <div className="absolute inset-0 opacity-20">
+                                <motion.div
+                                  className="absolute inset-0 bg-white/10"
+                                  animate={{
+                                    background: [
+                                      "radial-gradient(circle at 20% 50%, white 2px, transparent 2px)",
+                                      "radial-gradient(circle at 80% 50%, white 2px, transparent 2px)",
+                                      "radial-gradient(circle at 20% 50%, white 2px, transparent 2px)",
+                                    ],
+                                  }}
+                                  transition={{
+                                    duration: 3,
+                                    repeat: Infinity,
+                                    ease: "easeInOut",
+                                  }}
+                                />
+                              </div> */}
+
+                              {/* Shimmer effect */}
+                              <motion.div
+                                className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -skew-x-12"
+                                initial={{ x: "-100%" }}
+                                animate={{ x: "200%" }}
+                                transition={{
+                                  duration: 2,
+                                  repeat: Infinity,
+                                  repeatDelay: 3,
+                                  ease: "easeInOut",
+                                }}
+                              />
+
+                              <div className="relative z-10 flex items-start gap-3">
+                                <motion.div
+                                  className="flex items-center justify-center w-6 h-6 sm:w-8 sm:h-8 bg-white/20 backdrop-blur-sm rounded-full text-white text-sm sm:text-base font-bold flex-shrink-0"
+                                  whileHover={{
+                                    rotate: 360,
+                                    scale: 1.2,
+                                    background: "rgba(255,255,255,0.3)",
+                                  }}
+                                  transition={{
+                                    type: "spring",
+                                    stiffness: 400,
+                                    duration: 0.6,
+                                  }}
+                                >
+                                  🔓
+                                </motion.div>
+                                <div className="flex-1">
+                                  <motion.span
+                                    className="text-sm sm:text-base text-white font-semibold leading-relaxed drop-shadow-sm"
+                                    whileHover={{ scale: 1.02 }}
+                                  >
+                                    {feature.replace("🔓", "")}
+                                  </motion.span>
+                                </div>
+                              </div>
+
+                              {/* Border glow effect */}
+                              <div className="absolute inset-0 rounded-2xl border-2 border-white/30 opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
+
+                              {/* Pulsing glow */}
+                              <motion.div
+                                className="absolute inset-0 rounded-2xl bg-white/10"
+                                animate={{
+                                  opacity: [0, 0.3, 0],
+                                }}
+                                transition={{
+                                  duration: 2,
+                                  repeat: Infinity,
+                                  ease: "easeInOut",
+                                }}
+                              />
+                            </motion.div>
+                          );
+                        }
 
                         return (
                           <motion.div
