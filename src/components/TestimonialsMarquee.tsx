@@ -175,19 +175,26 @@ const TestimonialsMarquee = () => {
             <motion.div
               className="flex gap-4 sm:gap-6"
               animate={{
-                x: [0, -1920], // Move a largura total dos cards
+                x: [0, -2000], // Ajustado para o número de cards duplicadas
               }}
               transition={{
                 x: {
                   repeat: Infinity,
                   repeatType: "loop",
-                  duration: 40,
+                  duration: 50, // Aumentado para movimento mais suave
                   ease: "linear",
                 },
               }}
             >
-              {/* Duplicamos os testimonials para efeito infinito */}
-              {[...testimonialsData].map((testimonial, index) => (
+              {/* Duplicamos os testimonials múltiplas vezes para efeito infinito */}
+              {[
+                ...testimonialsData,
+                ...testimonialsData,
+                ...testimonialsData,
+                ...testimonialsData,
+                ...testimonialsData,
+                ...testimonialsData,
+              ].map((testimonial, index) => (
                 <TestimonialCard
                   key={`first-${index}`}
                   testimonial={testimonial}
@@ -196,33 +203,6 @@ const TestimonialsMarquee = () => {
               ))}
             </motion.div>
           </div>
-
-          {/* <div className="relative">
-            <motion.div
-              className="flex gap-6"
-              animate={{
-                x: [-1920, 0], // Move na direção oposta
-              }}
-              transition={{
-                x: {
-                  repeat: Infinity,
-                  repeatType: "loop",
-                  duration: 40,
-                  ease: "linear",
-                },
-              }}
-            >
-              {[...secondRowTestimonials, ...secondRowTestimonials].map(
-                (testimonial, index) => (
-                  <TestimonialCard
-                    key={`second-${index}`}
-                    testimonial={testimonial}
-                    index={index}
-                  />
-                )
-              )}
-            </motion.div>
-          </div> */}
         </div>
 
         {/* Call to action */}
