@@ -10,8 +10,7 @@ const testimonialsData = [
     company: "Aluno",
     quote:
       "Com o Nelson alcancei a melhor forma física da minha vida. Ganhei resistência, massa muscular e confiança, sempre com uma abordagem que vai além do físico, trabalhando também o psicológico. Recomendo vivamente!",
-    avatar:
-      "public/assets/rv.jpeg",
+    avatar: "/assets/rv.jpeg",
     rating: 5,
   },
   {
@@ -19,10 +18,9 @@ const testimonialsData = [
     company: "Aluna",
     quote:
       "Deixei de me sentir estagnada e hoje tenho mais foco, disciplina e controlo muscular. O Nelson inspira, motiva e passa segurança, unindo treino e psicologia para resultados reais.",
-    avatar:
-      "public/assets/hm.jpeg",
+    avatar: "/assets/hm.jpeg",
     rating: 5,
-  }
+  },
 ];
 
 // Segunda fileira - duplicando com variações
@@ -189,15 +187,13 @@ const TestimonialsMarquee = () => {
               }}
             >
               {/* Duplicamos os testimonials para efeito infinito */}
-              {[...testimonialsData].map(
-                (testimonial, index) => (
-                  <TestimonialCard
-                    key={`first-${index}`}
-                    testimonial={testimonial}
-                    index={index}
-                  />
-                )
-              )}
+              {[...testimonialsData].map((testimonial, index) => (
+                <TestimonialCard
+                  key={`first-${index}`}
+                  testimonial={testimonial}
+                  index={index}
+                />
+              ))}
             </motion.div>
           </div>
 
