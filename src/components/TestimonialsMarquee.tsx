@@ -5,97 +5,24 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Star } from "lucide-react";
 
 const testimonialsData = [
-  // Primeira fileira (10 testimonials)
   {
-    name: "Alice Santos",
-    company: "FitLife Studio",
+    name: "Ricardo Vieira",
+    company: "Aluno",
     quote:
-      "Obrigada Nelson, que nunca desististe de mim, mesmo quando eu própria duvidava. A tua persistência fez toda a diferença.",
+      "Com o Nelson alcancei a melhor forma física da minha vida. Ganhei resistência, massa muscular e confiança, sempre com uma abordagem que vai além do físico, trabalhando também o psicológico. Recomendo vivamente!",
     avatar:
-      "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80",
+      "public/assets/rv.jpeg",
     rating: 5,
   },
   {
-    name: "João Silva",
-    company: "Tech Fitness",
+    name: "Helena Martins",
+    company: "Aluna",
     quote:
-      "Em apenas 3 meses consegui resultados que nunca pensei ser possível. O acompanhamento personalizado fez toda a diferença.",
+      "Deixei de me sentir estagnada e hoje tenho mais foco, disciplina e controlo muscular. O Nelson inspira, motiva e passa segurança, unindo treino e psicologia para resultados reais.",
     avatar:
-      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80",
+      "public/assets/hm.jpeg",
     rating: 5,
-  },
-  {
-    name: "Maria Costa",
-    company: "Wellness Center",
-    quote:
-      "Perdi 15kg de forma saudável e sustentável. Mais do que isso, ganhei confiança e uma nova perspectiva sobre saúde.",
-    avatar:
-      "https://images.unsplash.com/photo-1494790108755-2616b2e44b96?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80",
-    rating: 5,
-  },
-  {
-    name: "Carlos Mendes",
-    company: "Strong Gym",
-    quote:
-      "Nunca me senti tão forte e confiante. O programa superou todas as minhas expectativas e os resultados falam por si.",
-    avatar:
-      "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80",
-    rating: 5,
-  },
-  {
-    name: "Ana Rodrigues",
-    company: "Health Plus",
-    quote:
-      "Este programa mudou completamente a minha relação com o exercício. Agora o treino é parte natural da minha rotina.",
-    avatar:
-      "https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80",
-    rating: 5,
-  },
-  {
-    name: "Pedro Oliveira",
-    company: "Elite Training",
-    quote:
-      "A dedicação e conhecimento do Nelson são impressionantes. Cada treino é pensado especificamente para os meus objetivos.",
-    avatar:
-      "https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80",
-    rating: 5,
-  },
-  {
-    name: "Sofia Almeida",
-    company: "Body Transform",
-    quote:
-      "Transformei não só o meu corpo, mas também a minha mentalidade. O suporte foi fundamental em toda esta jornada.",
-    avatar:
-      "https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80",
-    rating: 5,
-  },
-  {
-    name: "Ricardo Ferreira",
-    company: "Power Gym",
-    quote:
-      "Resultados incríveis em tempo record. A metodologia aplicada é verdadeiramente eficaz e motivadora.",
-    avatar:
-      "https://images.unsplash.com/photo-1566492031773-4f4e44671d66?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80",
-    rating: 5,
-  },
-  {
-    name: "Catarina Lopes",
-    company: "Fitness Revolution",
-    quote:
-      "Finalmente encontrei um programa que se adapta ao meu estilo de vida. Flexibilidade e resultados garantidos.",
-    avatar:
-      "https://images.unsplash.com/photo-1589571894960-20bbe2828d0a?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80",
-    rating: 5,
-  },
-  {
-    name: "Miguel Torres",
-    company: "Athletic Performance",
-    quote:
-      "O Nelson não é apenas um personal trainer, é um verdadeiro mentor. Cada sessão é uma lição de superação.",
-    avatar:
-      "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80",
-    rating: 5,
-  },
+  }
 ];
 
 // Segunda fileira - duplicando com variações
@@ -262,7 +189,7 @@ const TestimonialsMarquee = () => {
               }}
             >
               {/* Duplicamos os testimonials para efeito infinito */}
-              {[...testimonialsData, ...testimonialsData].map(
+              {[...testimonialsData].map(
                 (testimonial, index) => (
                   <TestimonialCard
                     key={`first-${index}`}
