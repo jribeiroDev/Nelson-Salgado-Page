@@ -21,101 +21,125 @@ const testimonialsData = [
     avatar: "/assets/hm.jpeg",
     rating: 5,
   },
+  {
+    name: "Beatriz Mirra",
+    company: "Aluna",
+    quote:
+      "Procurei um estilo de vida saudável e hoje tenho mais confiança, foco e determinação. Em 3 meses vi redução de massa gorda e aumento de massa muscular. O treino com acompanhamento é uma experiência de evolução física e pessoal, que vai muito além dos exercícios.",
+    avatar: "/assets/bm.jpeg",
+    rating: 5,
+  },
+  {
+    name: "Madalena Silva",
+    company: "Aluna",
+    quote:
+      "Comecei a treinar para cuidar de mim física e mentalmente. Os resultados foram rápidos: perdi peso, ganhei confiança e sinto-me melhor no corpo e na mente. Os treinos são desafiantes, mas os resultados são reais e compensadores.",
+    avatar: "/assets/ms.jpeg",
+    rating: 5,
+  },
+  {
+    name: "Diogo Barros",
+    company: "Aluno",
+    quote:
+      "Treino para manter um estilo de vida saudável e preparar-me para o meu casamento. Os treinos são dinâmicos e intensos, ajudaram-me a ganhar resistência e massa muscular nas pernas, sempre adaptados às minhas necessidades.",
+    avatar: "/assets/db.jpeg",
+    rating: 5,
+  },
 ];
 
-// Segunda fileira - duplicando com variações
-const secondRowTestimonials = [
-  {
-    name: "Inês Martins",
-    company: "Yoga & Fitness",
-    quote:
-      "A abordagem holística do Nelson fez-me redescobrir o prazer de treinar. Cada dia é uma nova conquista.",
-    avatar:
-      "https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80",
-    rating: 5,
-  },
-  {
-    name: "Tiago Pereira",
-    company: "CrossFit Box",
-    quote:
-      "Ultrapassei todos os meus limites com segurança e confiança. O planeamento é impecável.",
-    avatar:
-      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80",
-    rating: 5,
-  },
-  {
-    name: "Beatriz Gonçalves",
-    company: "Studio Pilates",
-    quote:
-      "A motivação constante e o acompanhamento personalizado tornaram possível o que parecia impossível.",
-    avatar:
-      "https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80",
-    rating: 5,
-  },
-  {
-    name: "André Sousa",
-    company: "Martial Arts Academy",
-    quote:
-      "Desenvolvi força, resistência e disciplina que nunca pensei ter. Um verdadeiro game-changer.",
-    avatar:
-      "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80",
-    rating: 5,
-  },
-  {
-    name: "Carla Ribeiro",
-    company: "Wellness Spa",
-    quote:
-      "A transformação foi muito além do físico. Ganhei autoestima, energia e uma nova perspectiva de vida.",
-    avatar:
-      "https://images.unsplash.com/photo-1547425260-76bcadfb4f2c?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80",
-    rating: 5,
-  },
-  {
-    name: "Nuno Dias",
-    company: "Athletic Club",
-    quote:
-      "Cada treino é único e desafiante. O progresso é visível e os resultados são duradouros.",
-    avatar:
-      "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80",
-    rating: 5,
-  },
-  {
-    name: "Leonor Campos",
-    company: "Dance Fitness",
-    quote:
-      "Descobri uma versão mais forte e confiante de mim mesma. O suporte emocional é tão importante quanto o físico.",
-    avatar:
-      "https://images.unsplash.com/photo-1609505848912-b7c3b8b4beda?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80",
-    rating: 5,
-  },
-  {
-    name: "Diogo Santos",
-    company: "Performance Lab",
-    quote:
-      "Profissionalismo e conhecimento de alto nível. Cada sessão é maximizada para resultados ótimos.",
-    avatar:
-      "https://images.unsplash.com/photo-1599566150163-29194dcaad36?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80",
-    rating: 5,
-  },
-  {
-    name: "Vera Oliveira",
-    company: "Nutrition & Fitness",
-    quote:
-      "O equilíbrio perfeito entre desafio e suporte. Cada meta alcançada traz uma sensação de conquista única.",
-    avatar:
-      "https://images.unsplash.com/photo-1607746882042-944635dfe10e?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80",
-    rating: 5,
-  },
-  {
-    name: "Hugo Ferreira",
-    company: "Strength Academy",
-    quote:
-      "Resultados consistentes e sustentáveis. A metodologia aplicada é cientificamente fundamentada e eficaz.",
-    avatar:
-      "https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80",
-    rating: 5,
-  },
-];
+// // Segunda fileira - duplicando com variações
+// const secondRowTestimonials = [
+//   {
+//     name: "Inês Martins",
+//     company: "Yoga & Fitness",
+//     quote:
+//       "A abordagem holística do Nelson fez-me redescobrir o prazer de treinar. Cada dia é uma nova conquista.",
+//     avatar:
+//       "https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80",
+//     rating: 5,
+//   },
+//   {
+//     name: "Tiago Pereira",
+//     company: "CrossFit Box",
+//     quote:
+//       "Ultrapassei todos os meus limites com segurança e confiança. O planeamento é impecável.",
+//     avatar:
+//       "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80",
+//     rating: 5,
+//   },
+//   {
+//     name: "Beatriz Gonçalves",
+//     company: "Studio Pilates",
+//     quote:
+//       "A motivação constante e o acompanhamento personalizado tornaram possível o que parecia impossível.",
+//     avatar:
+//       "https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80",
+//     rating: 5,
+//   },
+//   {
+//     name: "André Sousa",
+//     company: "Martial Arts Academy",
+//     quote:
+//       "Desenvolvi força, resistência e disciplina que nunca pensei ter. Um verdadeiro game-changer.",
+//     avatar:
+//       "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80",
+//     rating: 5,
+//   },
+//   {
+//     name: "Carla Ribeiro",
+//     company: "Wellness Spa",
+//     quote:
+//       "A transformação foi muito além do físico. Ganhei autoestima, energia e uma nova perspectiva de vida.",
+//     avatar:
+//       "https://images.unsplash.com/photo-1547425260-76bcadfb4f2c?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80",
+//     rating: 5,
+//   },
+//   {
+//     name: "Nuno Dias",
+//     company: "Athletic Club",
+//     quote:
+//       "Cada treino é único e desafiante. O progresso é visível e os resultados são duradouros.",
+//     avatar:
+//       "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80",
+//     rating: 5,
+//   },
+//   {
+//     name: "Leonor Campos",
+//     company: "Dance Fitness",
+//     quote:
+//       "Descobri uma versão mais forte e confiante de mim mesma. O suporte emocional é tão importante quanto o físico.",
+//     avatar:
+//       "https://images.unsplash.com/photo-1609505848912-b7c3b8b4beda?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80",
+//     rating: 5,
+//   },
+//   {
+//     name: "Diogo Santos",
+//     company: "Performance Lab",
+//     quote:
+//       "Profissionalismo e conhecimento de alto nível. Cada sessão é maximizada para resultados ótimos.",
+//     avatar:
+//       "https://images.unsplash.com/photo-1599566150163-29194dcaad36?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80",
+//     rating: 5,
+//   },
+//   {
+//     name: "Vera Oliveira",
+//     company: "Nutrition & Fitness",
+//     quote:
+//       "O equilíbrio perfeito entre desafio e suporte. Cada meta alcançada traz uma sensação de conquista única.",
+//     avatar:
+//       "https://images.unsplash.com/photo-1607746882042-944635dfe10e?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80",
+//     rating: 5,
+//   },
+//   {
+//     name: "Hugo Ferreira",
+//     company: "Strength Academy",
+//     quote:
+//       "Resultados consistentes e sustentáveis. A metodologia aplicada é cientificamente fundamentada e eficaz.",
+//     avatar:
+//       "https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80",
+//     rating: 5,
+//   },
+// ];
 
 const TestimonialCard = ({
   testimonial,
