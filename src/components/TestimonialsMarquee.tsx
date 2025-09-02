@@ -148,7 +148,7 @@ const TestimonialCard = ({
   testimonial: any;
   index: number;
 }) => (
-  <Card className="min-w-[280px] sm:min-w-[320px] h-[180px] sm:h-[200px] p-4 sm:p-6 bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/20 transition-all duration-300 flex flex-col justify-between">
+  <Card className="min-w-[280px] sm:min-w-[320px] min-h-[200px] p-4 sm:p-6 bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/20 transition-all duration-300 flex flex-col gap-4">
     <div className="flex items-start gap-3 sm:gap-4">
       <Avatar className="w-10 h-10 sm:w-12 sm:h-12 border-2 border-white/30 flex-shrink-0">
         <AvatarImage src={testimonial.avatar} alt={testimonial.name} />
@@ -174,7 +174,7 @@ const TestimonialCard = ({
         </div>
       </div>
     </div>
-    <p className="text-blue/80 text-xs sm:text-sm leading-relaxed line-clamp-3 mt-2 sm:mt-3">
+    <p className="text-blue/80 text-xs sm:text-sm leading-relaxed flex-1">
       "{testimonial.quote}"
     </p>
   </Card>
