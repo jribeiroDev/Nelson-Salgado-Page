@@ -56,7 +56,7 @@ export const programs: Program[] = [
       "🔓+50 alunos já experimentaram este método com resultados reais"
     ],
     image:
-      "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      "/assets/ph.jpeg",
     popular: true,
     activities: [
       { icon: <Calendar className="w-6 h-6" />, text: "8 Weeks" },
@@ -185,7 +185,7 @@ export const programs: Program[] = [
       "🔓Método testado com dezenas de alunas que já conquistaram firmeza e auto-estima"
     ],
     image:
-      "https://images.unsplash.com/photo-1538805060514-97d9cc17730c?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      "/assets/pt.jpeg",
     popular: true,
     activities: [
       { icon: <Calendar className="w-6 h-6" />, text: "6 Weeks" },
@@ -251,7 +251,7 @@ export const programs: Program[] = [
       "🔓Programa usado por alunos que sairam do plano e conquistaram resultados visíveis em poucas semanas."
     ],
     image:
-      "https://images.unsplash.com/photo-1506126613408-eca07ce68773?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      "/assets/tf.jpeg",
     popular: false,
     activities: [
       { icon: <Calendar className="w-6 h-6" />, text: "6 Weeks" },
@@ -316,7 +316,7 @@ export const programs: Program[] = [
       "🔓Programa perfeito para quem nunca treinou ou quer recomeçar sem pressão."
     ],
     image:
-      "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      "/assets/pi.jpeg",
     popular: false,
     activities: [
       { icon: <Calendar className="w-6 h-6" />, text: "6 Weeks" },
@@ -381,7 +381,7 @@ export const programs: Program[] = [
       "🔓 Programa criado para quem não tem muito tempo, mas não abre mão da saude."
     ],
     image:
-      "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      "/assets/pe.jpeg",
     popular: false,
     activities: [
       { icon: <Calendar className="w-6 h-6" />, text: "8 Weeks" },
@@ -445,7 +445,7 @@ export const programs: Program[] = [
       "🔓Ideal para quem quer construir um abdominal bonito, saudável e em tempo recorde."
     ],
     image:
-      "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      "/assets/pa.jpeg",
     popular: false,
     activities: [
       { icon: <Calendar className="w-6 h-6" />, text: "6 Weeks" },

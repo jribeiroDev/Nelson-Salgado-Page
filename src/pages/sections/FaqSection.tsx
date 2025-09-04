@@ -10,17 +10,17 @@ const faqs = [
   {
     question: "Quando posso começar?",
     answer:
-      "Podes começar a qualquer momento! Novos ciclos de programas começam todas as segundas-feiras.",
+      "Antes de avançarmos é preciso conhecer um pouco mais sobre ti e o que te motiva para os objetivos.",
   },
   {
     question: "Qual o nível certo para mim?",
     answer:
-      "Recomendamos com base no teu tempo de treino anterior. Principiantes: 0-6 meses, Intermédio: 6 meses-2 anos, Avançado: 2+ anos.",
+      "Recomendamos com base no seu tempo de treino anterior: Principiantes (0-6 meses), Intermédio (6 meses-2 anos) e Avançado (2+ anos).",
   },
   {
     question: "A nutrição está incluída?",
     answer:
-      "Sim! Meal guides adaptados aos teus objetivos: Definição, Ganho muscular ou Manutenção de peso.",
+      "Sim! Meal guides adaptados aos teus objetivos: Definição, Ganho muscular, Manutenção de peso, etc.",
   },
   {
     question: "Como acompanho os meus resultados?",

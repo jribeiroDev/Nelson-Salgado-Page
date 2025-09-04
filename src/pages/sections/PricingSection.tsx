@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Zap, CheckCircle, CircleCheck  } from "lucide-react";
+import { Zap, CheckCircle, CircleCheck } from "lucide-react";
 import { RewardPopup } from "./RewardPopup";
 
 const PricingSection = () => {
@@ -10,6 +10,16 @@ const PricingSection = () => {
 
   const handleJoinClick = () => {
     setShowRewardPopup(true);
+  };
+
+  const whatsappNumber = "+351910436302"; // Substitua pelo número real
+  const instagramPageUrl = "https://www.instagram.com/elite_salgado"; // Substitua pela URL real
+
+  const openWhatsApp = () => {
+    const message = encodeURIComponent(
+      "Olá Nelson, estou super ansiosa/o para começar este acompanhamento. Podemos avançar :)"
+    );
+    window.open(`https://wa.me/${whatsappNumber}?text=${message}`, "_blank");
   };
 
   const handleConfirm = () => {
@@ -37,7 +47,9 @@ const PricingSection = () => {
           {/* Card 1 MÊS - Básico */}
           <Card className="p-6 bg-white text-gray-900 border border-gray-700 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 order-3 lg:order-1 min-h-[500px] flex flex-col rounded-xl">
             <div className="mb-6">
-              <h3 className="text-2xl font-bold mb-4 text-gray-900">Plano Mensal</h3>
+              <h3 className="text-2xl font-bold mb-4 text-gray-900">
+                Plano Mensal
+              </h3>
               <div className="flex items-baseline mb-2">
                 <span className="text-4xl font-bold text-gray-900">55</span>
                 <span className="text-lg text-gray-900 ml-2">/mês</span>
@@ -80,7 +92,10 @@ const PricingSection = () => {
               </li> */}
             </ul>
 
-            <Button className="w-full bg-gray-900 text-white hover:bg-gray-800 font-medium py-3 px-4 rounded-lg transition-all duration-300">
+            <Button
+              onClick={openWhatsApp}
+              className="w-full bg-gray-900 text-white hover:bg-gray-800 font-medium py-3 px-4 rounded-lg transition-all duration-300"
+            >
               Junta-te Agora
             </Button>
             <RewardPopup
@@ -99,7 +114,9 @@ const PricingSection = () => {
             </div>
 
             <div className="mb-6 pt-2">
-              <h3 className="text-2xl font-bold mb-4 text-white">Plano Anual</h3>
+              <h3 className="text-2xl font-bold mb-4 text-white">
+                Plano Anual
+              </h3>
               <div className="flex items-baseline ">
                 <span className="text-4xl font-bold text-white">25</span>
                 <span className="text-lg text-white ml-2">/mês</span>
@@ -121,9 +138,7 @@ const PricingSection = () => {
               </li>
               <li className="flex items-start">
                 <CheckCircle className="w-5 h-5 mr-3 text-green-400 flex-shrink-0 mt-0.5" />
-                <span className="text-white text-sm">
-                  Suporte prioritário
-                </span>
+                <span className="text-white text-sm">Suporte prioritário</span>
               </li>
               <li className="flex items-start">
                 <CheckCircle className="w-5 h-5 mr-3 text-green-400 flex-shrink-0 mt-0.5" />
@@ -157,7 +172,10 @@ const PricingSection = () => {
               </li>
             </ul>
 
-            <Button className="w-full bg-white text-blue hover:bg-gold hover:text-white font-medium py-3 px-4 rounded-lg transition-all duration-300">
+            <Button
+              onClick={openWhatsApp}
+              className="w-full bg-white text-blue hover:bg-gold hover:text-white font-medium py-3 px-4 rounded-lg transition-all duration-300"
+            >
               Junta-te Agora
             </Button>
           </Card>
@@ -213,7 +231,10 @@ const PricingSection = () => {
               </li>
             </ul>
 
-            <Button className="w-full bg-gray-900 text-white hover:bg-gray-800 font-medium py-3 px-4 rounded-lg transition-all duration-300">
+            <Button
+              onClick={openWhatsApp}
+              className="w-full bg-gray-900 text-white hover:bg-gray-800 font-medium py-3 px-4 rounded-lg transition-all duration-300"
+            >
               Junta-te Agora
             </Button>
           </Card>

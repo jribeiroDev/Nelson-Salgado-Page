@@ -45,6 +45,14 @@ const testimonialsData = [
     avatar: "/assets/db.jpeg",
     rating: 5,
   },
+  {
+    name: "Rui Ribeiro",
+    company: "Aluno",
+    quote:
+      "O Nelson foi a minha motivação para começar. O treino tem sido uma boa experiência e já noto evolução, embora ainda não esteja no meu melhor. Claro que recomendo!",
+    avatar: "/assets/rr.jpeg",
+    rating: 5,
+  },
 ];
 
 // // Segunda fileira - duplicando com variações

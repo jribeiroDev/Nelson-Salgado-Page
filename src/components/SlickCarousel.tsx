@@ -325,6 +325,16 @@ const SlickCarousel = () => {
   const cardWidthPercentage = 100 / visibleItems;
   const currentOffset = getOffset();
 
+  const whatsappNumber = "+351910436302"; // Substitua pelo número real
+  const instagramPageUrl = "https://www.instagram.com/elite_salgado"; // Substitua pela URL real
+
+  const openWhatsApp = () => {
+    const message = encodeURIComponent(
+      "Olá Nelson, estou super animada/o para começar com este programa. Podemos avançar :)"
+    );
+    window.open(`https://wa.me/${whatsappNumber}?text=${message}`, "_blank");
+  };
+
   return (
     <div className="relative w-full overflow-hidden bg-blue2/10 flex flex-col justify-center items-center py-4 sm:py-6 md:py-12 px-3 sm:px-4">
       <div className="w-full max-w-6xl mx-auto">
@@ -919,7 +929,10 @@ const SlickCarousel = () => {
                       />
 
                       {/* Content */}
-                      <span className="relative z-10 flex items-center justify-center gap-3">
+                      <span
+                        onClick={openWhatsApp}
+                        className="relative z-10 flex items-center justify-center gap-3"
+                      >
                         <span>Começar Agora</span>
                         <motion.div
                           className="flex items-center"
