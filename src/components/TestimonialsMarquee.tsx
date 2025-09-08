@@ -53,6 +53,14 @@ const testimonialsData = [
     avatar: "/assets/rr.jpeg",
     rating: 5,
   },
+  {
+    name: "Ariana Silva",
+    company: "Aluna",
+    quote:
+      "Procurei tonificar o corpo e ganhar massa muscular. Com o acompanhamento, ganhei força de vontade para treinar e senti melhorias físicas e psicológicas. Os treinos são variados, completos e sempre motivadores.",
+    avatar: "/assets/as.jpeg",
+    rating: 5,
+  },
 ];
 
 // // Segunda fileira - duplicando com variações

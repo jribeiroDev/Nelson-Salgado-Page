@@ -18,6 +18,14 @@ import {
   SelectTrigger,
   SelectValue,
 } from "./ui/select";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "./ui/dialog";
 
 const VISIBLE_ITEMS_DESKTOP = 3;
 const VISIBLE_ITEMS_TABLET = 2;
@@ -157,6 +165,8 @@ const SlickCarousel = () => {
   const [selectedIndex, setSelectedIndex] = useState(4); // Índice da card selecionada (primeiro item por padrão)
   const [visibleItems, setVisibleItems] = useState(VISIBLE_ITEMS_DESKTOP);
   const [isDragging, setIsDragging] = useState(false);
+  const [dialogOpen, setDialogOpen] = useState(false);
+  const [selectedLevel, setSelectedLevel] = useState<string>("");
   const [filters, setFilters] = useState({
     gender: "Todos",
     level: "Todos",
@@ -328,11 +338,19 @@ const SlickCarousel = () => {
   const whatsappNumber = "+351910436302"; // Substitua pelo número real
   const instagramPageUrl = "https://www.instagram.com/elite_salgado"; // Substitua pela URL real
 
-  const openWhatsApp = () => {
+  const openWhatsApp = (programName: string, level: string) => {
     const message = encodeURIComponent(
-      "Olá Nelson, estou super animada/o para começar com este programa. Podemos avançar :)"
+      `Olá Nelson, estou super animada/o para começar com o programa ${programName} no nível ${level}. Podemos avançar :)`
     );
     window.open(`https://wa.me/${whatsappNumber}?text=${message}`, "_blank");
+    setDialogOpen(false);
+    setSelectedLevel("");
+  };
+
+  const handleLevelSelection = (level: string) => {
+    setSelectedLevel(level);
+    const currentProgram = filteredPrograms[selectedIndex];
+    openWhatsApp(currentProgram.name, level);
   };
 
   return (
@@ -340,7 +358,7 @@ const SlickCarousel = () => {
       <div className="w-full max-w-6xl mx-auto">
         <div className="text-center mb-8 md:mb-12">
           <div className="text-center mb-8 sm:mb-12 lg:mb-16">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold mb-4 sm:mb-6 text-blue leading-tight">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold mb-2 mt-4 sm:mb-4 text-blue leading-tight">
               Os Nossos Programas
             </h2>
             <p className="text-lg sm:text-xl lg:text-2xl text-blue max-w-3xl mx-auto">
@@ -349,8 +367,8 @@ const SlickCarousel = () => {
           </div>
 
           {/* Filtros */}
-          <div className="flex flex-col sm:flex-row flex-wrap justify-center items-center gap-4 sm:gap-6 mb-8 px-4">
-            {/* Filtro Gender */}
+          {/* <div className="flex flex-col sm:flex-row flex-wrap justify-center items-center gap-4 sm:gap-6 mb-8 px-4">
+            {/* Filtro Gender 
             <motion.div
               className="flex flex-col items-center"
               initial={{ opacity: 0, y: 20 }}
@@ -388,7 +406,7 @@ const SlickCarousel = () => {
               </Select>
             </motion.div>
 
-            {/* Filtro Level */}
+            {/* Filtro Level 
             <motion.div
               className="flex flex-col items-center"
               initial={{ opacity: 0, y: 20 }}
@@ -426,7 +444,7 @@ const SlickCarousel = () => {
               </Select>
             </motion.div>
 
-            {/* Filtro Duration */}
+            {/* Filtro Duration 
             <motion.div
               className="flex flex-col items-center"
               initial={{ opacity: 0, y: 20 }}
@@ -464,7 +482,7 @@ const SlickCarousel = () => {
               </Select>
             </motion.div>
 
-            {/* Botão Reset */}
+            {/* Botão Reset 
             <motion.button
               onClick={() =>
                 setFilters({
@@ -486,10 +504,10 @@ const SlickCarousel = () => {
               />
               <span>Limpar Filtros</span>
             </motion.button>
-          </div>
+          </div> */}
 
           {/* Contador de resultados */}
-          <motion.p
+          {/* <motion.p
             className="text-blue text-sm mb-12"
             key={filteredPrograms.length}
             initial={{ opacity: 0, y: 10 }}
@@ -499,7 +517,7 @@ const SlickCarousel = () => {
             {filteredPrograms.length} programa
             {filteredPrograms.length !== 1 ? "s" : ""} encontrado
             {filteredPrograms.length !== 1 ? "s" : ""}
-          </motion.p>
+          </motion.p> */}
         </div>
         <div
           className="relative h-[180px] sm:h-[240px] md:h-[280px]  "
@@ -905,68 +923,121 @@ const SlickCarousel = () => {
                     whileTap={{ scale: 0.98 }}
                     className="relative group"
                   >
-                    <Button
-                      className={`
-                        relative h-12 sm:h-14 lg:h-16 px-8 sm:px-10 lg:px-12 mb-12 text-base sm:text-lg lg:text-xl font-bold rounded-2xl
-                        bg-gradient-to-r ${getColorScheme(
-                          filteredPrograms[selectedIndex].id
-                        )}
-                        text-white shadow-xl hover:shadow-2xl
-                        transition-all duration-500 w-full sm:w-auto
-                        overflow-hidden border-2 border-white/20
-                        group-hover:border-white/40
-                      `}
-                    >
-                      {/* Background animation */}
-                      <motion.div
-                        className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0"
-                        initial={{ x: "-100%", opacity: 0 }}
-                        whileHover={{
-                          x: "100%",
-                          opacity: [0, 1, 0],
-                          transition: { duration: 1, ease: "easeInOut" },
-                        }}
-                      />
-
-                      {/* Content */}
-                      <span
-                        onClick={openWhatsApp}
-                        className="relative z-10 flex items-center justify-center gap-3"
-                      >
-                        <span>Começar Agora</span>
-                        <motion.div
-                          className="flex items-center"
-                          animate={{ x: [0, 3, 0] }}
-                          transition={{
-                            repeat: Infinity,
-                            duration: 2,
-                            ease: "easeInOut",
-                          }}
+                    <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
+                      <DialogTrigger asChild>
+                        <Button
+                          className={`
+                            relative h-12 sm:h-14 lg:h-16 px-8 sm:px-10 lg:px-12 mb-12 text-base sm:text-lg lg:text-xl font-bold rounded-2xl
+                            bg-gradient-to-r ${getColorScheme(
+                              filteredPrograms[selectedIndex].id
+                            )}
+                            text-white shadow-xl hover:shadow-2xl
+                            transition-all duration-500 w-full sm:w-auto
+                            overflow-hidden border-2 border-white/20
+                            group-hover:border-white/40
+                          `}
                         >
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            className="h-5 w-5 sm:h-6 sm:w-6"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth={2.5}
-                              d="M13 7l5 5m0 0l-5 5m5-5H6"
-                            />
-                          </svg>
-                        </motion.div>
-                      </span>
+                          {/* Background animation */}
+                          <motion.div
+                            className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0"
+                            initial={{ x: "-100%", opacity: 0 }}
+                            whileHover={{
+                              x: "100%",
+                              opacity: [0, 1, 0],
+                              transition: { duration: 1, ease: "easeInOut" },
+                            }}
+                          />
 
-                      {/* Glow effect */}
-                      <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                    </Button>
+                          {/* Content */}
+                          <span className="relative z-10 flex items-center justify-center gap-3">
+                            <span>Começar Agora</span>
+                            <motion.div
+                              className="flex items-center"
+                              animate={{ x: [0, 3, 0] }}
+                              transition={{
+                                repeat: Infinity,
+                                duration: 2,
+                                ease: "easeInOut",
+                              }}
+                            >
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                className="h-5 w-5 sm:h-6 sm:w-6"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                              >
+                                <path
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  strokeWidth={2.5}
+                                  d="M13 7l5 5m0 0l-5 5m5-5H6"
+                                />
+                              </svg>
+                            </motion.div>
+                          </span>
+
+                          {/* Glow effect */}
+                          <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                        </Button>
+                      </DialogTrigger>
+
+                      <DialogContent className="sm:max-w-md bg-white/95 backdrop-blur-md border-2 border-blue/10 rounded-2xl shadow-2xl">
+                        <DialogHeader className="text-center pb-6">
+                          <DialogTitle className="text-2xl font-bold text-blue">
+                            Escolha o seu nível
+                          </DialogTitle>
+                          {/* <DialogDescription className="text-blue/70 text-base">
+                            Selecione o nível que melhor se adequa a si para o
+                            programa{" "}
+                            <span className="font-semibold text-blue">
+                              {filteredPrograms[selectedIndex].name}
+                            </span>
+                          </DialogDescription> */}
+                        </DialogHeader>
+
+                        <div className="space-y-3">
+                          {["Iniciante", "Intermédio", "Experiente"].map(
+                            (level) => (
+                              <motion.button
+                                key={level}
+                                onClick={() => handleLevelSelection(level)}
+                                className={`
+                                w-full p-4 rounded-xl text-left font-medium transition-all duration-300
+                                bg-gradient-to-r
+                                text-blue hover:scale-105 hover:shadow-lg
+                                border-2 border-blue hover:border-blue
+                              `}
+                                whileHover={{ scale: 1.02 }}
+                                whileTap={{ scale: 0.98 }}
+                              >
+                                <div className="flex items-center justify-between">
+                                  <span className="text-lg">{level}</span>
+                                  <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    className="h-5 w-5"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                  >
+                                    <path
+                                      strokeLinecap="round"
+                                      strokeLinejoin="round"
+                                      strokeWidth={2}
+                                      d="M9 5l7 7-7 7"
+                                    />
+                                  </svg>
+                                </div>
+                              </motion.button>
+                            )
+                          )}
+                        </div>
+                      </DialogContent>
+                    </Dialog>
 
                     {/* External glow */}
                     <div
-                      className={`absolute inset-0 w-64 rounded-2xl bg-gradient-to-r ${getColorScheme(
+                      className={`absolute inset-0 w-64 rounded-2xl bg-blue ${getColorScheme(
                         filteredPrograms[selectedIndex].id
                       )} opacity-20 blur-xl scale-105 group-hover:opacity-30 transition-opacity duration-500`}
                     ></div>
