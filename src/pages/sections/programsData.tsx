@@ -19,6 +19,7 @@ import {
   Home,
   Bookmark,
   Star,
+  BicepsFlexed,
   CircleCheck,
   Timer,
   Gauge,
@@ -269,7 +270,7 @@ export const programs: Program[] = [
         title: "Força e Resistência",
         description:
           "Estímulos progressivos que tonificam e aceleram o metabolismo.",
-        icon: <span className="text-sm">💪</span>,
+        icon: <BicepsFlexed className="w-4 h-4" />,
       },
       {
         title: "Aceleração Opcional",
@@ -357,7 +358,7 @@ export const programs: Program[] = [
         title: "Força Pura",
         description:
           "Estrutura de treino baseada em sobrecarga progressiva para construir músculos sólidos.",
-        icon: <span className="text-sm">💪</span>,
+        icon: <BicepsFlexed className="w-4 h-4" />,
       },
       {
         title: "Resultados Medidos",

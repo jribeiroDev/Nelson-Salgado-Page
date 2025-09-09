@@ -1064,15 +1064,15 @@ const SlickCarousel = () => {
           <AnimatePresence mode="wait">
             <motion.div
               key={filteredPrograms[selectedIndex].id}
-              className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-center mt-8 sm:mt-10 lg:mt-12"
+              className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-start mt-8 sm:mt-10 lg:mt-12"
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -30 }}
               transition={{ duration: 0.6, ease: "easeOut" }}
             >
-              {/* Program Image - Hidden on mobile */}
+              {/* Program Image - Hidden on mobile and tablet */}
               <motion.div
-                className="relative h-48 sm:h-56 lg:h-72 xl:h-80 rounded-3xl overflow-hidden shadow-2xl order-2 lg:order-1 group hidden sm:block"
+                className="relative h-64 sm:h-80 lg:h-96 xl:h-[450px] rounded-3xl overflow-hidden shadow-2xl order-2 lg:order-1 group hidden lg:block"
                 initial={{ opacity: 0, scale: 0.8, rotateY: -15 }}
                 animate={{ opacity: 1, scale: 1, rotateY: 0 }}
                 transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
@@ -1198,7 +1198,7 @@ const SlickCarousel = () => {
                         collapsible
                         value={accordionValue}
                         onValueChange={setAccordionValue}
-                        className="w-full space-y-2"
+                        className="w-full"
                       >
                         {filteredPrograms[selectedIndex].features.map(
                           (feature, index) => {
@@ -1232,9 +1232,9 @@ const SlickCarousel = () => {
                               >
                                 <AccordionItem
                                   value={`feature-${index}`}
-                                  className="border border-blue/20 rounded-xl bg-beige/50 backdrop-blur-sm hover:bg-beige/70 transition-all duration-300"
+                                  className="border-b border-blue/50 last:border-b-2"
                                 >
-                                  <AccordionTrigger className="text-sm sm:text-base font-medium text-blue hover:text-blue/80 px-4 py-3 hover:no-underline">
+                                  <AccordionTrigger className="text-sm sm:text-base font-medium text-blue hover:text-blue/80 py-3 hover:no-underline">
                                     <div className="flex items-center gap-3 w-full text-left">
                                       <motion.div
                                         className="flex items-center justify-center text-blue text-xs sm:text-sm font-bold flex-shrink-0"
@@ -1252,12 +1252,10 @@ const SlickCarousel = () => {
                                       </span>
                                     </div>
                                   </AccordionTrigger>
-                                  <AccordionContent className="px-4 pb-4 pt-2">
-                                    <div className="bg-white/50 rounded-lg p-3 border-l-4 border-blue/40">
-                                      <p className="text-sm sm:text-base text-blue/90 leading-relaxed">
-                                        {feature.description}
-                                      </p>
-                                    </div>
+                                  <AccordionContent className="pb-4 pt-2">
+                                    <p className="text-sm sm:text-base text-blue/80 leading-relaxed ml-7">
+                                      {feature.description}
+                                    </p>
                                   </AccordionContent>
                                 </AccordionItem>
                               </motion.div>
