@@ -10,7 +10,45 @@ import {
 } from "framer-motion";
 import { programs } from "@/pages/sections/programsData";
 import { Button } from "./ui/button";
-import { Star, Filter, ChevronDown } from "lucide-react";
+import {
+  Star,
+  Filter,
+  ChevronDown,
+  Dumbbell,
+  Users,
+  Calendar,
+  Target,
+  Trophy,
+  Zap,
+  BookOpen,
+  Heart,
+  Shield,
+  Clock,
+  CheckCircle,
+  Settings,
+  Video,
+  FileText,
+  MessageCircle,
+  Phone,
+  Mail,
+  Activity,
+  TrendingUp,
+  Award,
+  Play,
+  Camera,
+  Monitor,
+  Smartphone,
+  Globe,
+  Lock,
+  Key,
+  Gift,
+  Headphones,
+  Coffee,
+  Utensils,
+  Apple,
+  Briefcase,
+  Footprints,
+} from "lucide-react";
 import {
   Select,
   SelectContent,
@@ -47,6 +85,387 @@ const getColorScheme = (id: number) => {
     "from-indigo-500 to-indigo-700",
   ];
   return colors[(id - 1) % colors.length];
+};
+
+const getFeatureIcon = (title: string) => {
+  const titleLower = title.toLowerCase();
+
+  // Treino e Exercícios
+  if (
+    titleLower.includes("treino") ||
+    titleLower.includes("exercício") ||
+    titleLower.includes("workout") ||
+    titleLower.includes("sessões")
+  ) {
+    return <Dumbbell className="w-4 h-4" />;
+  }
+
+  // Corrida e Cardio
+  if (
+    titleLower.includes("corrida") ||
+    titleLower.includes("running") ||
+    titleLower.includes("cardio") ||
+    titleLower.includes("correr") ||
+    titleLower.includes("jogging")
+  ) {
+    return <Footprints className="w-4 h-4" />;
+  }
+
+  // Força e Músculo
+  if (
+    titleLower.includes("força") ||
+    titleLower.includes("fortalecimento") ||
+    titleLower.includes("muscular") ||
+    titleLower.includes("potência") ||
+    titleLower.includes("músculo")
+  ) {
+    return <span className="text-sm">💪</span>;
+  }
+
+  // Nutrição e Alimentação
+  if (
+    titleLower.includes("nutrição") ||
+    titleLower.includes("alimentar") ||
+    titleLower.includes("dieta") ||
+    titleLower.includes("refeições") ||
+    titleLower.includes("comida") ||
+    titleLower.includes("alimentação")
+  ) {
+    return <Heart className="w-4 h-4" />;
+  }
+
+  // Acompanhamento e Suporte
+  if (
+    titleLower.includes("acompanhamento") ||
+    titleLower.includes("suporte") ||
+    titleLower.includes("apoio") ||
+    titleLower.includes("consultoria") ||
+    titleLower.includes("mentoria")
+  ) {
+    return <Users className="w-4 h-4" />;
+  }
+
+  // Planos e Programas
+  if (
+    titleLower.includes("plano") ||
+    titleLower.includes("cronograma") ||
+    titleLower.includes("programa") ||
+    titleLower.includes("estrutura") ||
+    titleLower.includes("rotina")
+  ) {
+    return <Calendar className="w-4 h-4" />;
+  }
+
+  // Objetivos e Metas
+  if (
+    titleLower.includes("objetivo") ||
+    titleLower.includes("meta") ||
+    titleLower.includes("resultado") ||
+    titleLower.includes("foco") ||
+    titleLower.includes("propósito")
+  ) {
+    return <Target className="w-4 h-4" />;
+  }
+
+  // Avaliação e Progresso
+  if (
+    titleLower.includes("avaliação") ||
+    titleLower.includes("progresso") ||
+    titleLower.includes("evolução") ||
+    titleLower.includes("tracking") ||
+    titleLower.includes("acompanhar")
+  ) {
+    return <Trophy className="w-4 h-4" />;
+  }
+
+  // Performance e Energia
+  if (
+    titleLower.includes("energia") ||
+    titleLower.includes("performance") ||
+    titleLower.includes("desempenho") ||
+    titleLower.includes("velocidade") ||
+    titleLower.includes("intensidade")
+  ) {
+    return <Zap className="w-4 h-4" />;
+  }
+
+  // Receitas e Guias
+  if (
+    titleLower.includes("receita") ||
+    titleLower.includes("guia") ||
+    titleLower.includes("manual") ||
+    titleLower.includes("tutorial") ||
+    titleLower.includes("orientação")
+  ) {
+    return <BookOpen className="w-4 h-4" />;
+  }
+
+  // Saúde e Bem-estar
+  if (
+    titleLower.includes("saúde") ||
+    titleLower.includes("bem-estar") ||
+    titleLower.includes("wellness") ||
+    titleLower.includes("medicina") ||
+    titleLower.includes("clínico")
+  ) {
+    return <Shield className="w-4 h-4" />;
+  }
+
+  // Tempo e Horários
+  if (
+    titleLower.includes("tempo") ||
+    titleLower.includes("duração") ||
+    titleLower.includes("horário") ||
+    titleLower.includes("minutos") ||
+    titleLower.includes("horas")
+  ) {
+    return <Clock className="w-4 h-4" />;
+  }
+
+  // Comunicação e Contato
+  if (
+    titleLower.includes("contato") ||
+    titleLower.includes("comunicação") ||
+    titleLower.includes("whatsapp") ||
+    titleLower.includes("mensagem") ||
+    titleLower.includes("chat")
+  ) {
+    return <MessageCircle className="w-4 h-4" />;
+  }
+
+  // Vídeos e Conteúdo Visual
+  if (
+    titleLower.includes("vídeo") ||
+    titleLower.includes("demonstração") ||
+    titleLower.includes("visual") ||
+    titleLower.includes("filmagem") ||
+    titleLower.includes("gravação")
+  ) {
+    return <Video className="w-4 h-4" />;
+  }
+
+  // Aplicativo e Tecnologia
+  if (
+    titleLower.includes("app") ||
+    titleLower.includes("aplicativo") ||
+    titleLower.includes("digital") ||
+    titleLower.includes("online") ||
+    titleLower.includes("plataforma")
+  ) {
+    return <Smartphone className="w-4 h-4" />;
+  }
+
+  // Monitorização e Controle
+  if (
+    titleLower.includes("monitorização") ||
+    titleLower.includes("controle") ||
+    titleLower.includes("supervisão") ||
+    titleLower.includes("análise") ||
+    titleLower.includes("medição")
+  ) {
+    return <Activity className="w-4 h-4" />;
+  }
+
+  // Acesso e Permissões
+  if (
+    titleLower.includes("acesso") ||
+    titleLower.includes("exclusivo") ||
+    titleLower.includes("premium") ||
+    titleLower.includes("vip") ||
+    titleLower.includes("ilimitado")
+  ) {
+    return <Key className="w-4 h-4" />;
+  }
+
+  // Certificação e Prémios
+  if (
+    titleLower.includes("certificado") ||
+    titleLower.includes("diploma") ||
+    titleLower.includes("prémio") ||
+    titleLower.includes("reconhecimento") ||
+    titleLower.includes("conquista")
+  ) {
+    return <Award className="w-4 h-4" />;
+  }
+
+  // Personalização e Customização
+  if (
+    titleLower.includes("personalizado") ||
+    titleLower.includes("customizado") ||
+    titleLower.includes("adaptado") ||
+    titleLower.includes("individual") ||
+    titleLower.includes("sob medida")
+  ) {
+    return <Settings className="w-4 h-4" />;
+  }
+
+  // Relatórios e Documentação
+  if (
+    titleLower.includes("relatório") ||
+    titleLower.includes("documento") ||
+    titleLower.includes("ficheiro") ||
+    titleLower.includes("pdf") ||
+    titleLower.includes("download")
+  ) {
+    return <FileText className="w-4 h-4" />;
+  }
+
+  // Tendências e Crescimento
+  if (
+    titleLower.includes("tendência") ||
+    titleLower.includes("crescimento") ||
+    titleLower.includes("melhoria") ||
+    titleLower.includes("desenvolvimento") ||
+    titleLower.includes("aprimoramento")
+  ) {
+    return <TrendingUp className="w-4 h-4" />;
+  }
+
+  // Bónus e Presentes
+  if (
+    titleLower.includes("bónus") ||
+    titleLower.includes("bonus") ||
+    titleLower.includes("presente") ||
+    titleLower.includes("oferta") ||
+    titleLower.includes("grátis")
+  ) {
+    return <Gift className="w-4 h-4" />;
+  }
+
+  // Áudio e Som
+  if (
+    titleLower.includes("áudio") ||
+    titleLower.includes("som") ||
+    titleLower.includes("podcast") ||
+    titleLower.includes("música") ||
+    titleLower.includes("som")
+  ) {
+    return <Headphones className="w-4 h-4" />;
+  }
+
+  // Verificação e Confirmação
+  if (
+    titleLower.includes("verificação") ||
+    titleLower.includes("confirmação") ||
+    titleLower.includes("validação") ||
+    titleLower.includes("aprovação") ||
+    titleLower.includes("check")
+  ) {
+    return <CheckCircle className="w-4 h-4" />;
+  }
+
+  // Segurança e Privacidade
+  if (
+    titleLower.includes("segurança") ||
+    titleLower.includes("privacidade") ||
+    titleLower.includes("proteção") ||
+    titleLower.includes("confidencial") ||
+    titleLower.includes("seguro")
+  ) {
+    return <Lock className="w-4 h-4" />;
+  }
+
+  // Email e Telefone
+  if (
+    titleLower.includes("email") ||
+    titleLower.includes("telefone") ||
+    titleLower.includes("chamada") ||
+    titleLower.includes("ligação")
+  ) {
+    return titleLower.includes("email") || titleLower.includes("e-mail") ? (
+      <Mail className="w-4 h-4" />
+    ) : (
+      <Phone className="w-4 h-4" />
+    );
+  }
+
+  // Global e Internacional
+  if (
+    titleLower.includes("global") ||
+    titleLower.includes("internacional") ||
+    titleLower.includes("mundial") ||
+    titleLower.includes("universal")
+  ) {
+    return <Globe className="w-4 h-4" />;
+  }
+
+  // Trabalho e Profissional
+  if (
+    titleLower.includes("trabalho") ||
+    titleLower.includes("profissional") ||
+    titleLower.includes("carreira") ||
+    titleLower.includes("negócio") ||
+    titleLower.includes("empresa")
+  ) {
+    return <Briefcase className="w-4 h-4" />;
+  }
+
+  // Reprodução e Media
+  if (
+    titleLower.includes("reprodução") ||
+    titleLower.includes("play") ||
+    titleLower.includes("execução") ||
+    titleLower.includes("streaming")
+  ) {
+    return <Play className="w-4 h-4" />;
+  }
+
+  // Fotografia e Imagem
+  if (
+    titleLower.includes("foto") ||
+    titleLower.includes("imagem") ||
+    titleLower.includes("fotografia") ||
+    titleLower.includes("câmara") ||
+    titleLower.includes("picture")
+  ) {
+    return <Camera className="w-4 h-4" />;
+  }
+
+  // Monitor e Ecrã
+  if (
+    titleLower.includes("monitor") ||
+    titleLower.includes("ecrã") ||
+    titleLower.includes("tela") ||
+    titleLower.includes("display") ||
+    titleLower.includes("visualização")
+  ) {
+    return <Monitor className="w-4 h-4" />;
+  }
+
+  // Café e Bebidas (para relaxamento/energia)
+  if (
+    titleLower.includes("café") ||
+    titleLower.includes("bebida") ||
+    titleLower.includes("hidratação") ||
+    titleLower.includes("líquido")
+  ) {
+    return <Coffee className="w-4 h-4" />;
+  }
+
+  // Comida e Utensílios
+  if (
+    titleLower.includes("utensílio") ||
+    titleLower.includes("cozinha") ||
+    titleLower.includes("preparação") ||
+    titleLower.includes("ingrediente")
+  ) {
+    return <Utensils className="w-4 h-4" />;
+  }
+
+  // Frutas e Natural
+  if (
+    titleLower.includes("fruta") ||
+    titleLower.includes("natural") ||
+    titleLower.includes("orgânico") ||
+    titleLower.includes("verde") ||
+    titleLower.includes("saudável")
+  ) {
+    return <Apple className="w-4 h-4" />;
+  }
+
+  // Se nenhuma categoria específica for encontrada, usa um ícone genérico baseado no contexto
+  // Preferindo evitar o Star, usamos CheckCircle como padrão mais apropriado
+  return <CheckCircle className="w-4 h-4" />;
 };
 
 const Card = ({
@@ -825,7 +1244,8 @@ const SlickCarousel = () => {
                                           stiffness: 400,
                                         }}
                                       >
-                                        ✓
+                                        {feature.icon ||
+                                          getFeatureIcon(feature.title)}
                                       </motion.div>
                                       <span className="flex-1 font-semibold">
                                         {feature.title}
@@ -964,12 +1384,12 @@ const SlickCarousel = () => {
                       >
                         <Button
                           className={`
-                            relative h-12 sm:h-14 lg:h-16 px-8 sm:px-10 lg:px-12 mb-12 text-base sm:text-lg lg:text-xl font-bold rounded-2xl
+                            relative h-12 sm:h-14 lg:h-16 px-8 sm:px-10 lg:px-12 mb-12 text-base sm:text-lg lg:text-xl font-bold rounded-full
                             bg-gradient-to-r ${getColorScheme(
                               filteredPrograms[selectedIndex].id
                             )}
                             text-white shadow-xl hover:shadow-2xl
-                            transition-all duration-500 w-full sm:w-auto
+                            transition-all duration-500 w-full
                             overflow-hidden border-2 border-white/20
                             group-hover:border-white/40 cursor-pointer
                           `}

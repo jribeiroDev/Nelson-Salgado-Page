@@ -1,4 +1,31 @@
-import { Calendar, Dumbbell, User } from "lucide-react";
+import {
+  Calendar,
+  Dumbbell,
+  User,
+  Target,
+  Zap,
+  Users,
+  Trophy,
+  Heart,
+  Settings,
+  Footprints,
+  TrendingUp,
+  Shield,
+  CheckCircle,
+  Clock,
+  Award,
+  Activity,
+  Play,
+  Home,
+  Bookmark,
+  Star,
+  CircleCheck,
+  Timer,
+  Gauge,
+  Layers,
+  MapPin,
+  Sparkles,
+} from "lucide-react";
 
 interface Program {
   id: number;
@@ -12,6 +39,7 @@ interface Program {
   features: Array<{
     title: string;
     description: string;
+    icon?: React.ReactNode;
     isSpecial?: boolean;
   }>;
   image: string;
@@ -57,26 +85,31 @@ export const programs: Program[] = [
         title: "Método Inteligente",
         description:
           "Corrida + musculação sem conflitos, para resultados consistentes.",
+        icon: <Target className="w-4 h-4" />,
       },
       {
         title: "Mais Rápido e Mais Forte",
         description:
           "Melhora a resistência cardiovascular sem perder força e massa muscular.",
+        icon: <Zap className="w-4 h-4" />,
       },
       {
         title: "Plano Semanal",
         description:
           "Estrutura semanal pensada para não desanimares nem estagnares.",
+        icon: <Calendar className="w-4 h-4" />,
       },
       {
         title: "Suporte Completo",
         description:
           "Estratégias de recuperação e alimentação para acelerar a tua evolução.",
+        icon: <Users className="w-4 h-4" />,
       },
       {
         title: "Resultados Comprovados",
         description:
           "+50 alunos já experimentaram este método com resultados reais",
+        icon: <Trophy className="w-4 h-4" />,
         isSpecial: true,
       },
     ],
@@ -141,25 +174,30 @@ export const programs: Program[] = [
         title: "Resultados Visíveis",
         description:
           "Estímulos variados para definição muscular sem perder performance.",
+        icon: <TrendingUp className="w-4 h-4" />,
       },
       {
         title: "Plano Inteligente",
         description:
           "Estrutura semanal que respeita a recuperação e maximiza resultados.",
+        icon: <Calendar className="w-4 h-4" />,
       },
       {
         title: "Equilíbrio Total",
         description:
           "Core, membros inferiores e superiores trabalhados de forma estratégica.",
+        icon: <Shield className="w-4 h-4" />,
       },
       {
         title: "Mais que Estética",
         description: "Melhora a postura, respiração e condicionamento físico.",
+        icon: <Heart className="w-4 h-4" />,
       },
       {
         title: "Resultados Comprovados",
         description:
           "+30 alunos já atingiram resultados reais com este método.",
+        icon: <Award className="w-4 h-4" />,
         isSpecial: true,
       },
     ],
@@ -225,25 +263,30 @@ export const programs: Program[] = [
         title: "Glúteos e Pernas em Destaque",
         description:
           "Full Body com ênfase em membros inferiores para transformar a tua silhueta.",
+        icon: <Target className="w-4 h-4" />,
       },
       {
         title: "Força e Resistência",
         description:
           "Estímulos progressivos que tonificam e aceleram o metabolismo.",
+        icon: <span className="text-sm">💪</span>,
       },
       {
         title: "Aceleração Opcional",
         description: "Caminhada ou corrida para potencializar a definição.",
+        icon: <Footprints className="w-4 h-4" />,
       },
       {
         title: "Resultados Reais",
         description:
           "Rotinas equilibradas que trabalham a firmeza muscular, postura e confiança.",
+        icon: <CheckCircle className="w-4 h-4" />,
       },
       {
         title: "Método Testado",
         description:
           "Testado com dezenas de alunas que já conquistaram firmeza e auto-estima",
+        icon: <Star className="w-4 h-4" />,
         isSpecial: true,
       },
     ],
@@ -308,30 +351,36 @@ export const programs: Program[] = [
         title: "Resultados Consistentes",
         description:
           "Treino focado em força máxima, progressão de carga e hipertrofia limpa para quem quer transformar o corpo de forma consistente.",
+        icon: <TrendingUp className="w-4 h-4" />,
       },
       {
         title: "Força Pura",
         description:
           "Estrutura de treino baseada em sobrecarga progressiva para construir músculos sólidos.",
+        icon: <span className="text-sm">💪</span>,
       },
       {
         title: "Resultados Medidos",
         description: "Aumento real de carga e volume a cada semana.",
+        icon: <Activity className="w-4 h-4" />,
       },
       {
         title: "Divisão Estratégica",
         description:
           "Rotina pensada para recuperação ideal e crescimento contínuo.",
+        icon: <Settings className="w-4 h-4" />,
       },
       {
         title: "Suporte Completo",
         description:
           "Estratégias de alimentação e recuperação para maximizar hipertrofia.",
+        icon: <Users className="w-4 h-4" />,
       },
       {
         title: "Resultados Comprovados",
         description:
           "Programa usado por alunos que saíram do plano e conquistaram resultados visíveis em poucas semanas.",
+        icon: <Trophy className="w-4 h-4" />,
         isSpecial: true,
       },
     ],
@@ -396,21 +445,25 @@ export const programs: Program[] = [
         title: "Começa do Zero em Segurança",
         description:
           "Exercícios simples e progressivos para fazer em casa ou no ginásio.",
+        icon: <Trophy className="w-4 h-4" />,
       },
       {
         title: "Plano 100% Adaptado",
         description:
           "Adaptado ao teu objetivo: seja emagrecer ou ganhar massa muscular.",
+        icon: <Calendar className="w-4 h-4" />,
       },
       {
         title: "Passo a Passo",
         description:
           "Vídeos explicativos e orientações claras para treinar sem medo de errar.",
+        icon: <CheckCircle className="w-4 h-4" />,
       },
       {
         title: "Suporte Total",
         description:
           "Dicas de mobilidade, alimentação e descanso para resultados surpreendentes.",
+        icon: <Users className="w-4 h-4" />,
       },
       {
         title: "Perfeito para Iniciantes",
@@ -480,24 +533,29 @@ export const programs: Program[] = [
         title: "Perfeito para Dias Corridos",
         description:
           "Treinos rápidos e eficazes, que cabem perfeitamente na tua rotina.",
+        icon: <Clock className="w-4 h-4" />,
       },
       {
         title: "Planeamento Eficaz",
         description:
           "Cada treino, cada minuto é planeado para resultados reais e duradouros.",
+        icon: <Calendar className="w-4 h-4" />,
       },
       {
         title: "Versátil e Flexível",
         description: "Opções para definição, queima de gordura ou força.",
+        icon: <Layers className="w-4 h-4" />,
       },
       {
         title: "Em Casa ou no Ginásio",
         description: "Com ou sem equipamentos, 0 desculpas.",
+        icon: <MapPin className="w-4 h-4" />,
       },
       {
         title: "Para Quem Não Tem Tempo",
         description:
           "Programa criado para quem não tem muito tempo, mas não abre mão da saúde.",
+        icon: <Timer className="w-4 h-4" />,
         isSpecial: true,
       },
     ],
@@ -562,25 +620,30 @@ export const programs: Program[] = [
         title: "Core Estético e Funcional",
         description:
           "Para além da estética, protege a lombar e melhora a estabilidade.",
+        icon: <Shield className="w-4 h-4" />,
       },
       {
         title: "Método Eficiente",
         description: "Sessões curtas, intensas e sem exercícios inúteis.",
+        icon: <Zap className="w-4 h-4" />,
       },
       {
         title: "Definição Inteligente",
         description:
           "Estratégias para definir o abdominal e queimar gordura em simultâneo.",
+        icon: <Target className="w-4 h-4" />,
       },
       {
         title: "Suporte Alimentar",
         description:
           "Ajustes estratégicos para reduzir a gordura e realçar os abdominais.",
+        icon: <Heart className="w-4 h-4" />,
       },
       {
         title: "Abdominal em Tempo Recorde",
         description:
           "Ideal para quem quer construir um abdominal bonito, saudável e em tempo recorde.",
+        icon: <Sparkles className="w-4 h-4" />,
         isSpecial: true,
       },
     ],
