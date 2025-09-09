@@ -45,7 +45,7 @@ const PricingSection = () => {
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-4 xl:gap-6">
           {/* Card 1 MÊS - Básico */}
-          <Card className="p-6 bg-white text-gray-900 border border-gray-700 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 order-3 lg:order-1 min-h-[500px] flex flex-col rounded-xl">
+          <Card className="p-6 bg-white text-gray-900 border border-gray-700 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 order-3 lg:order-1 min-h-[500px] flex flex-col rounded-xl cursor-pointer">
             <div className="mb-6">
               <h3 className="text-2xl font-bold mb-4 text-gray-900">
                 Plano Mensal
@@ -106,7 +106,7 @@ const PricingSection = () => {
           </Card>
 
           {/* Card 12 MESES - Mais Popular */}
-          <Card className="p-6 bg-gradient-to-br from-blue to-darkblue text-white border-0 relative overflow-visible shadow-2xl transform scale-105 hover:scale-110 transition-all duration-300 order-1 lg:order-2 min-h-[500px] flex flex-col rounded-xl">
+          <Card className=" cursor-pointer p-6 bg-gradient-to-br from-blue to-darkblue text-white border-0 relative overflow-visible shadow-2xl transform scale-105 hover:scale-110 transition-all duration-300 order-1 lg:order-2 min-h-[500px] flex flex-col rounded-xl">
             <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 z-20">
               <Badge className="bg-gold text-white font-medium border-0 shadow-lg px-3 py-1 rounded-full text-xs">
                 MAIS POPULAR
@@ -181,7 +181,7 @@ const PricingSection = () => {
           </Card>
 
           {/* Card 6 MESES - Pro */}
-          <Card className="p-6 bg-white text-gray-900 border border-gray-200 relative overflow-hidden shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 order-2 lg:order-3 min-h-[500px] flex flex-col rounded-xl">
+          <Card className=" cursor-pointer p-6 bg-white text-gray-900 border border-gray-200 relative overflow-hidden shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 order-2 lg:order-3 min-h-[500px] flex flex-col rounded-xl">
             <div className="mb-6">
               <h3 className="text-2xl font-bold mb-4 text-gray-900">
                 Plano Semestral
