@@ -23,7 +23,7 @@ const SocialFloatingBubble = () => {
 
   const openWhatsApp = () => {
     const message = encodeURIComponent(
-      "Olá Nelson, estou super animada/o para começar com este programa. Podemos avançar :)"
+      "Olá Nelson, estou super animada/o para começar com este programa. Podemos avançar!"
     );
     window.open(`https://wa.me/${whatsappNumber}?text=${message}`, "_blank");
   };
