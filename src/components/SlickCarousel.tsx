@@ -913,18 +913,18 @@ const SlickCarousel = () => {
 
                 {/* CTA Button */}
                 <motion.div
-                  className="pt-4 sm:pt-6 "
+                  className="pt-4 sm:pt-6"
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 1.2 }}
                 >
-                  <motion.div
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                    className="relative group"
-                  >
-                    <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
-                      <DialogTrigger asChild>
+                  <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
+                    <DialogTrigger asChild>
+                      <motion.div
+                        whileHover={{ scale: 1.02 }}
+                        whileTap={{ scale: 0.98 }}
+                        className="relative group cursor-pointer"
+                      >
                         <Button
                           className={`
                             relative h-12 sm:h-14 lg:h-16 px-8 sm:px-10 lg:px-12 mb-12 text-base sm:text-lg lg:text-xl font-bold rounded-2xl
@@ -934,7 +934,7 @@ const SlickCarousel = () => {
                             text-white shadow-xl hover:shadow-2xl
                             transition-all duration-500 w-full sm:w-auto
                             overflow-hidden border-2 border-white/20
-                            group-hover:border-white/40
+                            group-hover:border-white/40 cursor-pointer
                           `}
                         >
                           {/* Background animation */}
@@ -980,68 +980,56 @@ const SlickCarousel = () => {
                           {/* Glow effect */}
                           <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                         </Button>
-                      </DialogTrigger>
 
-                      <DialogContent className="sm:max-w-md bg-white/95 backdrop-blur-md border-2 border-blue/10 rounded-2xl shadow-2xl">
-                        <DialogHeader className="text-center pb-6">
-                          <DialogTitle className="text-2xl font-bold text-blue">
-                            Escolha o seu nível
-                          </DialogTitle>
-                          {/* <DialogDescription className="text-blue/70 text-base">
-                            Selecione o nível que melhor se adequa a si para o
-                            programa{" "}
-                            <span className="font-semibold text-blue">
-                              {filteredPrograms[selectedIndex].name}
-                            </span>
-                          </DialogDescription> */}
-                        </DialogHeader>
+                        {/* External glow */}
+                        {/* <div
+                          className={`absolute inset-0 rounded-2xl bg-gradient-to-r ${getColorScheme(
+                            filteredPrograms[selectedIndex].id
+                          )} opacity-20 blur-xl scale-105 group-hover:opacity-30 transition-opacity duration-500 -z-10`}
+                        ></div> */}
+                      </motion.div>
+                    </DialogTrigger>
 
-                        <div className="space-y-3">
-                          {["Iniciante", "Intermédio", "Experiente"].map(
-                            (level) => (
-                              <motion.button
-                                key={level}
-                                onClick={() => handleLevelSelection(level)}
-                                className={`
-                                w-full p-4 rounded-xl text-left font-medium transition-all duration-300
-                                bg-gradient-to-r
-                                text-blue hover:scale-105 hover:shadow-lg
-                                border-2 border-blue hover:border-blue
-                              `}
-                                whileHover={{ scale: 1.02 }}
-                                whileTap={{ scale: 0.98 }}
-                              >
-                                <div className="flex items-center justify-between">
-                                  <span className="text-lg">{level}</span>
-                                  <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    className="h-5 w-5"
-                                    fill="none"
-                                    viewBox="0 0 24 24"
-                                    stroke="currentColor"
-                                  >
-                                    <path
-                                      strokeLinecap="round"
-                                      strokeLinejoin="round"
-                                      strokeWidth={2}
-                                      d="M9 5l7 7-7 7"
-                                    />
-                                  </svg>
-                                </div>
-                              </motion.button>
-                            )
-                          )}
-                        </div>
-                      </DialogContent>
-                    </Dialog>
+                    <DialogContent className="sm:max-w-md bg-white/95 backdrop-blur-md border-2 border-blue/10 rounded-2xl shadow-2xl">
+                      <DialogHeader className="text-center pb-6">
+                        <DialogTitle className="text-2xl font-bold text-blue">
+                          Escolha o seu nível
+                        </DialogTitle>
+                      </DialogHeader>
 
-                    {/* External glow */}
-                    <div
-                      className={`absolute inset-0 w-64 rounded-2xl bg-blue ${getColorScheme(
-                        filteredPrograms[selectedIndex].id
-                      )} opacity-20 blur-xl scale-105 group-hover:opacity-30 transition-opacity duration-500`}
-                    ></div>
-                  </motion.div>
+                      <div className="space-y-3">
+                        {["Iniciante", "Intermédio", "Experiente"].map(
+                          (level) => (
+                            <motion.button
+                              key={level}
+                              onClick={() => handleLevelSelection(level)}
+                              className="w-full p-4 rounded-xl text-left font-medium transition-all duration-300 bg-gradient-to-r text-blue hover:scale-105 hover:shadow-lg border-2 border-blue hover:border-blue"
+                              whileHover={{ scale: 1.02 }}
+                              whileTap={{ scale: 0.98 }}
+                            >
+                              <div className="flex items-center justify-between">
+                                <span className="text-lg">{level}</span>
+                                <svg
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  className="h-5 w-5"
+                                  fill="none"
+                                  viewBox="0 0 24 24"
+                                  stroke="currentColor"
+                                >
+                                  <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    strokeWidth={2}
+                                    d="M9 5l7 7-7 7"
+                                  />
+                                </svg>
+                              </div>
+                            </motion.button>
+                          )
+                        )}
+                      </div>
+                    </DialogContent>
+                  </Dialog>
                 </motion.div>
               </motion.div>
             </motion.div>
