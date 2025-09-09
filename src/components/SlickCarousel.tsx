@@ -173,6 +173,7 @@ const SlickCarousel = () => {
   const [isDragging, setIsDragging] = useState(false);
   const [dialogOpen, setDialogOpen] = useState(false);
   const [selectedLevel, setSelectedLevel] = useState<string>("");
+  const [accordionValue, setAccordionValue] = useState<string>(""); // Estado para controlar qual accordion está aberto
   const [filters, setFilters] = useState({
     gender: "Todos",
     level: "Todos",
@@ -235,7 +236,13 @@ const SlickCarousel = () => {
   // Resetar o índice selecionado quando os filtros mudam
   useEffect(() => {
     setSelectedIndex(3);
+    setAccordionValue(""); // Resetar accordion quando filtros mudam
   }, [filters]);
+
+  // Resetar accordion quando o programa selecionado muda
+  useEffect(() => {
+    setAccordionValue("");
+  }, [selectedIndex]);
 
   useEffect(() => {
     const handleResize = () => {
@@ -346,7 +353,7 @@ const SlickCarousel = () => {
 
   const openWhatsApp = (programName: string, level: string) => {
     const message = encodeURIComponent(
-      `Olá Nelson, estou super animada/o para começar com o programa ${programName} no nível ${level}. Podemos avançar :)`
+      `Olá Nelson, estou super animada/o para começar com o programa ${programName} no nível ${level}. Podemos avançar!`
     );
     window.open(`https://wa.me/${whatsappNumber}?text=${message}`, "_blank");
     setDialogOpen(false);
@@ -738,7 +745,7 @@ const SlickCarousel = () => {
                   </motion.p>
                 </div>
 
-                {/* Program Features - cada feature com accordion, última com estilo especial */}
+                {/* Program Features - accordion único para todas as features, última com estilo especial */}
                 <motion.div
                   className="space-y-3 sm:space-y-4"
                   initial={{ opacity: 0, y: 30 }}
@@ -758,6 +765,89 @@ const SlickCarousel = () => {
                       },
                     }}
                   >
+                    {/* Features normais agrupadas em um único accordion */}
+                    {filteredPrograms[selectedIndex].features.filter(
+                      (feature, index) => {
+                        const isLastFeature =
+                          index ===
+                          filteredPrograms[selectedIndex].features.length - 1;
+                        return !(isLastFeature && feature.isSpecial);
+                      }
+                    ).length > 0 && (
+                      <Accordion
+                        type="single"
+                        collapsible
+                        value={accordionValue}
+                        onValueChange={setAccordionValue}
+                        className="w-full space-y-2"
+                      >
+                        {filteredPrograms[selectedIndex].features.map(
+                          (feature, index) => {
+                            const isSpecialFeature = feature.isSpecial;
+                            const isLastFeature =
+                              index ===
+                              filteredPrograms[selectedIndex].features.length -
+                                1;
+
+                            // Pular a última feature especial (será renderizada separadamente)
+                            if (isLastFeature && isSpecialFeature) {
+                              return null;
+                            }
+
+                            // Features normais como AccordionItem
+                            return (
+                              <motion.div
+                                key={index}
+                                variants={{
+                                  hidden: { opacity: 0, y: 20, scale: 0.9 },
+                                  visible: { opacity: 1, y: 0, scale: 1 },
+                                }}
+                                whileHover={{
+                                  scale: 1.01,
+                                  transition: {
+                                    type: "spring",
+                                    stiffness: 400,
+                                    damping: 10,
+                                  },
+                                }}
+                              >
+                                <AccordionItem
+                                  value={`feature-${index}`}
+                                  className="border border-blue/20 rounded-xl bg-beige/50 backdrop-blur-sm hover:bg-beige/70 transition-all duration-300"
+                                >
+                                  <AccordionTrigger className="text-sm sm:text-base font-medium text-blue hover:text-blue/80 px-4 py-3 hover:no-underline">
+                                    <div className="flex items-center gap-3 w-full text-left">
+                                      <motion.div
+                                        className="flex items-center justify-center text-blue text-xs sm:text-sm font-bold flex-shrink-0"
+                                        whileHover={{ rotate: 5, scale: 1.1 }}
+                                        transition={{
+                                          type: "spring",
+                                          stiffness: 400,
+                                        }}
+                                      >
+                                        ✓
+                                      </motion.div>
+                                      <span className="flex-1 font-semibold">
+                                        {feature.title}
+                                      </span>
+                                    </div>
+                                  </AccordionTrigger>
+                                  <AccordionContent className="px-4 pb-4 pt-2">
+                                    <div className="bg-white/50 rounded-lg p-3 border-l-4 border-blue/40">
+                                      <p className="text-sm sm:text-base text-blue/90 leading-relaxed">
+                                        {feature.description}
+                                      </p>
+                                    </div>
+                                  </AccordionContent>
+                                </AccordionItem>
+                              </motion.div>
+                            );
+                          }
+                        )}
+                      </Accordion>
+                    )}
+
+                    {/* Última feature especial renderizada separadamente */}
                     {filteredPrograms[selectedIndex].features.map(
                       (feature, index) => {
                         const isSpecialFeature = feature.isSpecial;
@@ -765,103 +855,29 @@ const SlickCarousel = () => {
                           index ===
                           filteredPrograms[selectedIndex].features.length - 1;
 
-                        // Última feature com estilo especial (sem accordion)
-                        if (isLastFeature && isSpecialFeature) {
-                          return (
-                            <motion.div
-                              key={index}
-                              className="group relative overflow-hidden bg-blue rounded-2xl p-4 sm:p-6 transition-all"
-                              style={{
-                                background: `linear-gradient(135deg, ${getColorScheme(
-                                  filteredPrograms[selectedIndex].id
-                                )
-                                  .replace("from-", "")
-                                  .replace(" to-", ", ")})`,
-                              }}
-                              variants={{
-                                hidden: { opacity: 0, y: 20, scale: 0.9 },
-                                visible: { opacity: 1, y: 0, scale: 1 },
-                              }}
-                              whileHover={{
-                                scale: 1.02,
-                                y: -5,
-                                transition: {
-                                  type: "spring",
-                                  stiffness: 400,
-                                  damping: 10,
-                                },
-                              }}
-                            >
-                              {/* Shimmer effect */}
-                              <motion.div
-                                className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -skew-x-12"
-                                initial={{ x: "-100%" }}
-                                animate={{ x: "200%" }}
-                                transition={{
-                                  duration: 2,
-                                  repeat: Infinity,
-                                  repeatDelay: 3,
-                                  ease: "easeInOut",
-                                }}
-                              />
-
-                              <div className="relative z-10 flex items-start gap-3">
-                                <motion.div
-                                  className="flex items-center justify-center w-6 h-6 sm:w-8 sm:h-8 bg-white/20 backdrop-blur-sm rounded-full text-white text-sm sm:text-base font-bold flex-shrink-0"
-                                  whileHover={{
-                                    rotate: 360,
-                                    scale: 1.2,
-                                    background: "rgba(255,255,255,0.3)",
-                                  }}
-                                  transition={{
-                                    type: "spring",
-                                    stiffness: 400,
-                                    duration: 0.6,
-                                  }}
-                                >
-                                  🔓
-                                </motion.div>
-                                <div className="flex-1">
-                                  <motion.div whileHover={{ scale: 1.02 }}>
-                                    <h4 className="text-sm sm:text-base text-white font-bold leading-relaxed drop-shadow-sm mb-1">
-                                      {feature.title}
-                                    </h4>
-                                    <p className="text-xs sm:text-sm text-white/90 font-medium leading-relaxed">
-                                      {feature.description}
-                                    </p>
-                                  </motion.div>
-                                </div>
-                              </div>
-
-                              {/* Border glow effect */}
-                              <div className="absolute inset-0 rounded-2xl border-2 border-white/30 opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
-
-                              {/* Pulsing glow */}
-                              <motion.div
-                                className="absolute inset-0 rounded-2xl bg-white/10"
-                                animate={{
-                                  opacity: [0, 0.3, 0],
-                                }}
-                                transition={{
-                                  duration: 2,
-                                  repeat: Infinity,
-                                  ease: "easeInOut",
-                                }}
-                              />
-                            </motion.div>
-                          );
+                        // Apenas renderizar a última feature se for especial
+                        if (!(isLastFeature && isSpecialFeature)) {
+                          return null;
                         }
 
-                        // Features normais com accordion
                         return (
                           <motion.div
                             key={index}
+                            className="group relative overflow-hidden bg-blue rounded-2xl p-4 sm:p-6 transition-all"
+                            style={{
+                              background: `linear-gradient(135deg, ${getColorScheme(
+                                filteredPrograms[selectedIndex].id
+                              )
+                                .replace("from-", "")
+                                .replace(" to-", ", ")})`,
+                            }}
                             variants={{
                               hidden: { opacity: 0, y: 20, scale: 0.9 },
                               visible: { opacity: 1, y: 0, scale: 1 },
                             }}
                             whileHover={{
-                              scale: 1.01,
+                              scale: 1.02,
+                              y: -5,
                               transition: {
                                 type: "spring",
                                 stiffness: 400,
@@ -869,41 +885,62 @@ const SlickCarousel = () => {
                               },
                             }}
                           >
-                            <Accordion
-                              type="single"
-                              collapsible
-                              className="w-full"
-                            >
-                              <AccordionItem
-                                value={`feature-${index}`}
-                                className="border border-blue/20 rounded-xl bg-beige/50 backdrop-blur-sm hover:bg-beige/70 transition-all duration-300"
+                            {/* Shimmer effect */}
+                            <motion.div
+                              className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -skew-x-12"
+                              initial={{ x: "-100%" }}
+                              animate={{ x: "200%" }}
+                              transition={{
+                                duration: 2,
+                                repeat: Infinity,
+                                repeatDelay: 3,
+                                ease: "easeInOut",
+                              }}
+                            />
+
+                            <div className="relative z-10 flex items-start gap-3">
+                              <motion.div
+                                className="flex items-center justify-center w-6 h-6 sm:w-8 sm:h-8 bg-white/20 backdrop-blur-sm rounded-full text-white text-sm sm:text-base font-bold flex-shrink-0"
+                                whileHover={{
+                                  rotate: 360,
+                                  scale: 1.2,
+                                  background: "rgba(255,255,255,0.3)",
+                                }}
+                                transition={{
+                                  type: "spring",
+                                  stiffness: 400,
+                                  duration: 0.6,
+                                }}
                               >
-                                <AccordionTrigger className="text-sm sm:text-base font-medium text-blue hover:text-blue/80 px-4 py-3 hover:no-underline">
-                                  <div className="flex items-center gap-3 w-full text-left">
-                                    <motion.div
-                                      className="flex items-center justify-center text-blue text-xs sm:text-sm font-bold flex-shrink-0"
-                                      whileHover={{ rotate: 5, scale: 1.1 }}
-                                      transition={{
-                                        type: "spring",
-                                        stiffness: 400,
-                                      }}
-                                    >
-                                      ✓
-                                    </motion.div>
-                                    <span className="flex-1 font-semibold">
-                                      {feature.title}
-                                    </span>
-                                  </div>
-                                </AccordionTrigger>
-                                <AccordionContent className="px-4 pb-4 pt-2">
-                                  <div className="bg-white/50 rounded-lg p-3 border-l-4 border-blue/40">
-                                    <p className="text-sm sm:text-base text-blue/90 leading-relaxed">
-                                      {feature.description}
-                                    </p>
-                                  </div>
-                                </AccordionContent>
-                              </AccordionItem>
-                            </Accordion>
+                                🔓
+                              </motion.div>
+                              <div className="flex-1">
+                                <motion.div whileHover={{ scale: 1.02 }}>
+                                  <h4 className="text-sm sm:text-base text-white font-bold leading-relaxed drop-shadow-sm mb-1">
+                                    {feature.title}
+                                  </h4>
+                                  <p className="text-xs sm:text-sm text-white/90 font-medium leading-relaxed">
+                                    {feature.description}
+                                  </p>
+                                </motion.div>
+                              </div>
+                            </div>
+
+                            {/* Border glow effect */}
+                            <div className="absolute inset-0 rounded-2xl border-2 border-white/30 opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
+
+                            {/* Pulsing glow */}
+                            <motion.div
+                              className="absolute inset-0 rounded-2xl bg-white/10"
+                              animate={{
+                                opacity: [0, 0.3, 0],
+                              }}
+                              transition={{
+                                duration: 2,
+                                repeat: Infinity,
+                                ease: "easeInOut",
+                              }}
+                            />
                           </motion.div>
                         );
                       }

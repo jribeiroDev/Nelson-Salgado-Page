@@ -17,7 +17,7 @@ const PricingSection = () => {
 
   const openWhatsApp = () => {
     const message = encodeURIComponent(
-      "Olá Nelson, estou super ansiosa/o para começar este acompanhamento. Podemos avançar :)"
+      "Olá Nelson, estou super ansiosa/o para começar este acompanhamento. Podemos avançar!"
     );
     window.open(`https://wa.me/${whatsappNumber}?text=${message}`, "_blank");
   };
