@@ -578,7 +578,7 @@ const Card = ({
             {program.name}
           </h3>
           <p className="text-xs sm:text-sm ">
-            {program.gender} • {program.level} • {program.duration}
+            {program.gender} • {program.duration}
           </p>
         </div>
       </motion.div>
