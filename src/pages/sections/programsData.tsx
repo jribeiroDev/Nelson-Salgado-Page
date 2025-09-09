@@ -9,7 +9,11 @@ interface Program {
   type: string;
   gender: string;
   description: string;
-  features: string[];
+  features: Array<{
+    title: string;
+    description: string;
+    isSpecial?: boolean;
+  }>;
   image: string;
   popular: boolean;
   activities: Array<{
@@ -49,14 +53,34 @@ export const programs: Program[] = [
     description:
       "Treino inteligente que combina corrida + musculação para transformar a tua performance e composição corporal .",
     features: [
-      "Método inteligente: Corrida + musculação sem conflitos, para resultados consistentes.",
-      "Mais rápido e mais forte: Melhora a resistência cardiovascular sem perder força e massa muscular.",
-      "Plano semanal: estrutura semanal pensada para não desanimares nem estagnares.",
-      "Suporte completo: Estratégias de recuperação e alimentação para acelerar a tua evolução.",
-      "🔓+50 alunos já experimentaram este método com resultados reais"
+      {
+        title: "Método Inteligente",
+        description:
+          "Corrida + musculação sem conflitos, para resultados consistentes.",
+      },
+      {
+        title: "Mais Rápido e Mais Forte",
+        description:
+          "Melhora a resistência cardiovascular sem perder força e massa muscular.",
+      },
+      {
+        title: "Plano Semanal",
+        description:
+          "Estrutura semanal pensada para não desanimares nem estagnares.",
+      },
+      {
+        title: "Suporte Completo",
+        description:
+          "Estratégias de recuperação e alimentação para acelerar a tua evolução.",
+      },
+      {
+        title: "Resultados Comprovados",
+        description:
+          "+50 alunos já experimentaram este método com resultados reais",
+        isSpecial: true,
+      },
     ],
-    image:
-      "/assets/ph.jpeg",
+    image: "/assets/ph.jpeg",
     popular: true,
     activities: [
       { icon: <Calendar className="w-6 h-6" />, text: "8 Weeks" },
@@ -113,11 +137,31 @@ export const programs: Program[] = [
     description:
       "Treinos Full Body que definem o corpo, melhoram a postura, respiração e aumentar a tua força e resistência.",
     features: [
-      "Resultados visíveis: Estímulos variados para definição muscular sem perder performance.",
-      "Plano inteligente: Estrutura semanal que respeita a recuperação e maximiza resultados",
-      "Equilíbrio Total: Core, membros inferires e superiores trabalhados de forma estratégica.",
-      "Mais que estética : Melhora a postura, respiração e condicionamento fisico.",
-      "🔓+30 alunos já atingiram resultados reais com este método."
+      {
+        title: "Resultados Visíveis",
+        description:
+          "Estímulos variados para definição muscular sem perder performance.",
+      },
+      {
+        title: "Plano Inteligente",
+        description:
+          "Estrutura semanal que respeita a recuperação e maximiza resultados.",
+      },
+      {
+        title: "Equilíbrio Total",
+        description:
+          "Core, membros inferiores e superiores trabalhados de forma estratégica.",
+      },
+      {
+        title: "Mais que Estética",
+        description: "Melhora a postura, respiração e condicionamento físico.",
+      },
+      {
+        title: "Resultados Comprovados",
+        description:
+          "+30 alunos já atingiram resultados reais com este método.",
+        isSpecial: true,
+      },
     ],
     image:
       "https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
@@ -125,44 +169,43 @@ export const programs: Program[] = [
     activities: [
       { icon: <Calendar className="w-6 h-6" />, text: "6 Weeks" },
       { icon: <Dumbbell className="w-6 h-6" />, text: "Full Body" },
-      { icon: <User className="w-6 h-6" />, text: "All Levels" },
+      { icon: <User className="w-6 h-6" />, text: "Intermediate" },
     ],
     details: {
       achieve: {
         title: "WHAT YOU WILL ACHIEVE",
         description:
-          "The Definition Program is perfect for you if your goal is to:",
+          "The Full Body Program is perfect for you if your goal is to:",
         bullets: [
-          "Improve overall body composition",
-          "Build functional strength",
-          "Enhance core stability and posture",
-          "Develop full body conditioning",
+          "Build overall muscle strength and endurance.",
+          "Improve posture and breathing.",
+          "Enhance functional movement patterns.",
         ],
       },
       duration: {
         title: "WORKOUT DURATION",
         bullets: [
           "30-45 minute workouts",
-          "4-5 sessions per week",
+          "3-4 sessions per week",
           "6 weeks program duration",
         ],
       },
       training: {
         title: "TRAINING STYLES & EXPERIENCE",
         bullets: [
-          "Full Body workouts",
-          "Varied stimulus (strength, endurance, stability)",
+          "Full body strength training",
+          "Functional movements",
           "Progressive overload",
-          "Suitable for all levels",
+          "Suitable for intermediate level",
         ],
       },
       nutrition: {
         title: "NUTRITION",
         bullets: [
-          "Basic nutrition guidelines",
-          "Recovery strategies",
-          "Meal timing recommendations",
-          "Hydration protocols",
+          "Balanced nutrition approach",
+          "Recovery nutrition tips",
+          "Hydration guidelines",
+          "Supplement recommendations",
         ],
       },
     },
@@ -178,14 +221,33 @@ export const programs: Program[] = [
     description:
       "Treinos focados em glúteos, pernas e abdominal, para tonificar, ganhar firmeza e melhorar a postura, sem dietas extremas.",
     features: [
-      "Glúteos e pernas em destaque: Full Body com ênfase em metros inferiores para transformar a tua silhueta.",
-      "Força e resistência: Estímulos progressivos que tonificam e aceleram o metabolismo.",
-      "Aceleração opcional : Caminhada ou corrida para potencializar a definição.",
-      "Resultados reais: Rotinas equilibradas que trabalham a firmeza muscular, postura e confiança.",
-      "🔓Método testado com dezenas de alunas que já conquistaram firmeza e auto-estima"
+      {
+        title: "Glúteos e Pernas em Destaque",
+        description:
+          "Full Body com ênfase em membros inferiores para transformar a tua silhueta.",
+      },
+      {
+        title: "Força e Resistência",
+        description:
+          "Estímulos progressivos que tonificam e aceleram o metabolismo.",
+      },
+      {
+        title: "Aceleração Opcional",
+        description: "Caminhada ou corrida para potencializar a definição.",
+      },
+      {
+        title: "Resultados Reais",
+        description:
+          "Rotinas equilibradas que trabalham a firmeza muscular, postura e confiança.",
+      },
+      {
+        title: "Método Testado",
+        description:
+          "Testado com dezenas de alunas que já conquistaram firmeza e auto-estima",
+        isSpecial: true,
+      },
     ],
-    image:
-      "/assets/pt.jpeg",
+    image: "/assets/pt.jpeg",
     popular: true,
     activities: [
       { icon: <Calendar className="w-6 h-6" />, text: "6 Weeks" },
@@ -198,10 +260,9 @@ export const programs: Program[] = [
         description:
           "The Toning Program is perfect for you if your goal is to:",
         bullets: [
-          "Enhance lower body strength and shape",
-          "Improve glute development",
-          "Achieve better muscle definition",
-          "Boost overall fitness",
+          "Tone and strengthen glutes and legs.",
+          "Improve core strength and stability.",
+          "Enhance overall posture and confidence.",
         ],
       },
       duration: {
@@ -215,19 +276,19 @@ export const programs: Program[] = [
       training: {
         title: "TRAINING STYLES & EXPERIENCE",
         bullets: [
-          "Lower body focus",
-          "Full body conditioning",
-          "Optional cardio integration",
-          "Progressive resistance training",
+          "Lower body focused training",
+          "Core strengthening",
+          "Progressive resistance",
+          "Suitable for beginner level",
         ],
       },
       nutrition: {
         title: "NUTRITION",
         bullets: [
-          "Balanced nutrition approach",
-          "No extreme dieting",
-          "Protein optimization",
-          "Sustainable eating habits",
+          "No extreme diets required",
+          "Balanced approach to nutrition",
+          "Metabolism boosting tips",
+          "Hydration guidelines",
         ],
       },
     },
@@ -243,57 +304,79 @@ export const programs: Program[] = [
     description:
       "Foco e intensidade  total em cada sessão com progressão semanal para evitar o estiramento.",
     features: [
-      "Resultados consistentes: Treino focado em força máxima, progressão de carga e hipertrofia limpa para quem quer transformar o corpo de forma consistente.",
-      "Força pura acima de tudo- Estrutura de treino baseada em sobrecarga progressiva para construir músculos sólidos.",
-      "Resultados medidos em números: Aumento real de carga e volume a cada semana.",
-      "Divisão estratégica: Rotina pensada para recuperação ideal e crescimento continuo.",
-      "Suporte completo: Estrategias de alimentação e recuperação para maximizar hipertrofia.",
-      "🔓Programa usado por alunos que sairam do plano e conquistaram resultados visíveis em poucas semanas."
+      {
+        title: "Resultados Consistentes",
+        description:
+          "Treino focado em força máxima, progressão de carga e hipertrofia limpa para quem quer transformar o corpo de forma consistente.",
+      },
+      {
+        title: "Força Pura",
+        description:
+          "Estrutura de treino baseada em sobrecarga progressiva para construir músculos sólidos.",
+      },
+      {
+        title: "Resultados Medidos",
+        description: "Aumento real de carga e volume a cada semana.",
+      },
+      {
+        title: "Divisão Estratégica",
+        description:
+          "Rotina pensada para recuperação ideal e crescimento contínuo.",
+      },
+      {
+        title: "Suporte Completo",
+        description:
+          "Estratégias de alimentação e recuperação para maximizar hipertrofia.",
+      },
+      {
+        title: "Resultados Comprovados",
+        description:
+          "Programa usado por alunos que saíram do plano e conquistaram resultados visíveis em poucas semanas.",
+        isSpecial: true,
+      },
     ],
-    image:
-      "/assets/tf.jpeg",
+    image: "/assets/tf.jpeg",
     popular: false,
     activities: [
       { icon: <Calendar className="w-6 h-6" />, text: "6 Weeks" },
       { icon: <Dumbbell className="w-6 h-6" />, text: "Strength" },
-      { icon: <User className="w-6 h-6" />, text: "All Levels" },
+      { icon: <User className="w-6 h-6" />, text: "Intermediate" },
     ],
     details: {
       achieve: {
         title: "WHAT YOU WILL ACHIEVE",
         description:
-          "The Strength Program is perfect for you if your goal is to:",
+          "The Hypertrophy Program is perfect for you if your goal is to:",
         bullets: [
-          "Build real functional strength",
-          "Master key movement patterns",
-          "Improve core stability and control",
-          "Develop progressive loading capacity",
+          "Build significant muscle mass and strength.",
+          "Increase lifting capacity progressively.",
+          "Achieve a more muscular physique.",
         ],
       },
       duration: {
         title: "WORKOUT DURATION",
         bullets: [
           "30-45 minute workouts",
-          "3-4 sessions per week",
+          "4-5 sessions per week",
           "6 weeks program duration",
         ],
       },
       training: {
         title: "TRAINING STYLES & EXPERIENCE",
         bullets: [
-          "Compound movements",
-          "Progressive overload focus",
-          "Core stability work",
-          "Full body strength training",
+          "Progressive overload training",
+          "Compound movements focus",
+          "Volume-based hypertrophy",
+          "Suitable for intermediate level",
         ],
       },
       nutrition: {
         title: "NUTRITION",
         bullets: [
-          "Protein-focused meal planning",
-          "Pre/post workout nutrition",
-          "Recovery optimization",
-          "Strength-support supplements",
+          "High protein intake guidelines",
+          "Muscle building nutrition",
+          "Recovery meal planning",
+          "Supplement protocols",
         ],
       },
     },
@@ -309,14 +392,34 @@ export const programs: Program[] = [
     description:
       "Treinos simples, orientações claras e suporte completo para ganhar confiança, melhorar saude e ganhar uma boa rotina de treinos.",
     features: [
-      "Começa do zero em segurança: Exercícios simples e progressivos para fazer em casa ou no ginásio.",
-      "Plano 100% adaptado ao teu objetivo: Seja emagrecer ou ganhar massa muscular.",
-      "Passo a passo sem confusão: Videos explicativos e orientações clara para treinar sem medo de errar.",
-      "Suporte Total: Dicas de mobilidade, alimentação e descanso para resultados surpreendentes.",
-      "🔓Programa perfeito para quem nunca treinou ou quer recomeçar sem pressão."
+      {
+        title: "Começa do Zero em Segurança",
+        description:
+          "Exercícios simples e progressivos para fazer em casa ou no ginásio.",
+      },
+      {
+        title: "Plano 100% Adaptado",
+        description:
+          "Adaptado ao teu objetivo: seja emagrecer ou ganhar massa muscular.",
+      },
+      {
+        title: "Passo a Passo",
+        description:
+          "Vídeos explicativos e orientações claras para treinar sem medo de errar.",
+      },
+      {
+        title: "Suporte Total",
+        description:
+          "Dicas de mobilidade, alimentação e descanso para resultados surpreendentes.",
+      },
+      {
+        title: "Perfeito para Iniciantes",
+        description:
+          "Programa perfeito para quem nunca treinou ou quer recomeçar sem pressão.",
+        isSpecial: true,
+      },
     ],
-    image:
-      "/assets/pi.jpeg",
+    image: "/assets/pi.jpeg",
     popular: false,
     activities: [
       { icon: <Calendar className="w-6 h-6" />, text: "6 Weeks" },
@@ -329,10 +432,9 @@ export const programs: Program[] = [
         description:
           "The Beginner Program is perfect for you if your goal is to:",
         bullets: [
-          "Learn proper exercise form",
-          "Build basic strength and endurance",
-          "Develop healthy fitness habits",
-          "Understand workout principles",
+          "Start your fitness journey safely.",
+          "Build basic strength and endurance.",
+          "Establish a consistent workout routine.",
         ],
       },
       duration: {
@@ -347,18 +449,18 @@ export const programs: Program[] = [
         title: "TRAINING STYLES & EXPERIENCE",
         bullets: [
           "Basic movement patterns",
-          "Bodyweight exercises",
-          "Light resistance training",
-          "Gradual progression",
+          "Low impact exercises",
+          "Progressive difficulty",
+          "Perfect for complete beginners",
         ],
       },
       nutrition: {
         title: "NUTRITION",
         bullets: [
-          "Basic nutrition education",
-          "Simple meal planning",
+          "Simple nutrition guidelines",
           "Healthy eating habits",
-          "Proper fueling strategies",
+          "Basic meal planning",
+          "Hydration importance",
         ],
       },
     },
@@ -374,29 +476,47 @@ export const programs: Program[] = [
     description:
       "Treinos estratégicos de 25 a 45 minutos para quem quer resultados sem perder tempo.",
     features: [
-      "Perfeito para os dias corridos: Treinos rápidos e eficazes, que cabem perfeitamente na tua rotina.",
-      "Planeamento eficaz: Cada treino, cada minuto é planeado para resultados para os resultados reais e duradouros.",
-      "Versátil e flexível: Opções para definição, queima de gordura ou força.",
-      "Em casa ou no Ginasio: Com ou sem equipamentos, 0 desculpas.",
-      "🔓 Programa criado para quem não tem muito tempo, mas não abre mão da saude."
+      {
+        title: "Perfeito para Dias Corridos",
+        description:
+          "Treinos rápidos e eficazes, que cabem perfeitamente na tua rotina.",
+      },
+      {
+        title: "Planeamento Eficaz",
+        description:
+          "Cada treino, cada minuto é planeado para resultados reais e duradouros.",
+      },
+      {
+        title: "Versátil e Flexível",
+        description: "Opções para definição, queima de gordura ou força.",
+      },
+      {
+        title: "Em Casa ou no Ginásio",
+        description: "Com ou sem equipamentos, 0 desculpas.",
+      },
+      {
+        title: "Para Quem Não Tem Tempo",
+        description:
+          "Programa criado para quem não tem muito tempo, mas não abre mão da saúde.",
+        isSpecial: true,
+      },
     ],
-    image:
-      "/assets/pe.jpeg",
+    image: "/assets/pe.jpeg",
     popular: false,
     activities: [
-      { icon: <Calendar className="w-6 h-6" />, text: "8 Weeks" },
-      { icon: <Dumbbell className="w-6 h-6" />, text: "Core" },
-      { icon: <User className="w-6 h-6" />, text: "All Levels" },
+      { icon: <Calendar className="w-6 h-6" />, text: "6 Weeks" },
+      { icon: <Dumbbell className="w-6 h-6" />, text: "Express" },
+      { icon: <User className="w-6 h-6" />, text: "Advanced" },
     ],
     details: {
       achieve: {
         title: "WHAT YOU WILL ACHIEVE",
-        description: "The Ab Program is perfect for you if your goal is to:",
+        description:
+          "The Express Program is perfect for you if your goal is to:",
         bullets: [
-          "Strengthen entire core region",
-          "Develop visible ab definition",
-          "Improve functional core strength",
-          "Enhance overall stability",
+          "Maximize results in minimal time.",
+          "Maintain fitness with a busy schedule.",
+          "Achieve multiple fitness goals efficiently.",
         ],
       },
       duration: {
@@ -404,25 +524,25 @@ export const programs: Program[] = [
         bullets: [
           "20-30 minute workouts",
           "4-5 sessions per week",
-          "8 weeks program duration",
+          "6 weeks program duration",
         ],
       },
       training: {
         title: "TRAINING STYLES & EXPERIENCE",
         bullets: [
-          "Targeted ab exercises",
-          "Full core activation",
-          "Progressive difficulty",
-          "Functional movements",
+          "High-intensity training",
+          "Time-efficient workouts",
+          "Compound movements",
+          "Suitable for advanced level",
         ],
       },
       nutrition: {
         title: "NUTRITION",
         bullets: [
-          "Fat loss nutrition strategy",
-          "Macro balance guidance",
-          "Ab-friendly foods focus",
-          "Hydration importance",
+          "Quick meal prep strategies",
+          "Efficient nutrition timing",
+          "Busy lifestyle nutrition",
+          "Performance optimization",
         ],
       },
     },
@@ -438,56 +558,74 @@ export const programs: Program[] = [
     description:
       "Plano avançado para fortalecer e esculpir o abdominal, melhorar a postura e acelerar resultados .",
     features: [
-      "Core estético e funcional: Para além da estética, protege a lombar e melhora a estabilidade.",
-      "Método eficiente: Sessões curtas, intensas e sem exercícios “inúteis”.",
-      "Definição com inteligente: Estratégias para definir o abdominal e queimar gordura em simultâneo.",
-      "Suporte para a alimentação: Ajustes estratégicos para reduzir a gordura e realçar os abdominais.",
-      "🔓Ideal para quem quer construir um abdominal bonito, saudável e em tempo recorde."
+      {
+        title: "Core Estético e Funcional",
+        description:
+          "Para além da estética, protege a lombar e melhora a estabilidade.",
+      },
+      {
+        title: "Método Eficiente",
+        description: "Sessões curtas, intensas e sem exercícios inúteis.",
+      },
+      {
+        title: "Definição Inteligente",
+        description:
+          "Estratégias para definir o abdominal e queimar gordura em simultâneo.",
+      },
+      {
+        title: "Suporte Alimentar",
+        description:
+          "Ajustes estratégicos para reduzir a gordura e realçar os abdominais.",
+      },
+      {
+        title: "Abdominal em Tempo Recorde",
+        description:
+          "Ideal para quem quer construir um abdominal bonito, saudável e em tempo recorde.",
+        isSpecial: true,
+      },
     ],
-    image:
-      "/assets/pa.jpeg",
+    image: "/assets/pa.jpeg",
     popular: false,
     activities: [
       { icon: <Calendar className="w-6 h-6" />, text: "6 Weeks" },
-      { icon: <Dumbbell className="w-6 h-6" />, text: "Express" },
-      { icon: <User className="w-6 h-6" />, text: "All Levels" },
+      { icon: <Dumbbell className="w-6 h-6" />, text: "Core" },
+      { icon: <User className="w-6 h-6" />, text: "Advanced" },
     ],
     details: {
       achieve: {
         title: "WHAT YOU WILL ACHIEVE",
         description:
-          "The Express Program is perfect for you if your goal is to:",
+          "The Abdominal Program is perfect for you if your goal is to:",
         bullets: [
-          "Maximize limited workout time",
-          "Maintain fitness with busy schedule",
-          "Build strength efficiently",
-          "Stay consistent with exercise",
+          "Build strong, defined abdominal muscles.",
+          "Improve core stability and posture.",
+          "Reduce body fat for visible abs.",
         ],
       },
       duration: {
         title: "WORKOUT DURATION",
         bullets: [
           "20-35 minute workouts",
-          "3-4 sessions per week",
+          "4-5 sessions per week",
           "6 weeks program duration",
         ],
       },
       training: {
         title: "TRAINING STYLES & EXPERIENCE",
         bullets: [
-          "High-intensity intervals",
-          "Compound movements",
-          "Time-efficient circuits",
-          "Minimal equipment needed",
+          "Core-focused training",
+          "High-intensity ab workouts",
+          "Functional core movements",
+          "Suitable for advanced level",
         ],
       },
       nutrition: {
         title: "NUTRITION",
         bullets: [
-          "Quick meal solutions",
-          "On-the-go nutrition",
-          "Simple meal prep",
-          "Energy optimization",
+          "Fat loss nutrition strategies",
+          "Core definition diet tips",
+          "Meal timing for abs",
+          "Supplement recommendations",
         ],
       },
     },
