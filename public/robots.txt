@@ -1,14 +1,18 @@
-User-agent: Googlebot
-Allow: /
-
-User-agent: Bingbot
-Allow: /
-
-User-agent: Twitterbot
-Allow: /
-
-User-agent: facebookexternalhit
-Allow: /
-
 User-agent: *
 Allow: /
+
+# Important pages
+Allow: /
+Allow: /programas
+Allow: /sobre
+Allow: /contacto
+
+# Block admin areas (if any)
+Disallow: /admin/
+Disallow: /private/
+
+# Sitemaps
+Sitemap: https://nelson-salgado.vercel.app/sitemap.xml
+
+# Crawl delay
+Crawl-delay: 1

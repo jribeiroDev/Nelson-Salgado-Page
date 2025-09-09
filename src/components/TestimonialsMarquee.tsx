@@ -164,9 +164,9 @@ const TestimonialCard = ({
   testimonial: any;
   index: number;
 }) => (
-  <Card className="min-w-[280px] sm:min-w-[320px] min-h-[200px] p-4 sm:p-6 bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/20 transition-all duration-300 flex flex-col gap-4">
+  <Card className="min-w-[280px] sm:min-w-[320px] min-h-[200px] p-4 sm:p-6 bg-white/20 backdrop-blur-sm border border-gold/20 hover:bg-white/20 transition-all duration-300 flex flex-col gap-4">
     <div className="flex items-start gap-3 sm:gap-4">
-      <Avatar className="w-10 h-10 sm:w-12 sm:h-12 border-2 border-white/30 flex-shrink-0">
+      <Avatar className="w-10 h-10 sm:w-12 sm:h-12 border-2 border-gold flex-shrink-0">
         <AvatarImage src={testimonial.avatar} alt={testimonial.name} />
         <AvatarFallback className="bg-blue/20 text-blue font-semibold text-xs sm:text-sm">
           {testimonial.name
@@ -201,12 +201,12 @@ const TestimonialsMarquee = () => {
     <section className="py-12 sm:py-16 lg:py-20 bg-beige overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-8 sm:mb-12 lg:mb-16">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold mb-4 sm:mb-6 text-blue leading-tight">
+          <h2 className="text-2xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold mb-4 sm:mb-6 text-blue leading-tight">
             O que dizem os nossos clientes
           </h2>
-          <p className="text-lg sm:text-xl lg:text-2xl text-blue/80 max-w-3xl mx-auto">
+          {/* <p className="text-lg sm:text-xl lg:text-2xl text-blue/80 max-w-3xl mx-auto">
             Mais de 1000+ pessoas já transformaram as suas vidas connosco
-          </p>
+          </p> */}
         </div>
 
         <div className="space-y-6 sm:space-y-8">
@@ -246,7 +246,7 @@ const TestimonialsMarquee = () => {
         </div>
 
         {/* Call to action */}
-        <div className="text-center mt-12 sm:mt-16">
+        {/* <div className="text-center mt-12 sm:mt-16">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -259,7 +259,7 @@ const TestimonialsMarquee = () => {
             </span>
             <Star className="w-4 h-4 sm:w-5 sm:h-5 fill-gold text-gold flex-shrink-0" />
           </motion.div>
-        </div>
+        </div> */}
       </div>
     </section>
   );

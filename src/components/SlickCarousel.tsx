@@ -228,7 +228,7 @@ const SlickCarousel = () => {
   }, [filters]);
   // Resetar o índice selecionado quando os filtros mudam
   useEffect(() => {
-    setSelectedIndex(0);
+    setSelectedIndex(3);
   }, [filters]);
 
   useEffect(() => {

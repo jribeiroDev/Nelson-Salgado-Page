@@ -23,11 +23,11 @@ import SocialProofPopup from "@/components/SocialProofPopup";
 const Index = () => {
   return (
     <div className="min-h-screen bg-background">
-      <SiteAlert
+      {/* <SiteAlert
         title="Novidades do Site"
         message="Estamos com uma nova funcionalidade disponível! Confira as últimas atualizações em nosso painel."
         type="info"
-      />
+      /> */}
       {/* <SocialProofPopup /> */}
       <InitialSection />
       <PricingSection />
