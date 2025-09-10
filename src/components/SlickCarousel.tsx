@@ -587,7 +587,7 @@ const Card = ({
 };
 
 const SlickCarousel = () => {
-  const [selectedIndex, setSelectedIndex] = useState(4); // Índice da card selecionada (primeiro item por padrão)
+  const [selectedIndex, setSelectedIndex] = useState(0); // Índice da card selecionada (mobile: índice 1, desktop: índice 2)
   const [visibleItems, setVisibleItems] = useState(VISIBLE_ITEMS_DESKTOP);
   const [isDragging, setIsDragging] = useState(false);
   const [dialogOpen, setDialogOpen] = useState(false);
@@ -654,7 +654,12 @@ const SlickCarousel = () => {
   }, [filters]);
   // Resetar o índice selecionado quando os filtros mudam
   useEffect(() => {
-    setSelectedIndex(3);
+    const width = window.innerWidth;
+    if (width < 768) {
+      setSelectedIndex(0); // Mobile
+    } else {
+      setSelectedIndex(2); // Tablet/Desktop
+    }
     setAccordionValue(""); // Resetar accordion quando filtros mudam
   }, [filters]);
 
@@ -669,18 +674,23 @@ const SlickCarousel = () => {
       if (width < 640) {
         // Para mobile pequenos
         setVisibleItems(VISIBLE_ITEMS_MOBILE);
+        setSelectedIndex(0); // Mobile começa no índice 1
       } else if (width < 768) {
         // Para mobile maiores
         setVisibleItems(VISIBLE_ITEMS_MOBILE);
+        setSelectedIndex(0); // Mobile começa no índice 1
       } else if (width < 1024) {
         // Para tablets
         setVisibleItems(VISIBLE_ITEMS_TABLET);
+        setSelectedIndex(2); // Tablet/Desktop começa no índice 2
       } else if (width < 1280) {
         // Para desktops pequenos
         setVisibleItems(VISIBLE_ITEMS_DESKTOP);
+        setSelectedIndex(2); // Tablet/Desktop começa no índice 2
       } else {
         // Para desktops grandes
         setVisibleItems(VISIBLE_ITEMS_DESKTOP);
+        setSelectedIndex(2); // Tablet/Desktop começa no índice 2
       }
     };
     handleResize();
@@ -772,7 +782,7 @@ const SlickCarousel = () => {
 
   const openWhatsApp = (programName: string, level: string) => {
     const message = encodeURIComponent(
-      `Olá Nelson, estou super animada/o para começar com o programa ${programName} no nível ${level}. Podemos avançar!`
+      `Olá Nelson, estou super motivada/o para começar o ${programName} (${level}). Vamos prosseguir!`
     );
     window.open(`https://wa.me/${whatsappNumber}?text=${message}`, "_blank");
     setDialogOpen(false);
