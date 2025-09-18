@@ -15,9 +15,9 @@ const PricingSection = () => {
   const whatsappNumber = "+351910436302"; // Substitua pelo número real
   const instagramPageUrl = "https://www.instagram.com/elite_salgado"; // Substitua pela URL real
 
-  const openWhatsApp = () => {
+  const openWhatsApp = (planName: string) => {
     const message = encodeURIComponent(
-      "Olá Nelson, estou super ansiosa/o para começar este acompanhamento. Podemos avançar!"
+      `Olá Nelson, tive interesse no ${planName}! Como funciona o acompanhamento?`
     );
     window.open(`https://wa.me/${whatsappNumber}?text=${message}`, "_blank");
   };
@@ -93,7 +93,7 @@ const PricingSection = () => {
             </ul>
 
             <Button
-              onClick={openWhatsApp}
+              onClick={() => openWhatsApp("Plano Mensal")}
               className="w-full bg-gray-900 text-white hover:bg-gray-800 font-medium py-3 px-4 rounded-lg transition-all duration-300"
             >
               Junta-te Agora
@@ -173,7 +173,7 @@ const PricingSection = () => {
             </ul>
 
             <Button
-              onClick={openWhatsApp}
+              onClick={() => openWhatsApp("Plano Anual")}
               className="w-full bg-white text-blue hover:bg-gold hover:text-white font-medium py-3 px-4 rounded-lg transition-all duration-300"
             >
               Junta-te Agora
@@ -232,7 +232,7 @@ const PricingSection = () => {
             </ul>
 
             <Button
-              onClick={openWhatsApp}
+              onClick={() => openWhatsApp("Plano Semestral")}
               className="w-full bg-gray-900 text-white hover:bg-gray-800 font-medium py-3 px-4 rounded-lg transition-all duration-300"
             >
               Junta-te Agora

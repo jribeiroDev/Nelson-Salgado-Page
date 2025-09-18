@@ -782,7 +782,7 @@ const SlickCarousel = () => {
 
   const openWhatsApp = (programName: string, level: string) => {
     const message = encodeURIComponent(
-      `Olá Nelson, estou super motivada/o para começar o ${programName} (${level}). Vamos prosseguir!`
+      `Olá Nelson, tive interesse no ${programName} (${level})! Como funciona o programa?`
     );
     window.open(`https://wa.me/${whatsappNumber}?text=${message}`, "_blank");
     setDialogOpen(false);
