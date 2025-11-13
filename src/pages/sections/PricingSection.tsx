@@ -2,11 +2,24 @@ import React, { useState } from "react";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 import { Zap, CheckCircle, CircleCheck } from "lucide-react";
 import { RewardPopup } from "./RewardPopup";
+import { motion } from "framer-motion";
 
 const PricingSection = () => {
   const [showRewardPopup, setShowRewardPopup] = useState(false);
+  const [dialogOpen, setDialogOpen] = useState(false);
+  const [userName, setUserName] = useState<string>("");
+  const [selectedPlan, setSelectedPlan] = useState<string>("");
 
   const handleJoinClick = () => {
     setShowRewardPopup(true);
@@ -15,11 +28,42 @@ const PricingSection = () => {
   const whatsappNumber = "+351910436302"; // Substitua pelo número real
   const instagramPageUrl = "https://www.instagram.com/elite_salgado"; // Substitua pela URL real
 
-  const openWhatsApp = (planName: string) => {
-    const message = encodeURIComponent(
-      `Olá Nelson, tive interesse no ${planName}! Como funciona o acompanhamento?`
-    );
-    window.open(`https://wa.me/${whatsappNumber}?text=${message}`, "_blank");
+  const openWhatsApp = (planName: string, name: string) => {
+    // Construir mensagem com encoding correto para WhatsApp
+    const parts = [
+      "Olá, Nelson!",
+
+      `O meu nome é ${name} e gostaria de ter uma orientação de um profissional para atingir os meus objetivos.`,
+
+      `Tenho interesse em consultas no ${planName}.`,
+
+      "Como posso começar?",
+
+      "Obrigado!",
+    ];
+
+    // Codificar cada parte separadamente
+    const encodedParts = parts.map((part) => encodeURIComponent(part));
+    const message = encodedParts.join("%0A");
+
+    const url = `https://wa.me/${whatsappNumber}?text=${message}`;
+
+    window.open(url, "_blank");
+
+    setDialogOpen(false);
+    setUserName(""); // Limpar o nome após enviar
+    setSelectedPlan("");
+  };
+
+  const handlePlanClick = (planName: string) => {
+    setSelectedPlan(planName);
+    setDialogOpen(true);
+  };
+
+  const handleSubmit = () => {
+    if (userName.trim()) {
+      openWhatsApp(selectedPlan, userName);
+    }
   };
 
   const handleConfirm = () => {
@@ -93,7 +137,7 @@ const PricingSection = () => {
             </ul>
 
             <Button
-              onClick={() => openWhatsApp("Plano Mensal")}
+              onClick={() => handlePlanClick("Plano Mensal")}
               className="w-full bg-gray-900 text-white hover:bg-gray-800 font-medium py-3 px-4 rounded-lg transition-all duration-300"
             >
               Junta-te Agora
@@ -173,7 +217,7 @@ const PricingSection = () => {
             </ul>
 
             <Button
-              onClick={() => openWhatsApp("Plano Anual")}
+              onClick={() => handlePlanClick("Plano Anual")}
               className="w-full bg-white text-blue hover:bg-gold hover:text-white font-medium py-3 px-4 rounded-lg transition-all duration-300"
             >
               Junta-te Agora
@@ -232,7 +276,7 @@ const PricingSection = () => {
             </ul>
 
             <Button
-              onClick={() => openWhatsApp("Plano Semestral")}
+              onClick={() => handlePlanClick("Plano Semestral")}
               className="w-full bg-gray-900 text-white hover:bg-gray-800 font-medium py-3 px-4 rounded-lg transition-all duration-300"
             >
               Junta-te Agora
@@ -245,6 +289,67 @@ const PricingSection = () => {
         </p>
       </div> */}
       </div>
+
+      {/* Dialog para capturar nome do usuário */}
+      <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
+        <DialogContent className="sm:max-w-md bg-white/95 backdrop-blur-md border-2 border-blue/10 rounded-2xl shadow-2xl">
+          <DialogHeader className="text-center pb-4">
+            <DialogTitle className="text-2xl font-bold text-blue">
+              Quase lá! 🎯
+            </DialogTitle>
+            <DialogDescription className="text-blue/70 mt-2">
+              Preencha seu nome para continuar
+            </DialogDescription>
+          </DialogHeader>
+
+          <div className="space-y-4">
+            {/* Campo de Nome */}
+            <div className="space-y-2">
+              <label
+                htmlFor="userName"
+                className="text-sm font-semibold text-blue"
+              >
+                Qual é o seu nome?
+              </label>
+              <Input
+                id="userName"
+                type="text"
+                placeholder="Digite seu nome..."
+                value={userName}
+                onChange={(e) => setUserName(e.target.value)}
+                onKeyPress={(e) => {
+                  if (e.key === "Enter" && userName.trim()) {
+                    handleSubmit();
+                  }
+                }}
+                className="w-full px-4 py-3 rounded-xl border-2 border-blue/20 focus:border-blue focus:ring-2 focus:ring-blue/20 transition-all"
+                autoFocus
+              />
+            </div>
+
+            {/* Botão de Confirmar */}
+            <motion.button
+              onClick={handleSubmit}
+              disabled={!userName.trim()}
+              className={`w-full p-4 rounded-xl font-medium transition-all duration-300 border-2 ${
+                !userName.trim()
+                  ? "opacity-50 cursor-not-allowed bg-gray-100 text-gray-400 border-gray-200"
+                  : "bg-gradient-to-r from-blue to-darkblue text-white hover:scale-105 hover:shadow-lg border-blue"
+              }`}
+              whileHover={userName.trim() ? { scale: 1.02 } : {}}
+              whileTap={userName.trim() ? { scale: 0.98 } : {}}
+            >
+              Continuar para WhatsApp
+            </motion.button>
+
+            {!userName.trim() && (
+              <p className="text-xs text-blue/60 text-center">
+                Por favor, preencha seu nome para continuar
+              </p>
+            )}
+          </div>
+        </DialogContent>
+      </Dialog>
     </section>
   );
 };

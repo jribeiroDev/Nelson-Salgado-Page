@@ -10,6 +10,7 @@ import {
 } from "framer-motion";
 import { programs } from "@/pages/sections/programsData";
 import { Button } from "./ui/button";
+import { Input } from "./ui/input";
 import {
   Star,
   Filter,
@@ -592,6 +593,7 @@ const SlickCarousel = () => {
   const [isDragging, setIsDragging] = useState(false);
   const [dialogOpen, setDialogOpen] = useState(false);
   const [selectedLevel, setSelectedLevel] = useState<string>("");
+  const [userName, setUserName] = useState<string>(""); // Estado para o nome do usuário
   const [accordionValue, setAccordionValue] = useState<string>(""); // Estado para controlar qual accordion está aberto
   const [filters, setFilters] = useState({
     gender: "Todos",
@@ -780,19 +782,36 @@ const SlickCarousel = () => {
   const whatsappNumber = "+351910436302"; // Substitua pelo número real
   const instagramPageUrl = "https://www.instagram.com/elite_salgado"; // Substitua pela URL real
 
-  const openWhatsApp = (programName: string, level: string) => {
-    const message = encodeURIComponent(
-      `Olá Nelson, tive interesse no ${programName} (${level})! Como funciona o programa?`
-    );
-    window.open(`https://wa.me/${whatsappNumber}?text=${message}`, "_blank");
+  const openWhatsApp = (programName: string, level: string, name: string) => {
+    // Construir mensagem com encoding correto para WhatsApp
+    const parts = [
+      "Olá, Nelson!",
+      `O meu nome é ${name} e gostaria de ter uma orientação de um profissional para atingir os meus objetivos.`,
+      
+      `Tenho interesse em consultas no ${programName} (${level})!`,
+      
+      "Como posso começar?",
+      
+      "Obrigado!",
+    ];
+
+    // Codificar cada parte separadamente
+    const encodedParts = parts.map((part) => encodeURIComponent(part));
+    const message = encodedParts.join("%0A");
+
+    const url = `https://wa.me/${whatsappNumber}?text=${message}`;
+
+    window.open(url, "_blank");
+
     setDialogOpen(false);
     setSelectedLevel("");
+    setUserName(""); // Limpar o nome após enviar
   };
 
   const handleLevelSelection = (level: string) => {
     setSelectedLevel(level);
     const currentProgram = filteredPrograms[selectedIndex];
-    openWhatsApp(currentProgram.name, level);
+    openWhatsApp(currentProgram.name, level, userName);
   };
 
   return (
@@ -1456,41 +1475,85 @@ const SlickCarousel = () => {
                     </DialogTrigger>
 
                     <DialogContent className="sm:max-w-md bg-white/95 backdrop-blur-md border-2 border-blue/10 rounded-2xl shadow-2xl">
-                      <DialogHeader className="text-center pb-6">
+                      <DialogHeader className="text-center pb-4">
                         <DialogTitle className="text-2xl font-bold text-blue">
-                          Escolha o seu nível
+                          Quase lá! 🎯
                         </DialogTitle>
+                        <DialogDescription className="text-blue/70 mt-2">
+                          Preencha seus dados para começar
+                        </DialogDescription>
                       </DialogHeader>
 
-                      <div className="space-y-3">
-                        {["Iniciante", "Intermédio", "Experiente"].map(
-                          (level) => (
-                            <motion.button
-                              key={level}
-                              onClick={() => handleLevelSelection(level)}
-                              className="w-full p-4 rounded-xl text-left font-medium transition-all duration-300 bg-gradient-to-r text-blue hover:scale-105 hover:shadow-lg border-2 border-blue hover:border-blue"
-                              whileHover={{ scale: 1.02 }}
-                              whileTap={{ scale: 0.98 }}
-                            >
-                              <div className="flex items-center justify-between">
-                                <span className="text-lg">{level}</span>
-                                <svg
-                                  xmlns="http://www.w3.org/2000/svg"
-                                  className="h-5 w-5"
-                                  fill="none"
-                                  viewBox="0 0 24 24"
-                                  stroke="currentColor"
+                      <div className="space-y-4">
+                        {/* Campo de Nome */}
+                        <div className="space-y-2">
+                          <label
+                            htmlFor="userName"
+                            className="text-sm font-semibold text-blue"
+                          >
+                            Qual é o seu nome?
+                          </label>
+                          <Input
+                            id="userName"
+                            type="text"
+                            placeholder="Digite seu nome..."
+                            value={userName}
+                            onChange={(e) => setUserName(e.target.value)}
+                            className="w-full px-4 py-3 rounded-xl border-2 border-blue/20 focus:border-blue focus:ring-2 focus:ring-blue/20 transition-all"
+                          />
+                        </div>
+
+                        {/* Seleção de Nível */}
+                        <div className="space-y-2">
+                          <label className="text-sm font-semibold text-blue">
+                            Escolha o seu nível
+                          </label>
+                          <div className="space-y-2">
+                            {["Iniciante", "Intermédio", "Experiente"].map(
+                              (level) => (
+                                <motion.button
+                                  key={level}
+                                  onClick={() => handleLevelSelection(level)}
+                                  disabled={!userName.trim()}
+                                  className={`w-full p-4 rounded-xl text-left font-medium transition-all duration-300 border-2 ${
+                                    !userName.trim()
+                                      ? "opacity-50 cursor-not-allowed bg-gray-100 text-gray-400 border-gray-200"
+                                      : "bg-gradient-to-r text-blue hover:scale-105 hover:shadow-lg border-blue hover:border-blue"
+                                  }`}
+                                  whileHover={
+                                    userName.trim() ? { scale: 1.02 } : {}
+                                  }
+                                  whileTap={
+                                    userName.trim() ? { scale: 0.98 } : {}
+                                  }
                                 >
-                                  <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    strokeWidth={2}
-                                    d="M9 5l7 7-7 7"
-                                  />
-                                </svg>
-                              </div>
-                            </motion.button>
-                          )
+                                  <div className="flex items-center justify-between">
+                                    <span className="text-lg">{level}</span>
+                                    <svg
+                                      xmlns="http://www.w3.org/2000/svg"
+                                      className="h-5 w-5"
+                                      fill="none"
+                                      viewBox="0 0 24 24"
+                                      stroke="currentColor"
+                                    >
+                                      <path
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        strokeWidth={2}
+                                        d="M9 5l7 7-7 7"
+                                      />
+                                    </svg>
+                                  </div>
+                                </motion.button>
+                              )
+                            )}
+                          </div>
+                        </div>
+
+                        {!userName.trim() && (
+                          <p className="text-xs text-blue/60 text-center">
+                            Por favor, preencha seu nome para continuar
+                          </p>
                         )}
                       </div>
                     </DialogContent>
