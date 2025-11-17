@@ -32,13 +32,13 @@ const PricingSection = () => {
     // Construir mensagem com encoding correto para WhatsApp
     const parts = [
       "Olá, Nelson!",
-
+      "",
       `O meu nome é ${name} e gostaria de ter uma orientação de um profissional para atingir os meus objetivos.`,
-
-      `Tenho interesse em consultas no ${planName}.`,
-
+      "",
+      `Tenho interesse no ${planName}.`,
+      "",
       "Como posso começar?",
-
+      "",
       "Obrigado!",
     ];
 
