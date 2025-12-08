@@ -149,7 +149,7 @@ const PricingSection = () => {
             />
           </Card>
 
-          {/* Card 12 MESES - Mais Popular */}
+          {/* Card 3 MESES - Mais Popular */}
           <Card className=" cursor-pointer p-6 bg-gradient-to-br from-blue to-darkblue text-white border-0 relative overflow-visible shadow-2xl transform scale-105 hover:scale-110 transition-all duration-300 order-1 lg:order-2 min-h-[500px] flex flex-col rounded-xl">
             <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 z-20">
               <Badge className="bg-gold text-white font-medium border-0 shadow-lg px-3 py-1 rounded-full text-xs">
@@ -159,15 +159,15 @@ const PricingSection = () => {
 
             <div className="mb-6 pt-2">
               <h3 className="text-2xl font-bold mb-4 text-white">
-                Plano Anual
+                Plano Trimestral
               </h3>
               <div className="flex items-baseline ">
-                <span className="text-4xl font-bold text-white">25</span>
+                <span className="text-4xl font-bold text-white">35</span>
                 <span className="text-lg text-white ml-2">/mês</span>
               </div>
-              <p className="text-xs text-gold">
+              {/* <p className="text-xs text-gold">
                 (Poupa 360€ em relação ao plano mensal)
-              </p>
+              </p> */}
               <p className="text-sm text-white mt-2">
                 Para quem está pronto para mudar de vida de forma definitiva.
               </p>
@@ -177,7 +177,7 @@ const PricingSection = () => {
               <li className="flex items-start">
                 {/* <CheckCircle className="w-5 h-5 mr-3 text-green-400 flex-shrink-0 mt-0.5" /> */}
                 <span className="text-white font-medium text-sm">
-                  Tudo no plano semestral, mais:
+                  Tudo no plano mensal, mais:
                 </span>
               </li>
               <li className="flex items-start">
@@ -217,7 +217,7 @@ const PricingSection = () => {
             </ul>
 
             <Button
-              onClick={() => handlePlanClick("Plano Anual")}
+              onClick={() => handlePlanClick("Plano Trimestral")}
               className="w-full bg-white text-blue hover:bg-gold hover:text-white font-medium py-3 px-4 rounded-lg transition-all duration-300"
             >
               Junta-te Agora
@@ -231,7 +231,7 @@ const PricingSection = () => {
                 Plano Semestral
               </h3>
               <div className="flex items-baseline mb-2">
-                <span className="text-4xl font-bold text-gray-900">33</span>
+                <span className="text-4xl font-bold text-gray-900">30</span>
                 <span className="text-lg text-gray-600 ml-2">/mês</span>
               </div>
               {/* <p className="text-xs text-gray-500">
