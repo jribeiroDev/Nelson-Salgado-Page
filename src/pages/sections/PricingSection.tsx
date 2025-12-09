@@ -231,7 +231,7 @@ const PricingSection = () => {
                 Plano Semestral
               </h3>
               <div className="flex items-baseline mb-2">
-                <span className="text-4xl font-bold text-gray-900">30</span>
+                <span className="text-4xl font-bold text-gray-900">25</span>
                 <span className="text-lg text-gray-600 ml-2">/mês</span>
               </div>
               {/* <p className="text-xs text-gray-500">
